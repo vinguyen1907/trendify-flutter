@@ -1,0 +1,849 @@
+{
+"products":[
+ {
+  "categoryId": "NH3Td6m8zOwgs4c3KpWk",
+  "name": "Jordan Flight Essentials",
+  "brand": "Nike",
+  "description": "Big 'n' baggy for comfort and style. This super-soft tee features longer sleeves and dropped shoulders. Combined with a minimal Jumpman woven chest patch, you're lookin' n-i-c-e.",
+  "price": 50,
+  "averageRating": 0,
+  "reviewCount": 0,
+  "imgUrl": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/ecommerce-app-b5380.appspot.com\/o\/product_img%2Fproduct_01.jpg?alt=media&token=8d0da2b3-a848-4781-8f8f-80a73d4f9dc2"
+ },
+ {
+  "categoryId": "NH3Td6m8zOwgs4c3KpWk",
+  "name": "Jordan Flight Fleece",
+  "brand": "Nike",
+  "description": "Relaxed, comfortable, all-day versatile—these super-soft fleece trousers are everything you need them to be. Elastic at the cuffs lets you show off your favourite kicks, while the stitched-down Flight label and metal-tipped drawcords elevate even the most casual fit.",
+  "price": 100,
+  "averageRating": 0,
+  "reviewCount": 0,
+  "imgUrl": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/ecommerce-app-b5380.appspot.com\/o\/product_img%2Fproduct_02.jpg?alt=media&token=63e101f2-75a3-4606-af70-e07689c636ff"
+ },
+ {
+  "categoryId": "NH3Td6m8zOwgs4c3KpWk",
+  "name": "Nike Sportswear",
+  "brand": "Nike",
+  "description": "The Nike Sportswear T-Shirt sets you up with soft cotton jersey and a classic logo on the chest.",
+  "price": 49,
+  "averageRating": 0,
+  "reviewCount": 0,
+  "imgUrl": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/ecommerce-app-b5380.appspot.com\/o\/product_img%2Fproduct_03.jpg?alt=media&token=0f41cdbf-cd04-4634-af89-cc074c5c4ac2"
+ },
+ {
+  "categoryId": "NH3Td6m8zOwgs4c3KpWk",
+  "name": "Nike Club",
+  "brand": "Nike",
+  "description": "When your daily outings call for preparation, these well-equipped Nike Club cargo trousers give you more pockets to securely stow the extras. We made these from a soft-yet-durable cotton Ripstop fabric in a roomy fit for casual, care-free comfort.",
+  "price": 69,
+  "averageRating": 0,
+  "reviewCount": 0,
+  "imgUrl": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/ecommerce-app-b5380.appspot.com\/o\/product_img%2Fproduct_04.jpg?alt=media&token=be77786c-9cec-4a5d-8ecc-3e6e31c3b9e0"
+ },
+ {
+  "categoryId": "NH3Td6m8zOwgs4c3KpWk",
+  "name": "Nike Sportswear Tech Pack",
+  "brand": "Nike",
+  "description": "These Tech Pack shorts are made from our innovative Nike Forward material for an impossibly soft and lightweight feel. Distinct details, like laser-cut pockets with raw edges and subtle front pleating, elevate the finish.",
+  "price": 150,
+  "averageRating": 0,
+  "reviewCount": 0,
+  "imgUrl": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/ecommerce-app-b5380.appspot.com\/o\/product_img%2Fproduct_05.jpg?alt=media&token=4942d513-44b9-4a99-b337-71edefad31aa"
+ },
+ {
+  "categoryId": "NH3Td6m8zOwgs4c3KpWk",
+  "name": "Nike Sportswear",
+  "brand": "Nike",
+  "description": "Made from soft cotton in a spacious fit for plenty of movement and style, this Nike tee features solar flare graphics for a bold look. Pop it on with your favourite Nike sneakers and bring the heat.",
+  "price": 60,
+  "averageRating": 0,
+  "reviewCount": 0,
+  "imgUrl": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/ecommerce-app-b5380.appspot.com\/o\/product_img%2Fproduct_06.jpg?alt=media&token=ea19db97-8fbb-4b07-9b4d-25a12aa3aaca"
+ },
+ {
+  "categoryId": "NH3Td6m8zOwgs4c3KpWk",
+  "name": "Paris Saint-Germain Max90",
+  "brand": "Nike",
+  "description": "Show everyone who you stand with. Cut for comfort, our roomy PSG Max90 tee gives you a relaxed and casual look so you can cheer on your team in style.",
+  "price": 45,
+  "averageRating": 0,
+  "reviewCount": 0,
+  "imgUrl": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/ecommerce-app-b5380.appspot.com\/o\/product_img%2Fproduct_07.jpg?alt=media&token=0e3ff03b-bd4e-4625-85e7-2eec581dec46"
+ },
+ {
+  "categoryId": "NH3Td6m8zOwgs4c3KpWk",
+  "name": "Nike Acg Therma-Fit",
+  "brand": "Nike",
+  "description": "After walking through the glacial wonders of Iceland, our design team was inspired to make a fleece-lined hoodie to help keep you warm and repel water for cool hikes and wintry walks. Plus, we made it with at least 75% sustainable materials, using a blend of organic cotton and recycled polyester fibres.",
+  "price": 159,
+  "averageRating": 0,
+  "reviewCount": 0,
+  "imgUrl": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/ecommerce-app-b5380.appspot.com\/o\/product_img%2Fproduct_08.jpg?alt=media&token=23493b6b-b8b0-40bf-a7a5-0afc60236aa1"
+ },
+ {
+  "categoryId": "NH3Td6m8zOwgs4c3KpWk",
+  "name": "Nike Sb Kearny",
+  "brand": "Nike",
+  "description": "Made from durable Ripstop fabric in a roomy, skate-ready fit, these Nike SB trousers are built to last. The classic cargo design doesn't skimp on storage. With 6 pockets and a fake care label stash pocket, you'll have plenty of places to keep your essentials secure on and off your board.",
+  "price": 99,
+  "averageRating": 0,
+  "reviewCount": 0,
+  "imgUrl": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/ecommerce-app-b5380.appspot.com\/o\/product_img%2Fproduct_09.jpg?alt=media&token=fe0e3b7f-a449-4470-8b5b-b2cad79942ce"
+ },
+ {
+  "categoryId": "NH3Td6m8zOwgs4c3KpWk",
+  "name": "Nikecourt Dri-Fit",
+  "brand": "Nike",
+  "description": "Made from soft knit fabric that's made from 100% recycled polyester fibres, the NikeCourt Dri-FIT Polo is a classic-looking, sweat-wicking court staple.",
+  "price": 105,
+  "averageRating": 0,
+  "reviewCount": 0,
+  "imgUrl": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/ecommerce-app-b5380.appspot.com\/o\/product_img%2Fproduct_10.jpg?alt=media&token=e2409918-ec59-4122-bd86-8642570109ca"
+ },
+ {
+  "categoryId": "6WndEeNPWIkQ8jVKEFWY",
+  "name": "Blondie Small Tote Bag",
+  "brand": "Gucci",
+  "description": "The Round Interlocking G that characterises the Gucci Blondie line originates from the House archives. Signature pieces such as this Gucci Blondie tote bag with a top handle and chain shoulder strap reinterprets the emblem as a subtler leather patch detail.",
+  "price": 5000,
+  "averageRating": 0,
+  "reviewCount": 0,
+  "imgUrl": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/ecommerce-app-b5380.appspot.com\/o\/product_img%2Fproduct_11.jpg?alt=media&token=0c318ace-cbb4-4d3e-898c-ef16dae740ee"
+ },
+ {
+  "categoryId": "6WndEeNPWIkQ8jVKEFWY",
+  "name": "Blondie Small Shoulder Bag",
+  "brand": "Gucci",
+  "description": "The Round Interlocking G that characterises the Gucci Blondie line originates from the House archives. Signature pieces such as this Gucci Blondie shoulder and crossbody bag reinterpret the emblem as a subtler leather patch detail.",
+  "price": 2100,
+  "averageRating": 0,
+  "reviewCount": 0,
+  "imgUrl": "https://firebasestorage.googleapis.com/v0/b/ecommerce-app-b5380.appspot.com/o/product_img%2Fproduct_12.jpg?alt=media&token=d6501db5-ebb1-474e-9009-d07519cdfff0"
+ },
+ {
+  "categoryId": "6WndEeNPWIkQ8jVKEFWY",
+  "name": "Diana Medium Shoulder Bag",
+  "brand": "Gucci",
+  "description": "Combining recognisable elements of the House, the small shoulder bag is defined by its bamboo handles and Double G hardware. Crafted from black leather, the accessory is further accentuated a contrasting leather shoulder strap in grey.",
+  "price": 4270,
+  "averageRating": 0,
+  "reviewCount": 0,
+  "imgUrl": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/ecommerce-app-b5380.appspot.com\/o\/product_img%2Fproduct_13.jpg?alt=media&token=b5729299-7681-4ce3-83b6-29af5ee7edb4"
+ },
+ {
+  "categoryId": "6WndEeNPWIkQ8jVKEFWY",
+  "name": "Ophidia Small Handbag",
+  "brand": "Gucci",
+  "description": "House collections continue the idea that pieces should be timeless and not just in fashion for one season. Guccio Gucci's everlasting monogram continues to enrich new designs with a logo feel. This Ophidia small handbag is presented in the historical GG Supreme canvas, complete with the Double G hardware.",
+  "price": 1940,
+  "averageRating": 0,
+  "reviewCount": 0,
+  "imgUrl": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/ecommerce-app-b5380.appspot.com\/o\/product_img%2Fproduct_14.jpg?alt=media&token=bddc2fc9-fa78-469a-ba38-e3007eb106ff"
+ },
+ {
+  "categoryId": "6WndEeNPWIkQ8jVKEFWY",
+  "name": "Ophidia Gg Small Shoulder Bag",
+  "brand": "Gucci",
+  "description": "GG canvas, a recognisable material of the House, continues to enrich signature pieces. It is synonymous with the Ophidia line in particular, and this season is presented in a new pink shade that sheds light on a rose gold hardware. A pink leather trim completes this small shoulder bag.",
+  "price": 2425,
+  "averageRating": 0,
+  "reviewCount": 0,
+  "imgUrl": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/ecommerce-app-b5380.appspot.com\/o\/product_img%2Fproduct_15.jpg?alt=media&token=3360ccf8-64eb-4cca-8d02-e97f0c404c67"
+ },
+ {
+  "categoryId": "6WndEeNPWIkQ8jVKEFWY",
+  "name": "Matelassé Small Bag",
+  "brand": "Gucci",
+  "description": "Guccio Gucci's monogram continues to be an essential House code that elevates designs. Bringing over ten decades of history to the fore, the GG becomes a part of a geometric design atop soft Matelassé leather. The textured material is crafted into a structured small bag in pink.",
+  "price": 2450,
+  "averageRating": 0,
+  "reviewCount": 0,
+  "imgUrl": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/ecommerce-app-b5380.appspot.com\/o\/product_img%2Fproduct_16.jpg?alt=media&token=ce9e0aa4-9c4b-4e42-a6a1-9844e6959ca2"
+ },
+ {
+  "categoryId": "6WndEeNPWIkQ8jVKEFWY",
+  "name": "Jackie 1961 Medium Bag",
+  "brand": "Gucci",
+  "description": "The reintroduction of the Jackie bag for Fall Winter 2020 presents a new take on a historical Gucci icon.",
+  "price": 4420,
+  "averageRating": 0,
+  "reviewCount": 0,
+  "imgUrl": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/ecommerce-app-b5380.appspot.com\/o\/product_img%2Fproduct_17.jpg?alt=media&token=e53fe6e6-02cb-41da-98a6-660aa83bf7ae"
+ },
+ {
+  "categoryId": "6WndEeNPWIkQ8jVKEFWY",
+  "name": "Marmont Large Tote Bag",
+  "brand": "Gucci",
+  "description": "With its recognisable matelassé fabric and Double G hardware, the GG Marmont has become synonymous with the House. Continuously reinvented through the seasons, new shapes are introduced within this signature line, matching Gucci's contemporary vision. This large tote bag reveals a chevron base, further enhancing the tonal logo hardware.",
+  "price": 3600,
+  "averageRating": 0,
+  "reviewCount": 0,
+  "imgUrl": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/ecommerce-app-b5380.appspot.com\/o\/product_img%2Fproduct_18.jpg?alt=media&token=9f0d8e23-b311-4225-addc-27ad92c3aab7"
+ },
+ {
+  "categoryId": "6WndEeNPWIkQ8jVKEFWY",
+  "name": "Blondie Mini Bag",
+  "brand": "Gucci",
+  "description": "Coming from the House's archives, a geometrically shaped version of the Interlocking G logo is reintroduced for Gucci Love Parade.",
+  "price": 4040,
+  "averageRating": 0,
+  "reviewCount": 0,
+  "imgUrl": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/ecommerce-app-b5380.appspot.com\/o\/product_img%2Fproduct_19.jpg?alt=media&token=e99f4de3-53dc-4c54-8e31-d69c0cf357e3"
+ },
+ {
+  "categoryId": "6WndEeNPWIkQ8jVKEFWY",
+  "name": "Horsebit 1955 Mini Bag",
+  "brand": "Gucci",
+  "description": "Inspired by archival designs, the world of Gucci Horsebit 1955 unifies the original details first introduced over six decades ago with a modern spirit.",
+  "price": 2320,
+  "averageRating": 0,
+  "reviewCount": 0,
+  "imgUrl": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/ecommerce-app-b5380.appspot.com\/o\/product_img%2Fproduct_20.jpg?alt=media&token=fdfba9dd-6cac-4614-95a4-664251bfde4e"
+ },
+ {
+  "categoryId": "huKBnHlkqfqDEjWdsWBL",
+  "name": "Nike Air Force 1",
+  "brand": "Nike",
+  "description": "The radiance lives on in the Nike Air Force 1 ’07, the b-ball OG that puts a fresh spin on what you know best: durably stitched overlays, clean finishes and the perfect amount of flash to make you shine.",
+  "price": 110,
+  "averageRating": 0,
+  "reviewCount": 0,
+  "imgUrl": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/ecommerce-app-b5380.appspot.com\/o\/product_img%2Fproduct_21.jpg?alt=media&token=06a98baf-17e7-4d0b-a663-21048387aa9e"
+ },
+ {
+  "categoryId": "huKBnHlkqfqDEjWdsWBL",
+  "name": "Nike InfinityRN 4 SE",
+  "brand": "Nike",
+  "description": "With supportive cushioning built for a smooth run, the Nike InfinityRN 4 is a brand-new take on a familiar favorite. It’s made with our all-new Nike ReactX foam, which gives you 13% more energy return compared to Nike React foam, to help you stay fresh and bouncy. (What’s more? Nike ReactX reduces the carbon footprint of the midsole by at least 43% compared to Nike React foam, so it helps support the planet too.) We coupled the ReactX foam with Nike Running's best-fitting Flyknit yet, so you can take off anytime, anywhere with secure upper support and breathability. It’s the kind of shoe that can grant you that priceless peace of mind to go faster and farther thanks to an intuitive design that supports every stride. This vibrantly bold, asymmetrical design is all about celebrating your mixing and matching magnificence for the miles ahead.",
+  "price": 160,
+  "averageRating": 0,
+  "reviewCount": 0,
+  "imgUrl": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/ecommerce-app-b5380.appspot.com\/o\/product_img%2Fproduct_22.jpg?alt=media&token=06a98baf-17e7-4d0b-a663-21048387aa9e"
+ },
+ {
+  "categoryId": "huKBnHlkqfqDEjWdsWBL",
+  "name": "Nike Dunk Low Retro",
+  "brand": "Nike",
+  "description": "Recognizing the Dunk's roots as the top-ranking college team sneaker, the \"Be True To Your School\" pack looks to the original ad campaign for inspiration. Colors represent top-flight universities, while crisp leather has the perfect amount of sheen to make 'em a hands-down win. So lace up and show off that varsity spirit. Ya game?",
+  "price": 110,
+  "averageRating": 0,
+  "reviewCount": 0,
+  "imgUrl": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/ecommerce-app-b5380.appspot.com\/o\/product_img%2Fproduct_23.jpg?alt=media&token=06a98baf-17e7-4d0b-a663-21048387aa9e"
+ },
+ {
+  "categoryId": "huKBnHlkqfqDEjWdsWBL",
+  "name": "Nike Air Zoom Generation",
+  "brand": "Nike",
+  "description": "Time machines for your feet. Well, almost. Originally hitting the court in 2003, this fresh take on LeBron's first signature shoe cements the scoring champ's legacy in history. Nike Air cushioning in the forefoot and heel deliver a royal feel that lets you join the King on the pedestal. Plus, embroidered embellishments on the sole-captivating design prove that luxury is all about the details. Ya game?",
+  "price": 190,
+  "averageRating": 0,
+  "reviewCount": 0,
+  "imgUrl": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/ecommerce-app-b5380.appspot.com\/o\/product_img%2Fproduct_24.jpg?alt=media&token=06a98baf-17e7-4d0b-a663-21048387aa9e"
+ },
+ {
+  "categoryId": "huKBnHlkqfqDEjWdsWBL",
+  "name": "Nike Pegasus Trail 4 GORE-TEX",
+  "brand": "Nike",
+  "description": "Meet your new go-to running companion for days when the weather turns. A flexible, lightweight design and responsive cushioning let you take your run from the road to the trail without breaking stride, while coastal-inspired colors light up your path. Plus, a waterproof GORE-TEX layer and ankle gaiter help keep your feet dry so you’re free to run through whatever puddles lie in your path.",
+  "price": 160,
+  "averageRating": 0,
+  "reviewCount": 0,
+  "imgUrl": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/ecommerce-app-b5380.appspot.com\/o\/product_img%2Fproduct_25.jpg?alt=media&token=06a98baf-17e7-4d0b-a663-21048387aa9e"
+ },
+ {
+  "categoryId": "huKBnHlkqfqDEjWdsWBL",
+  "name": "Air Jordan 13 Retro",
+  "brand": "Nike",
+  "description": "Air Jordan 13 Retro",
+  "price": 200,
+  "averageRating": 0,
+  "reviewCount": 0,
+  "imgUrl": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/ecommerce-app-b5380.appspot.com\/o\/product_img%2Fproduct_26.jpg?alt=media&token=06a98baf-17e7-4d0b-a663-21048387aa9e"
+ },
+ {
+  "categoryId": "huKBnHlkqfqDEjWdsWBL",
+  "name": "Nike Air Max 97",
+  "brand": "Nike",
+  "description": "Featuring the original ripple design inspired by Japanese bullet trains, the Nike Air Max 97 lets you push your style full-speed ahead. Taking the revolutionary full-length Nike Air unit that shook up the running world and adding fresh colors and crisp details, it lets you ride in first-class comfort.",
+  "price": 175,
+  "averageRating": 0,
+  "reviewCount": 0,
+  "imgUrl": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/ecommerce-app-b5380.appspot.com\/o\/product_img%2Fproduct_27.jpg?alt=media&token=06a98baf-17e7-4d0b-a663-21048387aa9e"
+ },
+ {
+  "categoryId": "huKBnHlkqfqDEjWdsWBL",
+  "name": "Luka 2",
+  "brand": "Nike",
+  "description": "You bring the speed. We'll bring the stability. The Luka 2 is built to support your skills, with an emphasis on step-backs, side-steps and quick-stop action. A stacked midsole features firm, flexible cushioning for added responsiveness as you shift back and forth on the court. Up top, the full-foot wrapped cage design helps you stay contained whether you're faking out a defender or driving down the lane. With all that tech in a lightweight package, we've got efficiency covered. The rest is up to you.",
+  "price": 130,
+  "averageRating": 0,
+  "reviewCount": 0,
+  "imgUrl": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/ecommerce-app-b5380.appspot.com\/o\/product_img%2Fproduct_28.jpg?alt=media&token=06a98baf-17e7-4d0b-a663-21048387aa9e"
+ },
+ {
+  "categoryId": "huKBnHlkqfqDEjWdsWBL",
+  "name": "Jordan 1 Mid TD",
+  "brand": "Nike",
+  "description": "Engineered for speed, the Jordan 1 Mid TD offers a new degree of agility and quickness. Its wide stud placements help you cut faster than ever before. And the durable design is backed by synthetic leather details in the upper that help resist abrasion.",
+  "price": 150,
+  "averageRating": 0,
+  "reviewCount": 0,
+  "imgUrl": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/ecommerce-app-b5380.appspot.com\/o\/product_img%2Fproduct_29.jpg?alt=media&token=06a98baf-17e7-4d0b-a663-21048387aa9e"
+ },
+ {
+  "categoryId": "huKBnHlkqfqDEjWdsWBL",
+  "name": "Nike Air Max 1",
+  "brand": "Nike",
+  "description": "Meet the leader of the pack. Walking on clouds above the noise, the Air Max 1 blends timeless design with cushioned comfort. Sporting a fast-paced look, wavy mudguard and Nike Air, this classic icon hit the scene in ‘87 and continues to be the soul of the franchise today.",
+  "price": 140,
+  "averageRating": 0,
+  "reviewCount": 0,
+  "imgUrl": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/ecommerce-app-b5380.appspot.com\/o\/product_img%2Fproduct_30.jpg?alt=media&token=06a98baf-17e7-4d0b-a663-21048387aa9e"
+ },
+ {
+  "categoryId": "jcqLObL4kHBzwhYDkihL",
+  "name": "Apple Watch Ultra",
+  "brand": "Apple",
+  "description": "The ultra-tough 49mm titanium case with Action button strikes a balance with weight, ruggedness and corrosion resistance",
+  "price": 799,
+  "averageRating": 0,
+  "reviewCount": 0,
+  "imgUrl": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/ecommerce-app-b5380.appspot.com\/o\/product_img%2Fproduct_31.jpg?alt=media&token=06a98baf-17e7-4d0b-a663-21048387aa9e"
+ },
+ {
+  "categoryId": "jcqLObL4kHBzwhYDkihL",
+  "name": "Apple Watch Series 8",
+  "brand": "Apple",
+  "description": "Bright Always-On Retina display with an expansive edge-to-edge design",
+  "price": 399,
+  "averageRating": 0,
+  "reviewCount": 0,
+  "imgUrl": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/ecommerce-app-b5380.appspot.com\/o\/product_img%2Fproduct_32.jpg?alt=media&token=06a98baf-17e7-4d0b-a663-21048387aa9e"
+ },
+ {
+  "categoryId": "jcqLObL4kHBzwhYDkihL",
+  "name": "Sony WH-1000XM6",
+  "brand": "Sony",
+  "description": "The Sony WH-1000XM5 headphones are premium wireless headphones known for their exceptional audio quality and industry-leading noise cancellation. With a sleek design, comfortable fit, and advanced features like adaptive sound control and intuitive touch controls, they provide an immersive and high-quality listening experience.",
+  "price": 398,
+  "averageRating": 0,
+  "reviewCount": 0,
+  "imgUrl": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/ecommerce-app-b5380.appspot.com\/o\/product_img%2Fproduct_33.jpg?alt=media&token=06a98baf-17e7-4d0b-a663-21048387aa9e"
+ },
+ {
+  "categoryId": "jcqLObL4kHBzwhYDkihL",
+  "name": "Apple Airpods Max",
+  "brand": "Apple",
+  "description": "The AirPods Max are Apple's premium over-ear wireless headphones known for their exceptional sound quality, sleek design, and advanced features like Active Noise Cancellation and Spatial Audio. With a comfortable fit and seamless integration with the Apple ecosystem, these headphones provide a top-notch audio experience for Apple users.",
+  "price": 549,
+  "averageRating": 0,
+  "reviewCount": 0,
+  "imgUrl": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/ecommerce-app-b5380.appspot.com\/o\/product_img%2Fproduct_34.jpg?alt=media&token=06a98baf-17e7-4d0b-a663-21048387aa9e"
+ },
+ {
+  "categoryId": "jcqLObL4kHBzwhYDkihL",
+  "name": "Beoplay H95",
+  "brand": "B&O",
+  "description": "Moving, masterful, mesmerising. Get lost in your music with adjustable noise-cancelling headphones that redefine grab-and-go listening.",
+  "price": 899,
+  "averageRating": 0,
+  "reviewCount": 0,
+  "imgUrl": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/ecommerce-app-b5380.appspot.com\/o\/product_img%2Fproduct_35.jpg?alt=media&token=06a98baf-17e7-4d0b-a663-21048387aa9e"
+ },
+ {
+  "categoryId": "jcqLObL4kHBzwhYDkihL",
+  "name": "Beoplay Hx",
+  "brand": "B&O",
+  "description": "Wireless noise-cancelling headphones. Listen in comfort whether you're on a call, working from home or taking a moment for yourself.",
+  "price": 499,
+  "averageRating": 0,
+  "reviewCount": 0,
+  "imgUrl": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/ecommerce-app-b5380.appspot.com\/o\/product_img%2Fproduct_36.jpg?alt=media&token=06a98baf-17e7-4d0b-a663-21048387aa9e"
+ },
+ {
+  "categoryId": "jcqLObL4kHBzwhYDkihL",
+  "name": "Skullcandy Ink'D",
+  "brand": "Skullcandy",
+  "description": "The Skullcandy Ink'd is a budget-friendly wireless headphone known for its flexible collar-based design and thunderous bass. It offers Bluetooth functionality, lightweight construction, and up to 8 hours of battery life. The Ink'd headphones are designed for all-day comfort and easy storage when not in use. They deliver decent sound quality and come with a 1-year warranty.",
+  "price": 29,
+  "averageRating": 0,
+  "reviewCount": 0,
+  "imgUrl": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/ecommerce-app-b5380.appspot.com\/o\/product_img%2Fproduct_37.jpg?alt=media&token=06a98baf-17e7-4d0b-a663-21048387aa9e"
+ },
+ {
+  "categoryId": "jcqLObL4kHBzwhYDkihL",
+  "name": "Fujifilm Instax Mini 12",
+  "brand": "Fujifilm",
+  "description": "The Fujifilm Instax Mini 12 is an affordable and easy-to-use instant camera that captures memories and instantly prints credit card-sized photos. With features like a selfie mirror, close-up focus mode, and automatic exposure control, it is perfect for capturing self-portraits and beautifully detailed shots. The camera's compact and stylish design, available in a range of attractive colors, makes it a fun and portable option for capturing and sharing memories on the go.",
+  "price": 79,
+  "averageRating": 0,
+  "reviewCount": 0,
+  "imgUrl": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/ecommerce-app-b5380.appspot.com\/o\/product_img%2Fproduct_38.jpg?alt=media&token=06a98baf-17e7-4d0b-a663-21048387aa9e"
+ },
+ {
+  "categoryId": "jcqLObL4kHBzwhYDkihL",
+  "name": "Samsung Galaxy Watch 6",
+  "brand": "Samsung",
+  "description": "The Samsung Galaxy Watch 5 Pro is a flagship smartwatch that combines advanced features with a durable design. With a titanium case and sapphire glass, it offers exceptional durability. The watch features a 1.4-inch Super AMOLED always-on display and a powerful battery that can last up to 80 hours. It runs on the Wear OS 3.5 and Samsung OneUI Watch4.5, providing a smooth and intuitive user experience. The Galaxy Watch 5 Pro is equipped with a range of sensors, including a BioActive Sensor for heart rate and body composition monitoring. It offers smart features like independent music streaming and notification functionality. With its outdoor adventure features, this rugged and sporty smartwatch is suitable for fitness enthusiasts and outdoor adventurers.",
+  "price": 379,
+  "averageRating": 0,
+  "reviewCount": 0,
+  "imgUrl": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/ecommerce-app-b5380.appspot.com\/o\/product_img%2Fproduct_39.jpg?alt=media&token=06a98baf-17e7-4d0b-a663-21048387aa9e"
+ },
+ {
+  "categoryId": "jcqLObL4kHBzwhYDkihL",
+  "name": "Samsung Galaxy Watch 5 Pro",
+  "brand": "Samsung",
+  "description": "The Samsung Galaxy Watch 6 is a stylish and feature-packed smartwatch that offers an enhanced user experience. It comes in two versions: the Galaxy Watch 6 and the Galaxy Watch 6 Classic, with the Classic version featuring a physical rotating bezel for easier navigation. The watch has a slimmer profile, a larger and brighter display, and improved performance with the Exynos W930 processor and 2GB of RAM. It offers a range of health and fitness tracking capabilities, including sleep coaching, heart rate monitoring, body composition analysis, cycle tracking, and fall detection. The Galaxy Watch 6 runs on Wear OS 4, layered with Samsung's One UI 5 Watch, and offers a variety of apps and features for a seamless user experience. With its sleek design and customizable bands, the Samsung Galaxy Watch 6 is a standout choice for those seeking a stylish and feature-rich smartwatch.",
+  "price": 379,
+  "averageRating": 0,
+  "reviewCount": 0,
+  "imgUrl": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/ecommerce-app-b5380.appspot.com\/o\/product_img%2Fproduct_40.jpg?alt=media&token=06a98baf-17e7-4d0b-a663-21048387aa9e"
+ },
+ {
+  "categoryId": "9e6m49pbMmZKXbBvMXcq",
+  "name": "Shy Creation Ring 1\/3 Ct Tw Round\/Pear-Shaped 14K Yellow Gold Sc55021925",
+  "brand": "Shy Creation",
+  "description": "A band of brilliant round diamonds is topped by a ring of sparkling round and pear-shaped diamonds in this regal women's ring from Shy Creation®. Crafted in 14K yellow gold, the total diamond weight of the ring is 1\/3 carat.",
+  "price": 1175,
+  "averageRating": 0,
+  "reviewCount": 0,
+  "imgUrl": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/ecommerce-app-b5380.appspot.com\/o\/product_img%2Fproduct_41.jpg?alt=media&token=06a98baf-17e7-4d0b-a663-21048387aa9e"
+ },
+ {
+  "categoryId": "9e6m49pbMmZKXbBvMXcq",
+  "name": "Le Vian Emerald Band Diamond Accents 14K Honey Gold",
+  "brand": "Le Vian",
+  "description": "Costa Smeralda Emeralds™ and swirls of sparkling Vanilla Diamonds® alternate along this 14K Honey Gold™ stackable band from Le Vian®. Le Vian®. Discover the Legend. Please note: This ring is available in limited sizes. If you don't see your size here, please visit a store to order your ring.",
+  "price": 2499,
+  "averageRating": 0,
+  "reviewCount": 0,
+  "imgUrl": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/ecommerce-app-b5380.appspot.com\/o\/product_img%2Fproduct_42.jpg?alt=media&token=06a98baf-17e7-4d0b-a663-21048387aa9e"
+ },
+ {
+  "categoryId": "9e6m49pbMmZKXbBvMXcq",
+  "name": "Multi-Color Natural Sapphire Ring 14K Yellow Gold",
+  "brand": "Jared",
+  "description": "A swath of dazzling emerald-cut natural sapphires in shades of yellow, orange, pink, blue and green wrap elegantly around this glamorous women's multi-color sapphire ring, fashioned in 14K yellow gold.",
+  "price": 4999,
+  "averageRating": 0,
+  "reviewCount": 0,
+  "imgUrl": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/ecommerce-app-b5380.appspot.com\/o\/product_img%2Fproduct_43.jpg?alt=media&token=06a98baf-17e7-4d0b-a663-21048387aa9e"
+ },
+ {
+  "categoryId": "9e6m49pbMmZKXbBvMXcq",
+  "name": "Shy Creation Diamond Huggie Hoop Earrings 1\/2 Ct Tw Baguette 14K Yellow Gold Sc22008698",
+  "brand": "Shy Creation",
+  "description": "Dazzling bezel-set baguette-cut diamonds shimmer with elegance along the fronts of these exquisite women's hoop earrings from Shy Creation®. Fashioned in 14K yellow gold, the total diamond weight is 1\/2 carat and the earrings secure in place with hinged backs.",
+  "price": 1890,
+  "averageRating": 0,
+  "reviewCount": 0,
+  "imgUrl": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/ecommerce-app-b5380.appspot.com\/o\/product_img%2Fproduct_44.jpg?alt=media&token=06a98baf-17e7-4d0b-a663-21048387aa9e"
+ },
+ {
+  "categoryId": "9e6m49pbMmZKXbBvMXcq",
+  "name": "Juliette Maison Natural Pink Tourmaline Starburst Hoops 10K Yellow Gold",
+  "brand": "Juliette Maison",
+  "description": "These charmed hoops feature an unexpected pop of color from a dangling solitaire natural pink tourmaline gemstone, framed within a star motif setting. These hoops add the perfect amount of chic to every ear. Fashioned in 10K yellow gold, the earrings secure in place with hinged backs. From the Juliette Maison collection.",
+  "price": 399,
+  "averageRating": 0,
+  "reviewCount": 0,
+  "imgUrl": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/ecommerce-app-b5380.appspot.com\/o\/product_img%2Fproduct_45.jpg?alt=media&token=06a98baf-17e7-4d0b-a663-21048387aa9e"
+ },
+ {
+  "categoryId": "9e6m49pbMmZKXbBvMXcq",
+  "name": "Shy Creation Diamond Cuff Earrings 1\/2 Ct Tw Round\/Pear 14K White Gold Sc55020499",
+  "brand": "Shy Creation",
+  "description": "Three rows of brilliant pave round diamonds line striking curves that lead up to shimmering pear-shaped diamonds and even more round diamonds in these chic women's cuff earrings from Shy Creation®. Fashioned in 14K white gold, the total diamond weight is 1\/2 carat and the earrings secure in place with friction backs.",
+  "price": 1620,
+  "averageRating": 0,
+  "reviewCount": 0,
+  "imgUrl": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/ecommerce-app-b5380.appspot.com\/o\/product_img%2Fproduct_46.jpg?alt=media&token=06a98baf-17e7-4d0b-a663-21048387aa9e"
+ },
+ {
+  "categoryId": "9e6m49pbMmZKXbBvMXcq",
+  "name": "Semi-Solid Curb Chain Necklace 10K Two-Tone Gold",
+  "brand": "Semi-Solid Curb",
+  "description": "A bold restyling of the classic curb chain, this 22-inch semi-solid necklace shines in 10K yellow gold with accents of white gold. The curb chain secures with a lobster clasp, and is approximately 7.8mm wide.",
+  "price": 3000,
+  "averageRating": 0,
+  "reviewCount": 0,
+  "imgUrl": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/ecommerce-app-b5380.appspot.com\/o\/product_img%2Fproduct_47.jpg?alt=media&token=06a98baf-17e7-4d0b-a663-21048387aa9e"
+ },
+ {
+  "categoryId": "9e6m49pbMmZKXbBvMXcq",
+  "name": "Solid Curb Chain Necklace 10K White Gold 22\" Length",
+  "brand": "Semi-Solid Curb",
+  "description": "Solid Curb Chain Necklace 10K White Gold 22\" Length",
+  "price": 4150,
+  "averageRating": 0,
+  "reviewCount": 0,
+  "imgUrl": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/ecommerce-app-b5380.appspot.com\/o\/product_img%2Fproduct_48.jpg?alt=media&token=06a98baf-17e7-4d0b-a663-21048387aa9e"
+ },
+ {
+  "categoryId": "9e6m49pbMmZKXbBvMXcq",
+  "name": "1933 By Esquire Men'S Diamond Bracelet 1\/5 Ct Tw Round 14K Yellow Gold\/Sterling Silver",
+  "brand": "1933 by Esquire",
+  "description": "Striking round diamonds fill and flank a center station in this handsome men's bracelet. Fashioned in natural and 14K yellow-gold plated sterling silver, the total diamond weight of is 1\/5 carat and the 8.5-inch bracelet secures in place with a lobster clasp. The signature \"E\" is stamped on the clasp to identify each piece as part of the 1933 by Esquire men's collection.",
+  "price": 1799,
+  "averageRating": 0,
+  "reviewCount": 0,
+  "imgUrl": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/ecommerce-app-b5380.appspot.com\/o\/product_img%2Fproduct_49.jpg?alt=media&token=06a98baf-17e7-4d0b-a663-21048387aa9e"
+ },
+ {
+  "categoryId": "9e6m49pbMmZKXbBvMXcq",
+  "name": "Diamond Curb Bracelet 1 1\/5 Ct Tw Round 10K Yellow Gold",
+  "brand": "Diamond Curb",
+  "description": "This fantastic women's bracelet features chunky curb chain links enveloped by brilliant, pavé-set round diamonds. Fashioned in 10K yellow gold, the total diamond weight is 1 1\/5 carats and the 8.25-inch curb chain secures with a snap-lock clasp.",
+  "price": 3699,
+  "averageRating": 0,
+  "reviewCount": 0,
+  "imgUrl": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/ecommerce-app-b5380.appspot.com\/o\/product_img%2Fproduct_50.jpg?alt=media&token=06a98baf-17e7-4d0b-a663-21048387aa9e"
+ }
+],
+"categories":[
+ {
+  "name": "New Arrival",
+  "imgUrl": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/ecommerce-app-b5380.appspot.com\/o\/category_img%2Fnew_arrival.jpg?alt=media&token=04a6fa5a-f608-4d59-81da-b29171024566",
+  "productCount": 10
+ },
+ {
+  "name": "Bags",
+  "imgUrl": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/ecommerce-app-b5380.appspot.com\/o\/category_img%2Fbags.jpg?alt=media&token=9653acd4-ff4e-40e5-9cb2-c17b84b1b162",
+  "productCount": 10
+ },
+ {
+  "name": "Shoes",
+  "imgUrl": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/ecommerce-app-b5380.appspot.com\/o\/category_img%2Fshoes.jpg?alt=media&token=1fa3ffab-d9a4-4b32-a770-6d37cebc239c",
+  "productCount": 10
+ },
+ {
+  "name": "Electronics",
+  "imgUrl": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/ecommerce-app-b5380.appspot.com\/o\/category_img%2Felectronics.jpg?alt=media&token=fdf54e13-b7f1-4959-b5b7-19d02b281104",
+  "productCount": 10
+ },
+ {
+  "name": "Jewelry",
+  "imgUrl": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/ecommerce-app-b5380.appspot.com\/o\/category_img%2Fjewelry.jpg?alt=media&token=030697f1-57fa-4014-bb9f-7fd356e51e65",
+  "productCount": 10
+ },
+ {
+  "name": "Clothes",
+  "imgUrl": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/ecommerce-app-b5380.appspot.com\/o\/category_img%2Fclothes.jpg?alt=media&token=5a59b491-f017-47b8-8500-cded97f49ade",
+  "productCount": 10
+ }
+],
+"productDetails":[
+ {
+  "categoryId": "NH3Td6m8zOwgs4c3KpWk",
+  "size": "S",
+  "color": "#454545",
+  "stock": 20
+ },
+ {
+  "categoryId": "NH3Td6m8zOwgs4c3KpWk",
+  "size": "M",
+  "color": "#454545",
+  "stock": 20
+ },
+ {
+  "categoryId": "NH3Td6m8zOwgs4c3KpWk",
+  "size": "L",
+  "color": "#454545",
+  "stock": 20
+ },
+ {
+  "categoryId": "NH3Td6m8zOwgs4c3KpWk",
+  "size": "S",
+  "color": "#FF6000",
+  "stock": 20
+ },
+ {
+  "categoryId": "NH3Td6m8zOwgs4c3KpWk",
+  "size": "M",
+  "color": "#FF6000",
+  "stock": 20
+ },
+ {
+  "categoryId": "NH3Td6m8zOwgs4c3KpWk",
+  "size": "L",
+  "color": "#FF6000",
+  "stock": 20
+ },
+ {
+  "categoryId": "NH3Td6m8zOwgs4c3KpWk",
+  "size": "S",
+  "color": "#FFA559",
+  "stock": 20
+ },
+ {
+  "categoryId": "NH3Td6m8zOwgs4c3KpWk",
+  "size": "M",
+  "color": "#FFA559",
+  "stock": 20
+ },
+ {
+  "categoryId": "NH3Td6m8zOwgs4c3KpWk",
+  "size": "L",
+  "color": "#FFA559",
+  "stock": 20
+ },
+ {
+  "categoryId": "NH3Td6m8zOwgs4c3KpWk",
+  "size": "S",
+  "color": "#FFE6C7",
+  "stock": 20
+ },
+ {
+  "categoryId": "NH3Td6m8zOwgs4c3KpWk",
+  "size": "M",
+  "color": "#FFE6C7",
+  "stock": 20
+ },
+ {
+  "categoryId": "NH3Td6m8zOwgs4c3KpWk",
+  "size": "L",
+  "color": "#FFE6C7",
+  "stock": 20
+ },
+ {
+  "categoryId": "huKBnHlkqfqDEjWdsWBL",
+  "size": "6",
+  "color": "#454545",
+  "stock": 20
+ },
+ {
+  "categoryId": "huKBnHlkqfqDEjWdsWBL",
+  "size": "6.5",
+  "color": "#454545",
+  "stock": 20
+ },
+ {
+  "categoryId": "huKBnHlkqfqDEjWdsWBL",
+  "size": "7",
+  "color": "#454545",
+  "stock": 20
+ },
+ {
+  "categoryId": "huKBnHlkqfqDEjWdsWBL",
+  "size": "7.5",
+  "color": "#454545",
+  "stock": 20
+ },
+ {
+  "categoryId": "huKBnHlkqfqDEjWdsWBL",
+  "size": "8",
+  "color": "#454545",
+  "stock": 20
+ },
+ {
+  "categoryId": "huKBnHlkqfqDEjWdsWBL",
+  "size": "6",
+  "color": "#FF6000",
+  "stock": 20
+ },
+ {
+  "categoryId": "huKBnHlkqfqDEjWdsWBL",
+  "size": "6.5",
+  "color": "#FF6000",
+  "stock": 20
+ },
+ {
+  "categoryId": "huKBnHlkqfqDEjWdsWBL",
+  "size": "7",
+  "color": "#FF6000",
+  "stock": 20
+ },
+ {
+  "categoryId": "huKBnHlkqfqDEjWdsWBL",
+  "size": "7.5",
+  "color": "#FF6000",
+  "stock": 20
+ },
+ {
+  "categoryId": "huKBnHlkqfqDEjWdsWBL",
+  "size": "8",
+  "color": "#FF6000",
+  "stock": 20
+ },
+ {
+  "categoryId": "huKBnHlkqfqDEjWdsWBL",
+  "size": "6",
+  "color": "#FFA559",
+  "stock": 20
+ },
+ {
+  "categoryId": "huKBnHlkqfqDEjWdsWBL",
+  "size": "6.5",
+  "color": "#FFA559",
+  "stock": 20
+ },
+ {
+  "categoryId": "huKBnHlkqfqDEjWdsWBL",
+  "size": "7",
+  "color": "#FFA559",
+  "stock": 20
+ },
+ {
+  "categoryId": "huKBnHlkqfqDEjWdsWBL",
+  "size": "7.5",
+  "color": "#FFA559",
+  "stock": 20
+ },
+ {
+  "categoryId": "huKBnHlkqfqDEjWdsWBL",
+  "size": "8",
+  "color": "#FFA559",
+  "stock": 20
+ },
+ {
+  "categoryId": "huKBnHlkqfqDEjWdsWBL",
+  "size": "6",
+  "color": "#FFE6C7",
+  "stock": 20
+ },
+ {
+  "categoryId": "huKBnHlkqfqDEjWdsWBL",
+  "size": "6.5",
+  "color": "#FFE6C7",
+  "stock": 20
+ },
+ {
+  "categoryId": "huKBnHlkqfqDEjWdsWBL",
+  "size": "7",
+  "color": "#FFE6C7",
+  "stock": 20
+ },
+ {
+  "categoryId": "huKBnHlkqfqDEjWdsWBL",
+  "size": "7.5",
+  "color": "#FFE6C7",
+  "stock": 20
+ },
+ {
+  "categoryId": "huKBnHlkqfqDEjWdsWBL",
+  "size": "8",
+  "color": "#FFE6C7",
+  "stock": 20
+ },
+ {
+  "categoryId": "9e6m49pbMmZKXbBvMXcq",
+  "size": "6",
+  "color": "#ffd700",
+  "stock": 20
+ },
+ {
+  "categoryId": "9e6m49pbMmZKXbBvMXcq",
+  "size": "6",
+  "color": "#c0c0c0",
+  "stock": 20
+ },
+ {
+  "categoryId": "9e6m49pbMmZKXbBvMXcq",
+  "size": "6.5",
+  "color": "#ffd700",
+  "stock": 20
+ },
+ {
+  "categoryId": "9e6m49pbMmZKXbBvMXcq",
+  "size": "6.5",
+  "color": "#c0c0c0",
+  "stock": 20
+ },
+ {
+  "categoryId": "jcqLObL4kHBzwhYDkihL",
+  "size": "M",
+  "color": "#FFFFFF",
+  "stock": 20
+ },
+ {
+  "categoryId": "jcqLObL4kHBzwhYDkihL",
+  "size": "M",
+  "color": "#000000",
+  "stock": 20
+ },
+ {
+  "categoryId": "6WndEeNPWIkQ8jVKEFWY",
+  "size": "M",
+  "color": "#FFFFFF",
+  "stock": 20
+ },
+ {
+  "categoryId": "6WndEeNPWIkQ8jVKEFWY",
+  "size": "M",
+  "color": "#000000",
+  "stock": 20
+ }
+],
+"promotion":[
+ {
+  "code": "HELLOAUTUMN",
+  "content": "Awesome Autumn",
+  "imgUrl": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/ecommerce-app-b5380.appspot.com\/o\/promotion_img%2Fpromotion_1.jpg?alt=media&token=de608794-dedf-468f-beed-f6d2cce3bf6f",
+  "amount": 30,
+  "type": "percentage ",
+  "minimumOrderValue": "null",
+  "maximumDiscount": 10
+ },
+ {
+  "code": "BEAUTIFUL",
+  "content": "Beautiful Industry",
+  "imgUrl": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/ecommerce-app-b5380.appspot.com\/o\/promotion_img%2Fpromotion_2.jpg?alt=media&token=74491dad-2508-4c74-9293-d1aa77fa138c",
+  "amount": 10,
+  "type": "fixed",
+  "minimumOrderValue": 100,
+  "maximumDiscount": "null"
+ },
+ {
+  "code": "FSAUGUST",
+  "content": "Free shipping August",
+  "imgUrl": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/ecommerce-app-b5380.appspot.com\/o\/promotion_img%2Fpromotion_3.jpg?alt=media&token=de6b2db4-7afe-4f63-8bb2-c931703c60ed",
+  "amount": "null",
+  "type": "free_shipping",
+  "minimumOrderValue": 50,
+  "maximumDiscount": 15
+ }
+],
+ "FAQs":[
+  {
+   "question": "Do you offer international shipping?",
+   "answer": "Yes, we offer international shipping to select countries. Please check our shipping policy for the list of countries we ship to."
+  },
+  {
+   "question": "How can I track my order?",
+   "answer": "Once your order is shipped, you will receive a tracking number via email. You can use this tracking number to track the status of your order on our website or the shipping carrier's website."
+  },
+  {
+   "question": "What is your return policy?",
+   "answer": "We accept returns within 30 days of purchase. The item must be in its original condition with tags attached. Please refer to our return policy for more details."
+  },
+  {
+   "question": "How do I initiate a return or exchange?",
+   "answer": "To initiate a return or exchange, please contact our customer support team or fill out the return\/exchange form on our website. We will provide you with further instructions."
+  },
+  {
+   "question": "What is the timeframe for returns?",
+   "answer": "Returns must be initiated within 30 days of purchase. Once we receive the returned item, it may take up to 7 business days for the refund to be processed."
+  },
+  {
+   "question": "Can I return or exchange sale items?",
+   "answer": "Sale items are final sale and cannot be returned or exchanged unless they are defective or damaged."
+  },
+  {
+   "question": "How do I determine my size?",
+   "answer": "We provide a size chart on our website to help you determine your size. You can find it on the product page or in the \"Size Guide\" section."
+  },
+  {
+   "question": "Do you provide size charts?",
+   "answer": "Yes, we provide size charts for each product on our website. You can find the size chart on the product page."
+  },
+  {
+   "question": "What if the item doesn't fit me?",
+   "answer": "If the item doesn't fit you, you can initiate a return or exchange following our return policy. We recommend referring to the size chart and customer reviews to ensure a better fit."
+  },
+  {
+   "question": "Can I get personalized sizing recommendations?",
+   "answer": "At the moment, we do not offer personalized sizing recommendations. However, our size chart and customer reviews can help you make an informed decision."
+  }
+ ]
+}
