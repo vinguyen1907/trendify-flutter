@@ -1,11 +1,8 @@
 import 'package:ecommerce_app/blocs/home_bloc/home_bloc.dart';
-import 'package:ecommerce_app/screens/home_screen/widgets/home_app_bar.dart';
-import 'package:ecommerce_app/screens/home_screen/widgets/header_home.dart';
-import 'package:ecommerce_app/screens/home_screen/widgets/popular_home.dart';
-import 'package:ecommerce_app/screens/home_screen/widgets/promotions_home.dart';
-import 'package:ecommerce_app/screens/home_screen/widgets/new_arrivals_home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'widgets/widgets.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -66,9 +63,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: const Column(
                     children: [
                       HeaderHome(),
-                      PromotionsHome(),
-                      NewArrivalsHome(),
-                      PopularHome()
+                      // PromotionsHome(),
+                      RecommendedProducts(),
+                      // PopularHome()
                     ],
                   ),
                 );

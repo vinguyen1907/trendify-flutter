@@ -59,6 +59,9 @@ class _PersonalDetailsScreenState extends State<PersonalDetailsScreen> {
               if (state is UserUpdated) {
                 Loading1Manager.instance.closeLoadingDialog(context);
                 _showSuccessDialog();
+              } else if (state is UserError) {
+                Loading1Manager.instance.closeLoadingDialog(context);
+                Utils.showSnackBar(context: context, message: "Update failed. Please try again.");
               }
             },
             builder: (context, state) {

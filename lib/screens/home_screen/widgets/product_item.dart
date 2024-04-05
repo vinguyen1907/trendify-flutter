@@ -13,22 +13,37 @@ import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 
 class ProductItem extends StatelessWidget {
-  const ProductItem({super.key, required this.product});
+  ProductItem({
+    super.key,
+    required this.product,
+    this.imageHeight,
+    this.imageWidth,
+  });
+
   final Product product;
+  double? imageHeight;
+  double? imageWidth;
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    double heightItem = (size.width - 2 * AppDimensions.defaultPadding - 10) / 2 * 1.6 * 7 / 10;
+    imageHeight ??= (size.width - 2 * AppDimensions.defaultPadding - 10) / 2 * 1.6 * 7 / 10;
+    imageWidth ??= imageHeight;
+
     return GestureDetector(
       onTap: () => _navigateToDetailProductScreen(context),
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
           SizedBox(
-            height: heightItem,
+            // height: heightItem,
+            // width: heightItem,
             child: Stack(
               alignment: Alignment.topRight,
               children: [
                 CachedNetworkImage(
+                  height: imageHeight,
+                  width: imageWidth,
                   imageUrl: product.imgUrl,
                   imageBuilder: (context, imageProvider) => Container(
                     decoration: BoxDecoration(

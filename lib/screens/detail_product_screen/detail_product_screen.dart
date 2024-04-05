@@ -2,6 +2,7 @@ import 'package:ecommerce_app/blocs/cart_bloc/cart_bloc.dart';
 import 'package:ecommerce_app/blocs/product_bloc/product_bloc.dart';
 import 'package:ecommerce_app/blocs/show_notification/show_notification_bloc.dart';
 import 'package:ecommerce_app/common_widgets/cart_button.dart';
+import 'package:ecommerce_app/common_widgets/custom_loading_widget.dart';
 import 'package:ecommerce_app/common_widgets/my_app_bar.dart';
 import 'package:ecommerce_app/models/product.dart';
 import 'package:ecommerce_app/screens/cart_screen/cart_screen.dart';
@@ -10,9 +11,12 @@ import 'package:ecommerce_app/screens/detail_product_screen/widgets/product_desc
 import 'package:ecommerce_app/screens/detail_product_screen/widgets/product_image.dart';
 import 'package:ecommerce_app/screens/detail_product_screen/widgets/product_size.dart';
 import 'package:ecommerce_app/screens/detail_product_screen/widgets/product_title.dart';
+import 'package:ecommerce_app/screens/home_screen/widgets/product_item.dart';
 import 'package:ecommerce_app/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../constants/app_styles.dart';
 
 class DetailProductScreen extends StatefulWidget {
   const DetailProductScreen({super.key, required this.product});
@@ -27,9 +31,7 @@ class DetailProductScreen extends StatefulWidget {
 class _DetailProductScreenState extends State<DetailProductScreen> {
   @override
   void initState() {
-    context
-        .read<ProductBloc>()
-        .add(LoadProductDetails(product: widget.product));
+    context.read<ProductBloc>().add(LoadProductDetails(product: widget.product));
     context.read<CartBloc>().add(LoadCart());
     super.initState();
   }
@@ -46,10 +48,7 @@ class _DetailProductScreenState extends State<DetailProductScreen> {
             },
             child: Text(
               "Undo",
-              style: Theme.of(context)
-                  .textTheme
-                  .labelMedium!
-                  .copyWith(color: Colors.white),
+              style: Theme.of(context).textTheme.labelMedium!.copyWith(color: Colors.white),
             )));
   }
 
@@ -76,7 +75,7 @@ class _DetailProductScreenState extends State<DetailProductScreen> {
           builder: (context, state) {
             if (state is ProductLoading) {
               return const Center(
-                child: CircularProgressIndicator(),
+                child: CustomLoadingWidget(),
               );
             } else if (state is ProductLoaded) {
               return Padding(
@@ -88,6 +87,7 @@ class _DetailProductScreenState extends State<DetailProductScreen> {
                       children: [
                         SingleChildScrollView(
                           child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               ProductImage(
                                 product: widget.product,
@@ -99,9 +99,35 @@ class _DetailProductScreenState extends State<DetailProductScreen> {
                                 description: widget.product.description,
                               ),
                               const ProductSize(),
+                              const SizedBox(height: 30),
+                              const Text(
+                                "Similar Products",
+                                style: AppStyles.headlineMedium,
+                              ),
+                              const SizedBox(height: 10),
+                              SizedBox(
+                                height: 200,
+                                child: ListView.separated(
+                                  scrollDirection: Axis.horizontal,
+                                  shrinkWrap: true,
+                                  itemCount: state.productDetails.length,
+                                  separatorBuilder: (_, index) {
+                                    return const SizedBox(
+                                      width: 10,
+                                    );
+                                  },
+                                  itemBuilder: (_, index) {
+                                    return ProductItem(
+                                      product: widget.product,
+                                      imageHeight: 120,
+                                      imageWidth: 120,
+                                    );
+                                  },
+                                ),
+                              ),
                               SizedBox(
                                 height: size.height * 0.07 + 40,
-                              )
+                              ),
                             ],
                           ),
                         ),

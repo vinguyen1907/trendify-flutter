@@ -46,8 +46,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
         children: [
           ScreenNameSection(label: AppLocalizations.of(context)!.settings),
           ProfileSectionBackground(
-              margin: const EdgeInsets.symmetric(
-                  horizontal: AppDimensions.defaultPadding),
+              margin: const EdgeInsets.symmetric(horizontal: AppDimensions.defaultPadding),
               child: Column(
                 children: [
                   SettingButton(
@@ -59,13 +58,16 @@ class _SettingsScreenState extends State<SettingsScreen> {
                           if (state is LanguageLoaded) {
                             return Row(
                               children: [
-                                Text(
-                                    languageToLanguageName[
-                                        languageCodeToLanguage[state.locale]!]!,
-                                    style: AppStyles.bodyLarge),
+                                Text(languageToLanguageName[languageCodeToLanguage[state.locale]!]!, style: AppStyles.bodyLarge),
                                 const SizedBox(width: 10),
-                                const MyIcon(
-                                    icon: AppAssets.icChevronRight, height: 14)
+                                MyIcon(
+                                  icon: AppAssets.icChevronRight,
+                                  height: 14,
+                                  colorFilter: ColorFilter.mode(
+                                    Theme.of(context).primaryColor,
+                                    BlendMode.srcIn,
+                                  ),
+                                )
                               ],
                             );
                           }
@@ -86,21 +88,16 @@ class _SettingsScreenState extends State<SettingsScreen> {
                           iconAsset: AppAssets.icMoon,
                           action: MySwitchButton(
                             value: state.themeMode == ThemeMode.dark,
-                            onChanged: (value) =>
-                                _onChangeDarkMode(value, context),
+                            onChanged: (value) => _onChangeDarkMode(value, context),
                           ));
                     },
                   ),
-                  SettingButton(
-                      title: AppLocalizations.of(context)!.helpCenter,
-                      iconAsset: AppAssets.icInfo,
-                      action: const SizedBox()),
+                  SettingButton(title: AppLocalizations.of(context)!.helpCenter, iconAsset: AppAssets.icInfo, action: const SizedBox()),
                 ],
               )),
           const Spacer(),
           MyButton(
-            margin: const EdgeInsets.symmetric(
-                horizontal: AppDimensions.defaultPadding),
+            margin: const EdgeInsets.symmetric(horizontal: AppDimensions.defaultPadding),
             borderRadius: 12,
             onPressed: _onLogOut,
             child: Row(
@@ -108,15 +105,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
               children: [
                 const MyIcon(
                   icon: AppAssets.icLogout,
-                  colorFilter:
-                      ColorFilter.mode(AppColors.whiteColor, BlendMode.srcIn),
+                  colorFilter: ColorFilter.mode(AppColors.whiteColor, BlendMode.srcIn),
                 ),
                 const SizedBox(width: 10),
-                Text(AppLocalizations.of(context)!.logOut,
-                    style: Theme.of(context)
-                        .textTheme
-                        .labelLarge!
-                        .copyWith(color: AppColors.whiteColor)),
+                Text(AppLocalizations.of(context)!.logOut, style: Theme.of(context).textTheme.labelLarge!.copyWith(color: AppColors.whiteColor)),
               ],
             ),
           ),
@@ -141,9 +133,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   }
 
   void _onChangeDarkMode(bool isDark, BuildContext context) {
-    context
-        .read<ThemeBloc>()
-        .add(ChangeTheme(themeMode: isDark ? ThemeMode.dark : ThemeMode.light));
+    context.read<ThemeBloc>().add(ChangeTheme(themeMode: isDark ? ThemeMode.dark : ThemeMode.light));
   }
 
   void _onLogOut() {

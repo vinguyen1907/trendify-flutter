@@ -1,7 +1,7 @@
-import 'package:cross_file/src/types/interface.dart';
 import 'package:ecommerce_app/models/shipping_address.dart';
 import 'package:ecommerce_app/models/user_profile.dart';
 import 'package:ecommerce_app/repositories/interfaces/user_repository_interface.dart';
+import 'package:image_picker/image_picker.dart';
 
 class UserRepository implements IUserRepository {
   @override

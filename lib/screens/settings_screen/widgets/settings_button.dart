@@ -20,9 +20,7 @@ class SettingButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextButton(
         style: TextButton.styleFrom(
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5)),
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)), padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5)),
         onPressed: onPressed,
         child: Row(
           children: [
@@ -37,8 +35,7 @@ class SettingButton extends StatelessWidget {
               child: MyIcon(
                 icon: iconAsset,
                 height: 24,
-                colorFilter: const ColorFilter.mode(
-                    AppColors.primaryColor, BlendMode.srcIn),
+                colorFilter: ColorFilter.mode(Theme.of(context).primaryColor, BlendMode.srcIn),
               ),
             ),
             const SizedBox(width: 10),

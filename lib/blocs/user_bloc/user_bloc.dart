@@ -13,7 +13,6 @@ part 'user_event.dart';
 part 'user_state.dart';
 
 class UserBloc extends Bloc<UserEvent, UserState> {
-  
   final IUserRepository userRepository = AppConstants.databaseSource == DataSource.api ? api_repos.UserRepository() : firebase_repos.UserRepository();
 
   UserBloc() : super(UserInitial()) {
@@ -46,12 +45,17 @@ class UserBloc extends Bloc<UserEvent, UserState> {
 
   _onUpdateUser(UpdateUser event, emit) async {
     if (state is UserLoaded) {
-      await userRepository.updateUser(
-          name: event.name != (state as UserLoaded).user.name ? event.name : null,
-          age: event.age != (state as UserLoaded).user.age ? event.age : null,
-          gender: event.gender != (state as UserLoaded).user.gender ? genderToString[event.gender] : null,
-          email: event.email != (state as UserLoaded).user.email ? event.email : null,
-          image: event.image);
+      try {
+        await userRepository.updateUser(
+            name: event.name != (state as UserLoaded).user.name ? event.name : null,
+            age: event.age != (state as UserLoaded).user.age ? event.age : null,
+            gender: event.gender != (state as UserLoaded).user.gender ? genderToString[event.gender] : null,
+            email: event.email != (state as UserLoaded).user.email ? event.email : null,
+            image: event.image);
+      } catch (e) {
+        print("Update user error: $e");
+        print("User updated");
+      }
 
       // Reload user
       final UserProfile user = await userRepository.fetchUser();
