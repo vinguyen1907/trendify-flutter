@@ -2,52 +2,52 @@ import 'package:ecommerce_app/constants/app_assets.dart';
 import 'package:ecommerce_app/models/payment_method_resource.dart';
 
 enum PaymentMethods {
-  eWallet,
+  // eWallet,
   mastercard,
-  paypal,
+  // paypal,
   visa,
-  googlePay,
-  zaloPay,
+  // googlePay,
+  // zaloPay,
   cashOnDelivery,
 }
 
 final Map<PaymentMethods, PaymentMethodResource> paymentMethodsResource = {
-  PaymentMethods.eWallet: PaymentMethodResource(
-    id: "0",
-    name: "E-Wallet",
-    imageAsset: AppAssets.imgEWallet,
-    code: "e_wallet",
-  ),
+  // PaymentMethods.eWallet: PaymentMethodResource(
+  //   id: "0",
+  //   name: "E-Wallet",
+  //   imageAsset: AppAssets.imgEWallet,
+  //   code: "e_wallet",
+  // ),
   PaymentMethods.mastercard: PaymentMethodResource(
     id: "1",
     name: "Credit Card",
     imageAsset: AppAssets.imgCreditCard,
     code: "mastercard",
   ),
-  PaymentMethods.paypal: PaymentMethodResource(
-    id: "2",
-    name: "Paypal",
-    imageAsset: AppAssets.imgPaypal,
-    code: "paypal",
-  ),
+  // PaymentMethods.paypal: PaymentMethodResource(
+  //   id: "2",
+  //   name: "Paypal",
+  //   imageAsset: AppAssets.imgPaypal,
+  //   code: "paypal",
+  // ),
   PaymentMethods.visa: PaymentMethodResource(
     id: "3",
     name: "Visa",
     imageAsset: AppAssets.imgVisa,
     code: "visa",
   ),
-  PaymentMethods.googlePay: PaymentMethodResource(
-    id: "4",
-    name: "Google Pay",
-    imageAsset: AppAssets.imgGooglePay,
-    code: "google_pay",
-  ),
-  PaymentMethods.zaloPay: PaymentMethodResource(
-    id: "5",
-    name: "ZaloPay",
-    imageAsset: AppAssets.imgZaloPay,
-    code: "zalo_pay",
-  ),
+  // PaymentMethods.googlePay: PaymentMethodResource(
+  //   id: "4",
+  //   name: "Google Pay",
+  //   imageAsset: AppAssets.imgGooglePay,
+  //   code: "google_pay",
+  // ),
+  // PaymentMethods.zaloPay: PaymentMethodResource(
+  //   id: "5",
+  //   name: "ZaloPay",
+  //   imageAsset: AppAssets.imgZaloPay,
+  //   code: "zalo_pay",
+  // ),
   PaymentMethods.cashOnDelivery: PaymentMethodResource(
     id: "6",
     name: "Cash on delivery",

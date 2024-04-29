@@ -29,7 +29,7 @@ class PlaceOrderScreen extends StatelessWidget {
                   AddressSection(),
                   SectionLabel(label: "Product Items"),
                   PlaceOrderProductItems(),
-                  PromotionSection(),
+                  // PromotionSection(),
                   SizedBox(height: 20),
                   PlaceOrderBill()
                 ],

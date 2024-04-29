@@ -81,50 +81,52 @@ class _SignInScreenState extends State<SignInScreen> {
                     padding: EdgeInsets.symmetric(vertical: 8.0),
                     child: OrTextDivider(),
                   ),
-                  MyButton(
-                    backgroundColor: const Color(0XFF3B5999),
-                    onPressed: _onAuthWithFacebook,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        SvgPicture.asset(AppAssets.icFacebook),
-                        const SizedBox(width: 5),
-                        Text(
-                          "Continue with Facebook",
-                          style:
-                              Theme.of(context).textTheme.labelLarge!.copyWith(
-                                    color: AppColors.whiteColor,
-                                  ),
-                        ),
-                      ],
-                    ),
-                  ),
+                  // TODO: Facebook login
+                  // MyButton(
+                  //   backgroundColor: const Color(0XFF3B5999),
+                  //   onPressed: _onAuthWithFacebook,
+                  //   child: Row(
+                  //     mainAxisAlignment: MainAxisAlignment.center,
+                  //     children: [
+                  //       SvgPicture.asset(AppAssets.icFacebook),
+                  //       const SizedBox(width: 5),
+                  //       Text(
+                  //         "Continue with Facebook",
+                  //         style:
+                  //             Theme.of(context).textTheme.labelLarge!.copyWith(
+                  //                   color: AppColors.whiteColor,
+                  //                 ),
+                  //       ),
+                  //     ],
+                  //   ),
+                  // ),
                   const SizedBox(height: 15),
-                  OutlinedButton(
-                    style: ElevatedButton.styleFrom(
-                      elevation: 0,
-                      padding: const EdgeInsets.symmetric(vertical: 12),
-                      side: const BorderSide(color: AppColors.greyColor),
-                    ),
-                    onPressed: _onSignInWithGoogle,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        SvgPicture.asset(
-                          AppAssets.icGoogle,
-                          height: 20,
-                        ),
-                        const SizedBox(width: 5),
-                        Text(
-                          "Continue with Google",
-                          style:
-                              Theme.of(context).textTheme.labelLarge!.copyWith(
-                                    color: AppColors.greyTextColor,
-                                  ),
-                        ),
-                      ],
-                    ),
-                  ),
+                  // TODO: Google signin
+                  // OutlinedButton(
+                  //   style: ElevatedButton.styleFrom(
+                  //     elevation: 0,
+                  //     padding: const EdgeInsets.symmetric(vertical: 12),
+                  //     side: const BorderSide(color: AppColors.greyColor),
+                  //   ),
+                  //   onPressed: _onSignInWithGoogle,
+                  //   child: Row(
+                  //     mainAxisAlignment: MainAxisAlignment.center,
+                  //     children: [
+                  //       SvgPicture.asset(
+                  //         AppAssets.icGoogle,
+                  //         height: 20,
+                  //       ),
+                  //       const SizedBox(width: 5),
+                  //       Text(
+                  //         "Continue with Google",
+                  //         style:
+                  //             Theme.of(context).textTheme.labelLarge!.copyWith(
+                  //                   color: AppColors.greyTextColor,
+                  //                 ),
+                  //       ),
+                  //     ],
+                  //   ),
+                  // ),
                   const SizedBox(height: 20),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,

@@ -95,10 +95,10 @@ class _DetailProductScreenState extends State<DetailProductScreen> {
                               ProductTile(
                                 product: widget.product,
                               ),
+                              const ProductSize(),
                               ProductDescription(
                                 description: widget.product.description,
                               ),
-                              const ProductSize(),
                               const SizedBox(height: 30),
                               const Text(
                                 "Similar Products",

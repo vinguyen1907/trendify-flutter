@@ -63,60 +63,60 @@ class _PaymentScreenState extends State<PaymentScreen> {
                       thisPaymentInformation = tempLst.isNotEmpty ? tempLst.first : null;
                   
                       switch (paymentMethod) {
-                        case PaymentMethods.eWallet:
-                          return BlocBuilder<UserBloc, UserState>(
-                            builder: (context, state) {
-                              String? subTitle;
-                              double? balance;
-                              if (state is UserLoaded) {
-                                subTitle = "Balance: ${state.user.eWalletBalance.toPriceString()}";
-                                balance = state.user.eWalletBalance;
-                              }
-                              return BlocBuilder<PlaceOrderBloc, PlaceOrderState>(
-                                builder: (context, state) {
-                                  final isEnabled = balance != null && balance >= state.totalPrice!;
-                                  return PaymentItemCard(
-                                    isEnabled: isEnabled,
-                                    isSelected: state.paymentMethod?.code == paymentMethod.code,
-                                    subTitle: subTitle,
-                                    paymentMethod: paymentMethodsResource[paymentMethod]!,
-                                    paymentCard: thisPaymentInformation,
-                                    onTap: isEnabled ? () => _onSelectPayment(paymentMethod: paymentMethodsResource[paymentMethod]!) : null,
-                                    action: TextButton(onPressed: _navigateToTopUpScreen, child: const Text("Top Up")),
-                                  );
-                                },
-                              );
-                            },
-                          );
+                        // case PaymentMethods.eWallet:
+                        //   return BlocBuilder<UserBloc, UserState>(
+                        //     builder: (context, state) {
+                        //       String? subTitle;
+                        //       double? balance;
+                        //       if (state is UserLoaded) {
+                        //         subTitle = "Balance: ${state.user.eWalletBalance.toPriceString()}";
+                        //         balance = state.user.eWalletBalance;
+                        //       }
+                        //       return BlocBuilder<PlaceOrderBloc, PlaceOrderState>(
+                        //         builder: (context, state) {
+                        //           final isEnabled = balance != null && balance >= state.totalPrice!;
+                        //           return PaymentItemCard(
+                        //             isEnabled: isEnabled,
+                        //             isSelected: state.paymentMethod?.code == paymentMethod.code,
+                        //             subTitle: subTitle,
+                        //             paymentMethod: paymentMethodsResource[paymentMethod]!,
+                        //             paymentCard: thisPaymentInformation,
+                        //             onTap: isEnabled ? () => _onSelectPayment(paymentMethod: paymentMethodsResource[paymentMethod]!) : null,
+                        //             action: TextButton(onPressed: _navigateToTopUpScreen, child: const Text("Top Up")),
+                        //           );
+                        //         },
+                        //       );
+                        //     },
+                        //   );
                         case PaymentMethods.mastercard:
-                        case PaymentMethods.paypal:
+                        // case PaymentMethods.paypal:
                         case PaymentMethods.visa:
-                        case PaymentMethods.googlePay:
-                          return BlocBuilder<PlaceOrderBloc, PlaceOrderState>(
-                            builder: (context, state) {
-                              return PaymentItemCard(
-                                isSelected: state.paymentMethod?.code == paymentMethod.code,
-                                paymentMethod: paymentMethodsResource[paymentMethod]!,
-                                paymentCard: thisPaymentInformation,
-                                onTap: thisPaymentInformation == null
-                                    ? null
-                                    : () => _onSelectPayment(
-                                        paymentMethod: paymentMethodsResource[paymentMethod]!, paymentInformation: thisPaymentInformation),
-                              );
-                            },
-                          );
-                        case PaymentMethods.zaloPay:
-                          return BlocBuilder<PlaceOrderBloc, PlaceOrderState>(
-                            builder: (context, state) {
-                              return PaymentItemCard(
-                                isSelected: state.paymentMethod?.code == paymentMethod.code,
-                                paymentMethod: paymentMethodsResource[paymentMethod]!,
-                                paymentCard: PaymentInformation(id: "zalo_pay", type: "zalo_pay"),
-                                onTap: () => _onSelectPayment(
-                                    paymentMethod: paymentMethodsResource[paymentMethod]!, paymentInformation: thisPaymentInformation),
-                              );
-                            },
-                          );
+                        // case PaymentMethods.googlePay:
+                        //   return BlocBuilder<PlaceOrderBloc, PlaceOrderState>(
+                        //     builder: (context, state) {
+                        //       return PaymentItemCard(
+                        //         isSelected: state.paymentMethod?.code == paymentMethod.code,
+                        //         paymentMethod: paymentMethodsResource[paymentMethod]!,
+                        //         paymentCard: thisPaymentInformation,
+                        //         onTap: thisPaymentInformation == null
+                        //             ? null
+                        //             : () => _onSelectPayment(
+                        //                 paymentMethod: paymentMethodsResource[paymentMethod]!, paymentInformation: thisPaymentInformation),
+                        //       );
+                        //     },
+                        //   );
+                        // case PaymentMethods.zaloPay:
+                        //   return BlocBuilder<PlaceOrderBloc, PlaceOrderState>(
+                        //     builder: (context, state) {
+                        //       return PaymentItemCard(
+                        //         isSelected: state.paymentMethod?.code == paymentMethod.code,
+                        //         paymentMethod: paymentMethodsResource[paymentMethod]!,
+                        //         paymentCard: PaymentInformation(id: "zalo_pay", type: "zalo_pay"),
+                        //         onTap: () => _onSelectPayment(
+                        //             paymentMethod: paymentMethodsResource[paymentMethod]!, paymentInformation: thisPaymentInformation),
+                        //       );
+                        //     },
+                        //   );
                         case PaymentMethods.cashOnDelivery:
                           return BlocBuilder<PlaceOrderBloc, PlaceOrderState>(
                             builder: (context, state) {

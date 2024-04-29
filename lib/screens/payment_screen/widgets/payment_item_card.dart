@@ -96,15 +96,15 @@ class PaymentItemCard extends StatelessWidget {
                   ],
                 ),
                 const Spacer(),
-                if (paymentCard == null &&
-                    paymentMethod.code != PaymentMethods.eWallet.code &&
-                    paymentMethod.code != PaymentMethods.cashOnDelivery.code)
-                  TextButton(
-                      onPressed: () => _navigateToAddPaymentCardScreen(context),
-                      child: Text(
-                        "Add",
-                        style: Theme.of(context).textTheme.labelMedium,
-                      )),
+                // if (paymentCard == null &&
+                //     paymentMethod.code != PaymentMethods.eWallet.code &&
+                //     paymentMethod.code != PaymentMethods.cashOnDelivery.code)
+                //   TextButton(
+                //       onPressed: () => _navigateToAddPaymentCardScreen(context),
+                //       child: Text(
+                //         "Add",
+                //         style: Theme.of(context).textTheme.labelMedium,
+                //       )),
                 if (action != null) action!,
               ],
             )),

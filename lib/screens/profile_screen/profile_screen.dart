@@ -23,27 +23,28 @@ class _ProfileScreenState extends State<ProfileScreen> {
           child: Column(children: [
             const ProfileInformationCard(),
             const SizedBox(height: 20),
-            ProfileSectionBackground(
-                child: ListView.builder(
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemCount: settingsElements.length,
-                    itemBuilder: (_, index) {
-                      final element = settingsElements[index];
+            // TODO: Uncomment this blocs
+            // ProfileSectionBackground(
+            //     child: ListView.builder(
+            //         shrinkWrap: true,
+            //         physics: const NeverScrollableScrollPhysics(),
+            //         itemCount: settingsElements.length,
+            //         itemBuilder: (_, index) {
+            //           final element = settingsElements[index];
 
-                      return ProfileButton(element: element);
-                    })),
-            const SizedBox(height: 20),
-            ProfileSectionBackground(
-                child: ListView.builder(
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemCount: contactSettingsElements.length,
-                    itemBuilder: (_, index) {
-                      final element = contactSettingsElements[index];
+            //           return ProfileButton(element: element);
+            //         })),
+            // const SizedBox(height: 20),
+            // ProfileSectionBackground(
+            //     child: ListView.builder(
+            //         shrinkWrap: true,
+            //         physics: const NeverScrollableScrollPhysics(),
+            //         itemCount: contactSettingsElements.length,
+            //         itemBuilder: (_, index) {
+            //           final element = contactSettingsElements[index];
 
-                      return ProfileButton(element: element);
-                    })),
+            //           return ProfileButton(element: element);
+            //         })),
           ]),
         ),
       ),

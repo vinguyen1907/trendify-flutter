@@ -25,18 +25,18 @@ class OrderProcessingBloc
       final String orderId = await OrderRepository().addOrder(
           order: event.order, items: event.items, promotion: event.promotion);
 
-      if (event.order.paymentMethod == PaymentMethods.eWallet.code) {
-        await EWalletRepository().payOrder(
-            paymentTransaction: PaymentTransaction(
-                id: "",
-                type: EWalletTransactionType.payment,
-                createdTime: DateTime.now(),
-                cardNumber: event.cardNumber,
-                items: event.cartItems,
-                amount: event.order.orderSummary.amount,
-                promotionAmount: event.order.orderSummary.promotionDiscount,
-                shippingFee: event.order.orderSummary.shipping));
-      }
+      // if (event.order.paymentMethod == PaymentMethods.eWallet.code) {
+      //   await EWalletRepository().payOrder(
+      //       paymentTransaction: PaymentTransaction(
+      //           id: "",
+      //           type: EWalletTransactionType.payment,
+      //           createdTime: DateTime.now(),
+      //           cardNumber: event.cardNumber,
+      //           items: event.cartItems,
+      //           amount: event.order.orderSummary.amount,
+      //           promotionAmount: event.order.orderSummary.promotionDiscount,
+      //           shippingFee: event.order.orderSummary.shipping));
+      // }
 
       final order = event.order.copyWith(id: orderId);
       emit(OrderProcessingSuccessfully(order: order));
