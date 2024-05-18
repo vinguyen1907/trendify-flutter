@@ -2,12 +2,12 @@ import 'package:ecommerce_app/common_widgets/custom_loading_widget.dart';
 import 'package:ecommerce_app/common_widgets/my_app_bar.dart';
 import 'package:ecommerce_app/common_widgets/my_icon.dart';
 import 'package:ecommerce_app/common_widgets/screen_name_section.dart';
-import 'package:ecommerce_app/config/app_routes.dart';
 import 'package:ecommerce_app/constants/app_assets.dart';
 import 'package:ecommerce_app/constants/app_dimensions.dart';
 import 'package:ecommerce_app/models/order.dart';
 import 'package:ecommerce_app/models/order_product_detail.dart';
 import 'package:ecommerce_app/repositories/order_repository.dart';
+import 'package:ecommerce_app/router/arguments/arguments.dart';
 import 'package:ecommerce_app/screens/my_order_screen/widgets/my_order_tab_selection_button.dart';
 import 'package:ecommerce_app/screens/my_order_screen/widgets/my_order_tab_selections.dart';
 import 'package:ecommerce_app/screens/my_order_screen/widgets/order_item_widget.dart';
@@ -134,7 +134,7 @@ class _MyOrderScreenState extends State<MyOrderScreen> {
   void _navigateToOrderTrackingScreen(
       BuildContext context, OrderModel order, OrderProductDetail orderItem) {
     Navigator.pushNamed(context, OrderTrackingScreen.routeName,
-        arguments: OrderTrackingArguments(order: order, orderItem: orderItem));
+        arguments: OrderTrackingScreenArgs(order: order, orderItem: orderItem));
   }
 
   void _navigateToQrScannerScreen() {

@@ -19,9 +19,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../constants/app_styles.dart';
 
 class DetailProductScreen extends StatefulWidget {
-  const DetailProductScreen({super.key, required this.product});
+  const DetailProductScreen({super.key
+      // , required this.product
+      });
 
-  final Product product;
+  // final Product product;
   static const String routeName = '/detail-product-screen';
 
   @override
@@ -29,11 +31,24 @@ class DetailProductScreen extends StatefulWidget {
 }
 
 class _DetailProductScreenState extends State<DetailProductScreen> {
+  late final Product product;
+
   @override
   void initState() {
-    context.read<ProductBloc>().add(LoadProductDetails(product: widget.product));
     context.read<CartBloc>().add(LoadCart());
     super.initState();
+  }
+
+  @override
+  void didChangeDependencies() {
+    if (mounted) {
+      final args = ModalRoute.of(context)!.settings.arguments;
+      if (args is Product) {
+        product = args;
+        context.read<ProductBloc>().add(LoadProductDetails(product: product));
+      }
+    }
+    super.didChangeDependencies();
   }
 
   void _showNotification(BuildContext context) {
@@ -90,14 +105,14 @@ class _DetailProductScreenState extends State<DetailProductScreen> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               ProductImage(
-                                product: widget.product,
+                                product: product,
                               ),
                               ProductTile(
-                                product: widget.product,
+                                product: product,
                               ),
                               const ProductSize(),
                               ProductDescription(
-                                description: widget.product.description,
+                                description: product.description,
                               ),
                               const SizedBox(height: 30),
                               const Text(
@@ -118,7 +133,7 @@ class _DetailProductScreenState extends State<DetailProductScreen> {
                                   },
                                   itemBuilder: (_, index) {
                                     return ProductItem(
-                                      product: widget.product,
+                                      product: product,
                                       imageHeight: 120,
                                       imageWidth: 120,
                                     );
@@ -132,7 +147,7 @@ class _DetailProductScreenState extends State<DetailProductScreen> {
                           ),
                         ),
                         BottomBarProduct(
-                          product: widget.product,
+                          product: product,
                         )
                       ],
                     ),

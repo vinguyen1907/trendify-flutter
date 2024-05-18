@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ecommerce_app/models/e_wallet_transaction.dart';
 import 'package:ecommerce_app/models/payment_information.dart';
-import 'package:ecommerce_app/utils/firebase_constants.dart';
+import 'package:ecommerce_app/constants/constants.dart';
 
 class EWalletRepository {
   Future<List<PaymentInformation>> fetchEWalletCards() async {

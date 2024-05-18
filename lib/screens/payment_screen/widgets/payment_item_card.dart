@@ -1,14 +1,10 @@
 import 'dart:ui';
 
-import 'package:ecommerce_app/constants/app_colors.dart';
-import 'package:ecommerce_app/constants/app_styles.dart';
-import 'package:ecommerce_app/extensions/payment_method_extension.dart';
-import 'package:ecommerce_app/extensions/string_extensions.dart';
-import 'package:ecommerce_app/models/payment_information.dart';
-import 'package:ecommerce_app/models/payment_method_resource.dart';
-import 'package:ecommerce_app/repositories/payment_methods_repository.dart';
-import 'package:ecommerce_app/screens/add_payment_card_screen/add_payment_card_screen.dart';
-import 'package:ecommerce_app/common_widgets/primary_background.dart';
+import 'package:ecommerce_app/constants/constants.dart';
+import 'package:ecommerce_app/extensions/extensions.dart';
+import 'package:ecommerce_app/models/models.dart';
+import 'package:ecommerce_app/screens/screens.dart';
+import 'package:ecommerce_app/common_widgets/common_widgets.dart';
 import 'package:flutter/material.dart';
 
 class PaymentItemCard extends StatelessWidget {

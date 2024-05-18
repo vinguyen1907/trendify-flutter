@@ -1,10 +1,10 @@
 import 'package:ecommerce_app/blocs/user_bloc/user_bloc.dart';
-import 'package:ecommerce_app/constants/app_colors.dart';
-import 'package:ecommerce_app/constants/app_dimensions.dart';
-import 'package:ecommerce_app/screens/category_screen/category_screen.dart';
-import 'package:ecommerce_app/screens/search_screen/custom_search_delegate.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../constants/constants.dart';
+import '../../screens.dart';
+import '../../search_screen/widgets/widgets.dart';
 
 class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   const HomeAppBar({super.key, required this.height, required this.isScrolled});
@@ -41,10 +41,10 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
                           radius: 22,
                         );
                       } else if (state is UserLoaded) {
-                        return state.user.imageUrl.isNotEmpty
+                        return (state.user.imageUrl != null && state.user.imageUrl!.isNotEmpty)
                             ? CircleAvatar(
                                 backgroundImage:
-                                    NetworkImage(state.user.imageUrl),
+                                    NetworkImage(state.user.imageUrl!),
                                 radius: 22,
                               )
                             : const CircleAvatar(

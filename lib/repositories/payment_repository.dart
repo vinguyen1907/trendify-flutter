@@ -1,5 +1,5 @@
 import 'package:ecommerce_app/models/payment_information.dart';
-import 'package:ecommerce_app/utils/firebase_constants.dart';
+import 'package:ecommerce_app/constants/constants.dart';
 
 class PaymentRepository {
   Future<void> addPaymentCard({

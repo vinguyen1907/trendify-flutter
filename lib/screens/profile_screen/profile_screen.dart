@@ -1,9 +1,8 @@
-import 'package:ecommerce_app/constants/app_dimensions.dart';
-import 'package:ecommerce_app/models/settings_element.dart';
-import 'package:ecommerce_app/screens/profile_screen/widgets/profile_button.dart';
-import 'package:ecommerce_app/screens/profile_screen/widgets/profile_information_card.dart';
-import 'package:ecommerce_app/screens/profile_screen/widgets/profile_section_background.dart';
 import 'package:flutter/material.dart';
+
+import '../../constants/constants.dart';
+import '../../models/models.dart';
+import 'widgets/widgets.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -23,28 +22,27 @@ class _ProfileScreenState extends State<ProfileScreen> {
           child: Column(children: [
             const ProfileInformationCard(),
             const SizedBox(height: 20),
-            // TODO: Uncomment this blocs
-            // ProfileSectionBackground(
-            //     child: ListView.builder(
-            //         shrinkWrap: true,
-            //         physics: const NeverScrollableScrollPhysics(),
-            //         itemCount: settingsElements.length,
-            //         itemBuilder: (_, index) {
-            //           final element = settingsElements[index];
+            ProfileSectionBackground(
+                child: ListView.builder(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemCount: settingsElements.length,
+                    itemBuilder: (_, index) {
+                      final element = settingsElements[index];
 
-            //           return ProfileButton(element: element);
-            //         })),
-            // const SizedBox(height: 20),
-            // ProfileSectionBackground(
-            //     child: ListView.builder(
-            //         shrinkWrap: true,
-            //         physics: const NeverScrollableScrollPhysics(),
-            //         itemCount: contactSettingsElements.length,
-            //         itemBuilder: (_, index) {
-            //           final element = contactSettingsElements[index];
+                      return ProfileButton(element: element);
+                    })),
+            const SizedBox(height: 20),
+            ProfileSectionBackground(
+                child: ListView.builder(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemCount: contactSettingsElements.length,
+                    itemBuilder: (_, index) {
+                      final element = contactSettingsElements[index];
 
-            //           return ProfileButton(element: element);
-            //         })),
+                      return ProfileButton(element: element);
+                    })),
           ]),
         ),
       ),

@@ -1,19 +1,19 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
-import 'package:ecommerce_app/constants/enums/gender.dart';
+import 'package:ecommerce_app/constants/enums/enums.dart';
 import 'package:ecommerce_app/extensions/string_extensions.dart';
 import 'package:ecommerce_app/models/shipping_address.dart';
 
 class UserProfile {
-  final String id;
-  final String name;
-  final String email;
-  final String imageUrl;
+  final String? id;
+  final String? name;
+  final String? email;
+  final String? imageUrl;
   final Gender? gender;
   final int? age;
   final ShippingAddress? defaultShippingAddress;
-  final double eWalletBalance;
+  final double? eWalletBalance;
   final String? fcmToken;
 
   UserProfile(
@@ -25,7 +25,8 @@ class UserProfile {
       required this.email,
       this.defaultShippingAddress,
       required this.eWalletBalance,
-      this.fcmToken});
+    this.fcmToken,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,13 +44,13 @@ class UserProfile {
 
   factory UserProfile.fromMap(Map<String, dynamic> map) {
     return UserProfile(
-        id: map['id'] as String,
-        name: map['name'] as String,
-        email: map['email'] as String,
-        imageUrl: map['imageUrl'] as String,
+        id: map['id'].toString(),
+        name: map['name'],
+        email: map['email'],
+        imageUrl: map['imageUrl'],
         gender: map['gender'] == null
             ? Gender.notHave
-            : (map['gender'] as String).toGender(),
+            : (map['gender'] as String).toLowerCase().toGender(),
         age: map['age'] != null ? map['age'] as int : null,
         defaultShippingAddress: map['defaultShippingAddress'] != null
             ? ShippingAddress.fromMap(

@@ -1,31 +1,35 @@
-import 'package:ecommerce_app/blocs/review_screen_bloc/review_screen_bloc.dart';
-import 'package:ecommerce_app/common_widgets/cart_button.dart';
-import 'package:ecommerce_app/common_widgets/custom_loading_widget.dart';
-import 'package:ecommerce_app/common_widgets/my_app_bar.dart';
-import 'package:ecommerce_app/common_widgets/screen_name_section.dart';
-import 'package:ecommerce_app/screens/cart_screen/cart_screen.dart';
-import 'package:ecommerce_app/screens/review_screen/widgets/list_reviews.dart';
-import 'package:ecommerce_app/screens/review_screen/widgets/no_review.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'package:ecommerce_app/blocs/blocs.dart';
+import 'package:ecommerce_app/common_widgets/common_widgets.dart';
+import 'package:ecommerce_app/screens/review_screen/widgets/widgets.dart';
+import 'package:ecommerce_app/screens/screens.dart';
+
 class ReviewScreen extends StatefulWidget {
-  const ReviewScreen({super.key, required this.productId});
+  const ReviewScreen({super.key});
 
   static const String routeName = '/review-screen';
-  final String productId;
 
   @override
   State<ReviewScreen> createState() => _ReviewScreenState();
 }
 
 class _ReviewScreenState extends State<ReviewScreen> {
+  late final String productId;
+
   @override
-  void initState() {
-    context
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    if (mounted) {
+      final args = ModalRoute.of(context)!.settings.arguments;
+      if (args is String) {
+        productId = args;
+        context
         .read<ReviewScreenBloc>()
-        .add(LoadReviews(productId: widget.productId));
-    super.initState();
+        .add(LoadReviews(productId: productId));
+      }
+    }
   }
 
   @override

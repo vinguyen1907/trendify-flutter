@@ -23,6 +23,7 @@ class SignInScreen extends StatefulWidget {
 class _SignInScreenState extends State<SignInScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  bool obscurePassword = true;
 
   @override
   void dispose() {
@@ -67,7 +68,16 @@ class _SignInScreenState extends State<SignInScreen> {
                       hint: "Password",
                       controller: _passwordController,
                       keyboardType: TextInputType.text,
-                      obscureText: true),
+                    obscureText: obscurePassword,
+                    suffixIcon: IconButton(
+                      onPressed: () {
+                        setState(() {
+                          obscurePassword = !obscurePassword;
+                        });
+                      },
+                      icon: obscurePassword ? SvgPicture.asset(AppAssets.icInvisible) : SvgPicture.asset(AppAssets.icVisible),
+                    ),
+                  ),
                   SizedBox(height: size.height * 0.05),
                   MyButton(
                       onPressed: _onSignInWithEmailAndPassword,

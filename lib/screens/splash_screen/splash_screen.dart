@@ -29,9 +29,7 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: BlocListener<AuthBloc, AuthState>(
-            listener: (context, state) {
-              print(state);
-
+        listener: (context, state) {
               if (state is Unauthenticated) {
                 firstTime = true;
                 Utils().isAlreadyUsedOnboarding().then((value) {
@@ -68,7 +66,7 @@ class _SplashScreenState extends State<SplashScreen> {
                   } else if (state is UserError) {
                     Utils.showSnackBar(
                         context: context,
-                        message: "Some error occurred. Please sign in again!");
+                        message: "Some error occurred. Please sign in again! --- ${state.message}");
                     Navigator.pushNamedAndRemoveUntil(context,
                         SignInScreen.routeName, (route) => route.isFirst);
                   }

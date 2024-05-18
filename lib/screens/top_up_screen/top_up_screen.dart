@@ -3,10 +3,11 @@ import 'package:ecommerce_app/common_widgets/my_button.dart';
 import 'package:ecommerce_app/constants/app_colors.dart';
 import 'package:ecommerce_app/constants/app_dimensions.dart';
 import 'package:ecommerce_app/constants/app_styles.dart';
-import 'package:ecommerce_app/constants/default_top_up_amounts.dart';
 import 'package:ecommerce_app/screens/e_wallet_cards_screen/e_wallet_cards_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+import '../../constants/constants.dart';
 
 class TopUpScreen extends StatefulWidget {
   const TopUpScreen({super.key});

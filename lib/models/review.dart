@@ -1,13 +1,13 @@
 import 'dart:convert';
 
 class Review {
-  final String id;
-  final String userId;
-  final String nameUser;
-  final String avaUrl;
-  final int rate;
-  final String content;
-  final DateTime createdAt;
+  final String? id;
+  final String? userId;
+  final String? nameUser;
+  final String? avaUrl;
+  final int? rate;
+  final String? content;
+  final DateTime? createdAt;
 
   const Review(
       {required this.id,

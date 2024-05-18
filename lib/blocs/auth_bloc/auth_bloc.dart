@@ -1,15 +1,21 @@
 import 'package:bloc/bloc.dart';
-import 'package:ecommerce_app/repositories/auth_repository.dart';
-import 'package:ecommerce_app/utils/firebase_constants.dart';
+import 'package:ecommerce_app/constants/constants.dart';
+import 'package:ecommerce_app/core/error/exceptions.dart';
+import 'package:ecommerce_app/repositories/interfaces/interfaces.dart';
 import 'package:ecommerce_app/utils/utils.dart';
 import 'package:equatable/equatable.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 part 'auth_event.dart';
 part 'auth_state.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
+  final IAuthRepository authRepository = GetIt.I.get<IAuthRepository>();
+  final SharedPreferences sharedPreferences = GetIt.I.get<SharedPreferences>();
+
   AuthBloc() : super(AuthInitial()) {
     on<CheckAuthentication>(_onCheckAuthentication);
     on<SignUpWithEmailAndPassword>(_onSignUpWithEmailAndPassword);
@@ -21,7 +27,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   }
 
   _onCheckAuthentication(event, emit) {
-    if (firebaseAuth.currentUser != null) {
+    final bool? alreadyAuthenticated = sharedPreferences.getBool(SharedPreferencesKeys.alreadyAuthenticated);
+    if (alreadyAuthenticated == true) {
       emit(Authenticated());
     } else {
       emit(Unauthenticated());
@@ -31,38 +38,46 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   _onSignUpWithEmailAndPassword(event, emit) async {
     try {
       emit(Authenticating());
-      await AuthRepository().signUpWithEmailAndPassword(
+      await authRepository.signUpWithEmailAndPassword(
         name: event.name,
         email: event.email,
         password: event.password,
       );
+      await _markAsAuthenticated();
       emit(SignUpSuccess());
     } on FirebaseAuthException catch (e) {
-      print("e1");
-      emit(AuthenticationFailure(
-          message: e.message ?? "Sign up failed. Try again!"));
-      // Utils.showSnackBar(
-      //     message: e.message ?? "Sign up failed. Try again!",
-      //     context: event.context);
+      emit(AuthenticationFailure(message: e.message ?? "Sign up failed. Try again!"));
+    } on ApiException catch (e) {
+      if (e.errorCode == "DUPLICATE_EMAIL") {
+        emit(const AuthenticationFailure(message: "Email already exists. Please try another email!"));
+      } else {
+        emit(AuthenticationFailure(message: e.message ?? "Sign up failed. Try again!"));
+      }
     } catch (e) {
-      print("e2");
       emit(AuthenticationFailure(message: e.toString()));
-      // Utils.showSnackBar(message: e.toString(), context: event.context);
     }
   }
 
   _onSignInWithEmailAndPassword(event, emit) async {
     try {
       emit(Authenticating());
-      await AuthRepository().signInWithEmailAndPassword(
-          email: event.email, password: event.password);
+      await authRepository.signInWithEmailAndPassword(email: event.email, password: event.password);
+      await _markAsAuthenticated();
       emit(Authenticated());
     } on FirebaseAuthException catch (e) {
-      emit(AuthenticationFailure(
-          message: e.message ?? "Sign in failed. Try again!"));
-      Utils.showSnackBar(
-          message: e.message ?? "Sign in failed. Try again!",
-          context: event.context);
+      emit(AuthenticationFailure(message: e.message ?? "Sign in failed. Try again!"));
+      Utils.showSnackBar(message: e.message ?? "Sign in failed. Try again!", context: event.context);
+    } on ApiException catch (e) {
+      switch (e.errorCode) {
+        case "BAD_CREDENTIALS":
+          emit(const AuthenticationFailure(message: "Invalid email or password. Please try again!"));
+          break;
+        case "USER_NOT_FOUND":
+          emit(const AuthenticationFailure(message: "User not found. Please sign up!"));
+          break;
+      }
+      emit(AuthenticationFailure(message: e.message ?? "Sign in failed. Try again!"));
+      Utils.showSnackBar(message: e.message ?? "Sign in failed. Try again!", context: event.context);
     } catch (e) {
       emit(AuthenticationFailure(message: e.toString()));
       Utils.showSnackBar(message: e.toString(), context: event.context);
@@ -72,7 +87,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   _onAuthWithGoogle(event, emit) async {
     try {
       emit(Authenticating());
-      await AuthRepository().signInWithGoogle();
+      await authRepository.signInWithGoogle();
       emit(Authenticated());
     } catch (e) {
       emit(AuthenticationFailure(message: e.toString()));
@@ -82,7 +97,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   _onAuthWithFacebook(event, emit) async {
     try {
       emit(Authenticating());
-      // await AuthRepository().signInWithFacebook();
       emit(Authenticated());
     } catch (e) {
       emit(AuthenticationFailure(message: e.toString()));
@@ -91,7 +105,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
   _onLogOut(event, emit) async {
     try {
-      AuthRepository().logOut();
+      await authRepository.logOut();
       emit(Unauthenticated());
     } catch (e) {
       emit(AuthenticationFailure(message: e.toString()));
@@ -100,5 +114,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
   _onStartShopping(event, emit) {
     emit(Authenticated());
+  }
+
+  Future<void> _markAsAuthenticated() async {
+    await sharedPreferences.setBool(SharedPreferencesKeys.alreadyAuthenticated, true);
   }
 }

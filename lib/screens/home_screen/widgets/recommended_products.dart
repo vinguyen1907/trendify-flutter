@@ -1,8 +1,9 @@
 import 'package:ecommerce_app/blocs/home_bloc/home_bloc.dart';
 import 'package:ecommerce_app/constants/app_dimensions.dart';
 import 'package:ecommerce_app/models/product.dart';
-import 'package:ecommerce_app/screens/home_screen/widgets/grid_view_product.dart';
-import 'package:ecommerce_app/screens/product_screen/product_screen.dart';
+import 'package:ecommerce_app/router/arguments/arguments.dart';
+import 'package:ecommerce_app/screens/home_screen/widgets/products_grid_view.dart';
+import 'package:ecommerce_app/screens/all_products_screen/all_products_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -29,12 +30,12 @@ class RecommendedProducts extends StatelessWidget {
                     onTap: () => _navigateToProductScreen(context, state.newArrivals),
                     child: Text(
                       "View All",
-                      style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontWeight: FontWeight.w600),
+                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w600),
                     ),
                   )
                 ]),
               ),
-              GridViewProduct(
+              ProductsGridView(
                 products: currentState.newArrivals,
                 productCount: 10,
               )
@@ -46,6 +47,10 @@ class RecommendedProducts extends StatelessWidget {
   }
 
   void _navigateToProductScreen(BuildContext context, List<Product> products) {
-    Navigator.pushNamed(context, ProductScreen.routeName, arguments: {'sectionName': "Recommend for you", 'products': products});
+    Navigator.pushNamed(
+      context,
+      AllProductsScreen.routeName,
+      arguments: AllProductsScreenArgs(products: products, sectionName: "Recommend for you"),
+    );
   }
 }

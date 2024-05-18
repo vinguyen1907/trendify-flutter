@@ -1,31 +1,25 @@
-import 'package:ecommerce_app/blocs/e_wallet_cards_bloc/e_wallet_cards_bloc.dart';
-import 'package:ecommerce_app/blocs/e_wallet_transactions_bloc/e_wallet_transactions_bloc.dart';
-import 'package:ecommerce_app/blocs/user_bloc/user_bloc.dart';
-import 'package:ecommerce_app/common_widgets/my_app_bar.dart';
-import 'package:ecommerce_app/common_widgets/my_button.dart';
-import 'package:ecommerce_app/constants/app_colors.dart';
-import 'package:ecommerce_app/constants/app_dimensions.dart';
-import 'package:ecommerce_app/constants/app_styles.dart';
-import 'package:ecommerce_app/extensions/string_extensions.dart';
+
 import 'package:ecommerce_app/models/e_wallet_transaction.dart';
-import 'package:ecommerce_app/models/payment_information.dart';
 import 'package:ecommerce_app/repositories/e_wallet_repository.dart';
-import 'package:ecommerce_app/common_widgets/primary_background.dart';
-import 'package:ecommerce_app/screens/e_wallet_add_card_screen/e_wallet_add_card_screen.dart';
-import 'package:ecommerce_app/screens/e_wallet_screen/e_wallet_screen.dart';
-import 'package:ecommerce_app/utils/passcode_utils.dart';
-import 'package:ecommerce_app/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+import 'package:ecommerce_app/blocs/blocs.dart';
+import 'package:ecommerce_app/common_widgets/common_widgets.dart';
+import 'package:ecommerce_app/constants/constants.dart';
+import 'package:ecommerce_app/extensions/string_extensions.dart';
+import 'package:ecommerce_app/models/models.dart';
+import 'package:ecommerce_app/router/arguments/arguments.dart';
+import 'package:ecommerce_app/screens/screens.dart';
+import 'package:ecommerce_app/utils/passcode_utils.dart';
+import 'package:ecommerce_app/utils/utils.dart';
+
 class EWalletCardsScreen extends StatefulWidget {
   const EWalletCardsScreen({
-    super.key,
-    required this.amount,
+    super.key
   });
 
-  final double amount;
 
   static const String routeName = "/e-wallet-cards-screen";
 
@@ -34,12 +28,25 @@ class EWalletCardsScreen extends StatefulWidget {
 }
 
 class _EWalletCardsScreenState extends State<EWalletCardsScreen> {
+  late final double amount;
+
   PaymentInformation? selectedCard;
 
   @override
   void initState() {
     super.initState();
     context.read<EWalletCardsBloc>().add(LoadEWalletCards());
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    if (mounted) {
+      final args = ModalRoute.of(context)!.settings.arguments;
+      if (args is EWalletCardsScreenArgs) {
+        amount = args.amount;
+      }
+    }
   }
 
   @override
@@ -167,7 +174,7 @@ class _EWalletCardsScreenState extends State<EWalletCardsScreen> {
           id: "",
           type: EWalletTransactionType.topUp,
           createdTime: DateTime.now(),
-          amount: widget.amount,
+          amount: amount,
           cardNumber: selectedCard!.cardNumber!,
         ),
       ),

@@ -1,27 +1,38 @@
-import 'package:ecommerce_app/common_widgets/custom_loading_widget.dart';
-import 'package:ecommerce_app/common_widgets/my_app_bar.dart';
-import 'package:ecommerce_app/common_widgets/section_label.dart';
-import 'package:ecommerce_app/constants/app_dimensions.dart';
-import 'package:ecommerce_app/extensions/timestamp_extensions.dart';
-import 'package:ecommerce_app/models/order.dart';
-import 'package:ecommerce_app/models/order_product_detail.dart';
-import 'package:ecommerce_app/models/order_status.dart';
-import 'package:ecommerce_app/models/tracking_status.dart';
-import 'package:ecommerce_app/repositories/order_repository.dart';
-import 'package:ecommerce_app/screens/my_order_screen/widgets/order_item_widget.dart';
+import 'package:ecommerce_app/router/arguments/arguments.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class OrderTrackingScreen extends StatelessWidget {
-  final OrderModel order;
-  final OrderProductDetail? orderItem;
-  const OrderTrackingScreen({
-    super.key,
-    required this.order,
-    this.orderItem,
-  });
+import 'package:ecommerce_app/common_widgets/common_widgets.dart';
+import 'package:ecommerce_app/constants/constants.dart';
+import 'package:ecommerce_app/extensions/extensions.dart';
+import 'package:ecommerce_app/models/models.dart';
+import 'package:ecommerce_app/repositories/order_repository.dart';
+import 'package:ecommerce_app/screens/my_order_screen/widgets/order_item_widget.dart';
+
+class OrderTrackingScreen extends StatefulWidget {
+  const OrderTrackingScreen({super.key});
 
   static const String routeName = "/order-tracking-screen";
+
+  @override
+  State<OrderTrackingScreen> createState() => _OrderTrackingScreenState();
+}
+
+class _OrderTrackingScreenState extends State<OrderTrackingScreen> {
+  late final OrderModel order;
+  late final OrderProductDetail? orderItem;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    if (mounted) {
+      final args = ModalRoute.of(context)!.settings.arguments;
+      if (args is OrderTrackingScreenArgs) {
+        order = args.order;
+        orderItem = args.orderItem;
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,20 +41,13 @@ class OrderTrackingScreen extends StatelessWidget {
     return Scaffold(
       appBar: const MyAppBar(),
       body: Padding(
-        padding: const EdgeInsets.symmetric(
-            horizontal: AppDimensions.defaultPadding, vertical: 15),
+        padding: const EdgeInsets.symmetric(horizontal: AppDimensions.defaultPadding, vertical: 15),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(order.orderNumber,
-                style: Theme.of(context).textTheme.headlineLarge),
-            Text("Washington - Geiorgia",
-                style: Theme.of(context).textTheme.bodyMedium),
-            if (orderItem != null)
-              OrderItemWidget(
-                  margin: const EdgeInsets.symmetric(vertical: 20),
-                  order: order,
-                  orderItem: orderItem!),
+            Text(order.orderNumber, style: Theme.of(context).textTheme.headlineLarge),
+            Text("Washington - Geiorgia", style: Theme.of(context).textTheme.bodyMedium),
+            if (orderItem != null) OrderItemWidget(margin: const EdgeInsets.symmetric(vertical: 20), order: order, orderItem: orderItem!),
             // const SizedBox(height: 10),
             // const SectionLabel(
             //   label: "Collection Point",
@@ -86,8 +90,7 @@ class OrderTrackingScreen extends StatelessWidget {
                   return const Center(
                     child: Text("Something went wrong"),
                   );
-                } else if (snapshot.connectionState ==
-                    ConnectionState.waiting) {
+                } else if (snapshot.connectionState == ConnectionState.waiting) {
                   return const CustomLoadingWidget();
                 }
 
@@ -109,10 +112,8 @@ class OrderTrackingScreen extends StatelessWidget {
                                 "${status.createAt.getMonth()} ${status.createAt.toDate().day}",
                                 style: Theme.of(context).textTheme.labelMedium,
                               ),
-                              Text(
-                                  "${status.createAt.toDate().hour}:${status.createAt.toDate().minute}",
-                                  style:
-                                      Theme.of(context).textTheme.bodyMedium),
+                              Text("${status.createAt.toDate().hour}:${status.createAt.toDate().minute}",
+                                  style: Theme.of(context).textTheme.bodyMedium),
                             ],
                           ),
                         ),
@@ -122,21 +123,15 @@ class OrderTrackingScreen extends StatelessWidget {
                               margin: const EdgeInsets.only(top: 4),
                               height: 10,
                               width: 10,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(50),
-                                  color: Theme.of(context)
-                                      .colorScheme
-                                      .primaryContainer),
+                              decoration:
+                                  BoxDecoration(borderRadius: BorderRadius.circular(50), color: Theme.of(context).colorScheme.primaryContainer),
                             ),
                             if (index < statuses.length - 1)
                               Container(
                                 height: 50,
                                 width: 3,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(50),
-                                    color: Theme.of(context)
-                                        .colorScheme
-                                        .primaryContainer),
+                                decoration:
+                                    BoxDecoration(borderRadius: BorderRadius.circular(50), color: Theme.of(context).colorScheme.primaryContainer),
                               ),
                           ],
                         ),
@@ -149,10 +144,7 @@ class OrderTrackingScreen extends StatelessWidget {
                                 "${trackingStatusTitle[status.status]}",
                                 style: Theme.of(context).textTheme.labelMedium,
                               ),
-                              if (status.currentLocation != null)
-                                Text("${status.currentLocation}",
-                                    style:
-                                        Theme.of(context).textTheme.bodyMedium),
+                              if (status.currentLocation != null) Text("${status.currentLocation}", style: Theme.of(context).textTheme.bodyMedium),
                             ],
                           ),
                         ),

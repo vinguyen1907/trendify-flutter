@@ -1,16 +1,15 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:ecommerce_app/common_widgets/my_icon.dart';
-import 'package:ecommerce_app/common_widgets/my_icon_button.dart';
-import 'package:ecommerce_app/constants/app_assets.dart';
-import 'package:ecommerce_app/constants/app_colors.dart';
-import 'package:ecommerce_app/constants/app_dimensions.dart';
-import 'package:ecommerce_app/extensions/screen_extensions.dart';
-import 'package:ecommerce_app/models/product.dart';
-import 'package:ecommerce_app/repositories/favorite_repository.dart';
-import 'package:ecommerce_app/repositories/product_repository.dart';
-import 'package:ecommerce_app/screens/detail_product_screen/detail_product_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
+
+import 'package:ecommerce_app/extensions/extensions.dart';
+import 'package:ecommerce_app/repositories/favorite_repository.dart';
+import 'package:ecommerce_app/repositories/product_repository.dart';
+
+import '../../../common_widgets/common_widgets.dart';
+import '../../../constants/constants.dart';
+import '../../../models/models.dart';
+import '../../screens.dart';
 
 class ProductItem extends StatelessWidget {
   ProductItem({
@@ -72,14 +71,14 @@ class ProductItem extends StatelessWidget {
                     if (snapshot.connectionState == ConnectionState.waiting) {
                       return const SizedBox();
                     } else if (snapshot.hasData) {
-                      final bool isFavorite = snapshot.data!;
+                      final bool isFavorite = snapshot.data ?? false;
                       return Padding(
                         padding: const EdgeInsets.all(10.0),
                         child: MyIconButton(
                           size: 30,
                           color: isFavorite ? Theme.of(context).primaryColor : Theme.of(context).colorScheme.secondaryContainer,
                           onPressed: () async {
-                            if (snapshot.data!) {
+                            if (isFavorite) {
                               await FavoriteRepository().removeFavoriteProduct(product.id);
                             } else {
                               await FavoriteRepository().addFavoriteProduct(product);

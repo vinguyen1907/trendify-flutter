@@ -4,7 +4,7 @@ import 'package:ecommerce_app/common_widgets/screen_name_section.dart';
 import 'package:ecommerce_app/models/product.dart';
 import 'package:ecommerce_app/repositories/favorite_repository.dart';
 import 'package:ecommerce_app/screens/favorite_screen/empty_product.dart';
-import 'package:ecommerce_app/screens/home_screen/widgets/grid_view_product.dart';
+import 'package:ecommerce_app/screens/home_screen/widgets/products_grid_view.dart';
 import 'package:flutter/material.dart';
 
 class FavoriteScreen extends StatefulWidget {
@@ -47,7 +47,7 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                     }
 
                     final List<Product> products = snapshot.data!;
-                    return GridViewProduct(
+                    return ProductsGridView(
                       products: products,
                       productCount: products.length,
                     );

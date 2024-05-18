@@ -15,7 +15,9 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
   FutureOr<void> _onLoadChatRoom(
       LoadChatRoom event, Emitter<ChatState> emit) async {
     emit(ChatLoading());
-    await ChatService().checkAndCreateChatRoom(event.name, event.imgUrl);
+    if (event.name != null && event.imgUrl != null) {
+      await ChatService().checkAndCreateChatRoom(event.name!, event.imgUrl!);
+    }
     emit(const ChatLoaded());
   }
 }

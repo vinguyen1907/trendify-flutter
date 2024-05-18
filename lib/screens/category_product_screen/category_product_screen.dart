@@ -1,31 +1,37 @@
 import 'package:ecommerce_app/blocs/category_product_bloc/category_product_bloc.dart';
-import 'package:ecommerce_app/common_widgets/my_app_bar.dart';
-import 'package:ecommerce_app/common_widgets/my_icon.dart';
-import 'package:ecommerce_app/common_widgets/screen_name_section.dart';
 import 'package:ecommerce_app/constants/app_assets.dart';
-import 'package:ecommerce_app/models/category.dart';
-import 'package:ecommerce_app/screens/category_product_screen/category_product_search.dart';
-import 'package:ecommerce_app/screens/home_screen/widgets/grid_view_product.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../common_widgets/common_widgets.dart';
+import '../../models/models.dart';
+import '../home_screen/widgets/widgets.dart';
+import 'category_product_search.dart';
+
 class CategoryProductScreen extends StatefulWidget {
-  const CategoryProductScreen({super.key, required this.category});
+  const CategoryProductScreen({super.key});
 
   static const String routeName = '/category-product-screen';
-  final Category category;
 
   @override
   State<CategoryProductScreen> createState() => _CategoryProductScreenState();
 }
 
 class _CategoryProductScreenState extends State<CategoryProductScreen> {
+  late final Category category;
+ 
   @override
-  void initState() {
-    context
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    if (mounted) {
+      final args = ModalRoute.of(context)!.settings.arguments;
+      if (args is Category) {
+        category = args;
+        context
         .read<CategoryProductBloc>()
-        .add(LoadProductsInCategory(category: widget.category));
-    super.initState();
+        .add(LoadProductsInCategory(category: category));
+      }
+    }
   }
 
   @override
@@ -41,7 +47,7 @@ class _CategoryProductScreenState extends State<CategoryProductScreen> {
           builder: (context, state) {
             if (state is CategoryProductLoading) {
               return const Center(
-                child: CircularProgressIndicator(),
+                child: CustomLoadingWidget(),
               );
             } else if (state is CategoryProductLoaded) {
               return SingleChildScrollView(
@@ -49,9 +55,9 @@ class _CategoryProductScreenState extends State<CategoryProductScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     ScreenNameSection(
-                      label: widget.category.name,
+                      label: category.name,
                     ),
-                    GridViewProduct(
+                    ProductsGridView(
                       products: state.products,
                       productCount: state.products.length,
                     )

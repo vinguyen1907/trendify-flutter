@@ -35,15 +35,15 @@ class ProfileImage extends StatelessWidget {
                       ? DecorationImage(
                           image: FileImage(File(pickedImage!.path)),
                           fit: BoxFit.cover)
-                      : state.user.imageUrl.isEmpty
+                      : state.user.imageUrl == null || state.user.imageUrl!.isEmpty
                           ? null
                           : DecorationImage(
-                              image: NetworkImage(state.user.imageUrl),
+                              image: NetworkImage(state.user.imageUrl!),
                               fit: BoxFit.cover,
                             ),
                 ),
                 alignment: Alignment.center,
-                child: state.user.imageUrl.isEmpty && pickedImage == null
+                child: (state.user.imageUrl == null || state.user.imageUrl!.isEmpty) && pickedImage == null
                     ? const MyIcon(
                         icon: AppAssets.icUser,
                         height: 30,

@@ -8,7 +8,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:ecommerce_app/models/shipping_address.dart';
 import 'package:ecommerce_app/models/user_profile.dart';
 import 'package:ecommerce_app/repositories/interfaces/interfaces.dart';
-import 'package:ecommerce_app/utils/firebase_constants.dart';
+import 'package:ecommerce_app/constants/firebase_constants.dart';
 
 class UserRepository implements IUserRepository {
   @override
@@ -91,7 +91,7 @@ class UserRepository implements IUserRepository {
   }
 
   @override
-  Future<void> updateFcmToken() async {
+  Future<void> updateFcmToken(String userId) async {
     try {
       final fcmToken = await FirebaseMessaging.instance.getToken();
       if (fcmToken != null) {

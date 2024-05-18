@@ -2,8 +2,8 @@ import 'dart:io';
 
 import 'package:ecommerce_app/common_widgets/loading_manager.dart';
 import 'package:ecommerce_app/common_widgets/my_app_bar.dart';
-import 'package:ecommerce_app/config/app_routes.dart';
 import 'package:ecommerce_app/repositories/order_repository.dart';
+import 'package:ecommerce_app/router/arguments/arguments.dart';
 import 'package:ecommerce_app/screens/order_tracking_screen/order_tracking_screen.dart';
 import 'package:ecommerce_app/utils/utils.dart';
 import 'package:flutter/material.dart';
@@ -83,7 +83,7 @@ class _QrScannerScreenState extends State<QrScannerScreen> {
         if (order != null) {
           if (mounted) {
             Navigator.popAndPushNamed(context, OrderTrackingScreen.routeName,
-                arguments: OrderTrackingArguments(order: order));
+                arguments: OrderTrackingScreenArgs(order: order));
           }
         } else {
           if (mounted) {

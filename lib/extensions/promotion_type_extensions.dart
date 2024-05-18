@@ -1,4 +1,4 @@
-import 'package:ecommerce_app/models/promotion.dart';
+import 'package:ecommerce_app/constants/enums/enums.dart';
 
 extension PromotionTypeExt on PromotionType {
   String toPromotionString() {

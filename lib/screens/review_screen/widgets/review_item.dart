@@ -21,7 +21,7 @@ class _ReviewItemState extends State<ReviewItem> {
 
   @override
   void initState() {
-    content = widget.review.content.split(' ');
+    content = widget.review.content?.split(' ') ?? [];
     isExpanded = content.length <= maxLength;
     super.initState();
   }
@@ -30,7 +30,7 @@ class _ReviewItemState extends State<ReviewItem> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     List<Widget> stars = List.generate(
-        widget.review.rate,
+        widget.review.rate ?? 0,
         (index) => const Icon(
               Icons.star,
               color: Colors.orange,
@@ -58,7 +58,7 @@ class _ReviewItemState extends State<ReviewItem> {
                 height: size.height * 0.1,
                 width: size.height * 0.1,
                 child: CachedNetworkImage(
-                  imageUrl: widget.review.avaUrl,
+                  imageUrl: widget.review.avaUrl ?? "",
                   imageBuilder: (context, imageProvider) => Container(
                     height: size.height * 0.1,
                     width: size.height * 0.1,
@@ -98,13 +98,13 @@ class _ReviewItemState extends State<ReviewItem> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              widget.review.nameUser.formatName(),
+                              widget.review.nameUser?.formatName() ?? "",
                               style: Theme.of(context).textTheme.labelLarge,
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
                             ),
                             Text(
-                              widget.review.createdAt.formattedDate(),
+                              widget.review.createdAt?.formattedDate() ?? "",
                               style: Theme.of(context).textTheme.bodyMedium,
                             )
                           ],
