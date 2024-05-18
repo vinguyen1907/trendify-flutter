@@ -1,5 +1,5 @@
-import 'package:ecommerce_app/models/category.dart';
-import 'package:ecommerce_app/utils/firebase_constants.dart';
+import 'package:ecommerce_app/models/models.dart';
+import 'package:ecommerce_app/constants/firebase_constants.dart';
 
 class CategoryRepository {
   Future<List<Category>> fetchCategories() async {

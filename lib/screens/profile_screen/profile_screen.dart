@@ -1,9 +1,8 @@
-import 'package:ecommerce_app/constants/app_dimensions.dart';
-import 'package:ecommerce_app/models/settings_element.dart';
-import 'package:ecommerce_app/screens/profile_screen/widgets/profile_button.dart';
-import 'package:ecommerce_app/screens/profile_screen/widgets/profile_information_card.dart';
-import 'package:ecommerce_app/screens/profile_screen/widgets/profile_section_background.dart';
 import 'package:flutter/material.dart';
+
+import '../../constants/constants.dart';
+import '../../models/models.dart';
+import 'widgets/widgets.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});

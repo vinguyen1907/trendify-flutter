@@ -1,5 +1,5 @@
 import 'package:ecommerce_app/models/faq.dart';
-import 'package:ecommerce_app/utils/firebase_constants.dart';
+import 'package:ecommerce_app/constants/constants.dart';
 
 class FAQsRepository {
   Future<List<FAQ>> getFAQs() async {

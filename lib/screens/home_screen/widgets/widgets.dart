@@ -1,4 +1,4 @@
-export 'grid_view_product.dart';
+export 'products_grid_view.dart';
 export 'header_home.dart';
 export 'home_app_bar.dart';
 export 'recommended_products.dart';

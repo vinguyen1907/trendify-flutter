@@ -1,11 +1,17 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:ecommerce_app/constants/constants.dart';
 import 'package:ecommerce_app/models/user_profile.dart';
+import 'package:ecommerce_app/repositories/interfaces/interfaces.dart';
 import 'package:ecommerce_app/repositories/user_repository.dart';
-import 'package:ecommerce_app/utils/firebase_constants.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:get_it/get_it.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class AuthRepository {
+class AuthRepository implements IAuthRepository {
+  final SharedPreferences sharedPreferences = GetIt.I.get<SharedPreferences>();
+
+  @override
   Future<void> signUpWithEmailAndPassword({
     required String name,
     required String email,
@@ -38,6 +44,7 @@ class AuthRepository {
     }
   }
 
+  @override
   Future<void> signInWithEmailAndPassword(
       {required String email, required String password}) async {
     try {
@@ -56,6 +63,7 @@ class AuthRepository {
     }
   }
 
+  @override
   Future<UserCredential> signInWithGoogle() async {
     // Trigger the authentication flow
     final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
@@ -100,8 +108,9 @@ class AuthRepository {
   //   return FirebaseAuth.instance.signInWithCredential(facebookAuthCredential);
   // }
 
+  @override
   Future<void> logOut() async {
-    print("Sign out");
+    await sharedPreferences.setBool(SharedPreferencesKeys.alreadyAuthenticated, false);
     await firebaseAuth.signOut();
   }
 }

@@ -4,15 +4,15 @@ import 'package:ecommerce_app/blocs/place_order_bloc/place_order_bloc.dart';
 import 'package:ecommerce_app/blocs/user_bloc/user_bloc.dart';
 import 'package:ecommerce_app/common_widgets/my_button.dart';
 import 'package:ecommerce_app/common_widgets/my_outlined_button.dart';
-import 'package:ecommerce_app/config/app_routes.dart';
 import 'package:ecommerce_app/constants/app_assets.dart';
 import 'package:ecommerce_app/constants/app_colors.dart';
 import 'package:ecommerce_app/constants/app_dimensions.dart';
 import 'package:ecommerce_app/models/order.dart';
 import 'package:ecommerce_app/models/order_status.dart';
 import 'package:ecommerce_app/models/order_summary.dart';
+import 'package:ecommerce_app/router/arguments/arguments.dart';
 import 'package:ecommerce_app/screens/order_tracking_screen/order_tracking_screen.dart';
-import 'package:ecommerce_app/utils/firebase_constants.dart';
+import 'package:ecommerce_app/constants/firebase_constants.dart';
 import 'package:ecommerce_app/utils/order_util.dart';
 import 'package:ecommerce_app/utils/utils.dart';
 import 'package:flutter/material.dart';
@@ -155,7 +155,7 @@ class _OrderProcessingScreenState extends State<OrderProcessingScreen> {
           orderNumber:
               OrderUtil().generateOrderNumber(firebaseAuth.currentUser!.uid),
           customerId: firebaseAuth.currentUser!.uid,
-          customerName: user.name,
+          customerName: user.name ?? "",
           customerPhoneNumber: placeOrderState.address!.phoneNumber,
           address: placeOrderState.address!,
           orderSummary: OrderSummary(
@@ -194,6 +194,6 @@ class _OrderProcessingScreenState extends State<OrderProcessingScreen> {
 
   _navigateToOrderTrackingScreen(OrderModel order) {
     Navigator.pushNamed(context, OrderTrackingScreen.routeName,
-        arguments: OrderTrackingArguments(order: order));
+        arguments: OrderTrackingScreenArgs(order: order));
   }
 }

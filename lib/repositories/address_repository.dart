@@ -1,5 +1,5 @@
 import 'package:ecommerce_app/models/shipping_address.dart';
-import 'package:ecommerce_app/utils/firebase_constants.dart';
+import 'package:ecommerce_app/constants/constants.dart';
 
 class AddressRepository {
   Future<List<ShippingAddress>> fetchShippingAddresses() async {

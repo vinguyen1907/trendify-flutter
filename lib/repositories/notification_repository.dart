@@ -1,5 +1,5 @@
 import 'package:ecommerce_app/models/user_notification.dart';
-import 'package:ecommerce_app/utils/firebase_constants.dart';
+import 'package:ecommerce_app/constants/constants.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class NotificationRepository {

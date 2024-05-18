@@ -1,8 +1,9 @@
 import 'package:ecommerce_app/blocs/home_bloc/home_bloc.dart';
 import 'package:ecommerce_app/constants/app_dimensions.dart';
 import 'package:ecommerce_app/models/product.dart';
+import 'package:ecommerce_app/router/arguments/arguments.dart';
 import 'package:ecommerce_app/screens/home_screen/widgets/popular_product_item.dart';
-import 'package:ecommerce_app/screens/product_screen/product_screen.dart';
+import 'package:ecommerce_app/screens/all_products_screen/all_products_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -61,7 +62,10 @@ class PopularHome extends StatelessWidget {
   }
 
   void _navigateToProductScreen(BuildContext context, List<Product> products) {
-    Navigator.pushNamed(context, ProductScreen.routeName,
-        arguments: {'sectionName': "Popular", 'products': products});
+    Navigator.pushNamed(
+      context,
+      AllProductsScreen.routeName,
+      arguments: AllProductsScreenArgs(products: products, sectionName: "Popular"),
+    );
   }
 }

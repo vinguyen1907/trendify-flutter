@@ -220,9 +220,9 @@ class _PersonalDetailsScreenState extends State<PersonalDetailsScreen> {
   _initValues() {
     final userState = context.read<UserBloc>().state;
     if (userState is UserLoaded) {
-      _nameController.text = userState.user.name;
+      _nameController.text = userState.user.name ?? "";
       _ageController.text = userState.user.age?.toString() ?? "0";
-      _emailController.text = userState.user.email;
+      _emailController.text = userState.user.email ?? "";
       gender = userState.user.gender ?? Gender.notHave;
     }
   }

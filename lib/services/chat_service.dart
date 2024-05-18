@@ -6,7 +6,7 @@ import 'package:ecommerce_app/constants/enums/message_type.dart';
 import 'package:ecommerce_app/models/chat_room.dart';
 import 'package:ecommerce_app/models/message.dart';
 import 'package:ecommerce_app/utils/chat_util.dart';
-import 'package:ecommerce_app/utils/firebase_constants.dart';
+import 'package:ecommerce_app/constants/constants.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:firebase_storage/firebase_storage.dart';

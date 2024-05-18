@@ -6,11 +6,11 @@ abstract class ChatEvent extends Equatable {
 
 class LoadChatRoom extends ChatEvent {
   const LoadChatRoom({
-    required this.imgUrl,
-    required this.name,
+    this.imgUrl,
+    this.name,
   });
-  final String imgUrl;
-  final String name;
+  final String? imgUrl;
+  final String? name;
   @override
   // TODO: implement props
   List<Object?> get props => [];

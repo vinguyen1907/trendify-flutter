@@ -1,7 +1,5 @@
 import 'package:ecommerce_app/constants/enums/sort_type.dart';
 
-extension StringExtensions on String {}
-
 extension DoubleExtensions on double {
   String toPriceString() {
     return "\$${toStringAsFixed(2)}";

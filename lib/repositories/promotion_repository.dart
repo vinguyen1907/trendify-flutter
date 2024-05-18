@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:ecommerce_app/models/promotion.dart';
-import 'package:ecommerce_app/utils/firebase_constants.dart';
+import 'package:ecommerce_app/models/promotion_models/promotion.dart';
+import 'package:ecommerce_app/constants/constants.dart';
 
 class PromotionRepository {
   Future<List<Promotion>> fetchMyPromotions() async {

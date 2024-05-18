@@ -1,19 +1,18 @@
 import 'package:bloc/bloc.dart';
-import 'package:ecommerce_app/constants/app_constants.dart';
 import 'package:ecommerce_app/constants/enums/gender.dart';
+import 'package:ecommerce_app/core/error/api_exception.dart';
 import 'package:ecommerce_app/models/user_profile.dart';
 import 'package:ecommerce_app/repositories/interfaces/user_repository_interface.dart';
-import 'package:ecommerce_app/repositories/user_repository.dart' as firebase_repos;
-import 'package:ecommerce_app/repositories/api_repositories/api_repositories.dart' as api_repos;
 import 'package:ecommerce_app/services/call_service.dart';
 import 'package:equatable/equatable.dart';
+import 'package:get_it/get_it.dart';
 import 'package:image_picker/image_picker.dart';
 
 part 'user_event.dart';
 part 'user_state.dart';
 
 class UserBloc extends Bloc<UserEvent, UserState> {
-  final IUserRepository userRepository = AppConstants.databaseSource == DataSource.api ? api_repos.UserRepository() : firebase_repos.UserRepository();
+  final userRepository = GetIt.I.get<IUserRepository>();
 
   UserBloc() : super(UserInitial()) {
     on<LoadUser>(_onLoadUser);
@@ -24,9 +23,16 @@ class UserBloc extends Bloc<UserEvent, UserState> {
   _onLoadUser(event, emit) async {
     try {
       final UserProfile user = await userRepository.fetchUser();
-      await userRepository.updateFcmToken();
+      if (user.id != null) {
+        await userRepository.updateFcmToken(user.id!);
+      }
       await CallService().initCallService(user);
       emit(UserLoaded(user: user));
+    } on ApiException catch (e) {
+      if (e.errorCode == "USER_NOT_FOUND") {
+        print("Load user error: User not found");
+      }
+      emit(const UserError(message: "Error when loading user"));
     } catch (e) {
       emit(UserError(message: e.toString()));
     }
