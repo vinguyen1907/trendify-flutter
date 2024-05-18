@@ -1,10 +1,6 @@
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:ecommerce_app/common_widgets/custom_loading_widget.dart';
-import 'package:ecommerce_app/common_widgets/my_ink_well.dart';
-import 'package:ecommerce_app/models/promotion.dart';
-import 'package:ecommerce_app/repositories/promotion_repository.dart';
+import 'package:ecommerce_app/constants/enums/enums.dart';
+import 'package:ecommerce_app/models/models.dart';
 import 'package:flutter/material.dart';
-import 'package:shimmer/shimmer.dart';
 
 class PromotionItem extends StatelessWidget {
   const PromotionItem({

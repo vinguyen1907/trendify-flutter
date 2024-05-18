@@ -1,17 +1,35 @@
-import 'package:ecommerce_app/common_widgets/my_app_bar.dart';
-import 'package:ecommerce_app/common_widgets/screen_name_section.dart';
-import 'package:ecommerce_app/constants/app_dimensions.dart';
-import 'package:ecommerce_app/constants/app_styles.dart';
-import 'package:ecommerce_app/models/promotion.dart';
-import 'package:ecommerce_app/repositories/promotion_repository.dart';
-import 'package:ecommerce_app/screens/home_screen/widgets/promotion_item.dart';
+
 import 'package:flutter/material.dart';
 
-class PromotionScreen extends StatelessWidget {
-  const PromotionScreen({super.key, required this.promotions});
+import 'package:ecommerce_app/common_widgets/common_widgets.dart';
+import 'package:ecommerce_app/constants/constants.dart';
+import 'package:ecommerce_app/models/models.dart';
+import 'package:ecommerce_app/repositories/promotion_repository.dart';
+import 'package:ecommerce_app/screens/home_screen/widgets/widgets.dart';
+
+class PromotionScreen extends StatefulWidget {
+  const PromotionScreen({super.key});
 
   static const String routeName = "/promotion-screen";
-  final List<Promotion> promotions;
+
+  @override
+  State<PromotionScreen> createState() => _PromotionScreenState();
+}
+
+class _PromotionScreenState extends State<PromotionScreen> {
+  late final List<Promotion> promotions;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    if (mounted) {
+      final args = ModalRoute.of(context)!.settings.arguments;
+      if (args is List<Promotion>) {
+        promotions = args;
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
@@ -23,7 +41,7 @@ class PromotionScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const ScreenNameSection(label: "Promotion"),
-            promotions.isEmpty
+        promotions.isEmpty
                 ? const Align(
                     alignment: Alignment.center,
                     child: Text("You don't have any promotion yet.",
@@ -34,13 +52,13 @@ class PromotionScreen extends StatelessWidget {
                         padding: const EdgeInsets.symmetric(
                             horizontal: AppDimensions.defaultPadding),
                         shrinkWrap: true,
-                        itemCount: promotions.length,
+                    itemCount: promotions.length,
                         separatorBuilder: (_, index) {
                           return const SizedBox(height: 10);
                         },
                         itemBuilder: (_, index) {
                           return PromotionItem(
-                            promotion: promotions[index],
+                        promotion: promotions[index],
                             width:
                                 size.width - 2 * AppDimensions.defaultPadding,
                             height: size.height * 0.2,

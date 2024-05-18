@@ -82,7 +82,9 @@ dependencies:
   qr_code_scanner: ^1.0.1
   sprintf: ^7.0.0
   crypto: ^3.0.3
-
+  get_it: ^7.6.7
+  logging: ^1.2.0
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter

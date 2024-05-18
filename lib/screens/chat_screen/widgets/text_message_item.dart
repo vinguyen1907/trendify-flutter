@@ -1,9 +1,7 @@
-import 'package:ecommerce_app/constants/app_colors.dart';
-import 'package:ecommerce_app/constants/app_styles.dart';
 import 'package:ecommerce_app/extensions/date_time_extension.dart';
 import 'package:ecommerce_app/models/message.dart';
 import 'package:ecommerce_app/services/chat_service.dart';
-import 'package:ecommerce_app/utils/firebase_constants.dart';
+import 'package:ecommerce_app/constants/constants.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 

@@ -26,15 +26,15 @@ class ProfileInformationCard extends StatelessWidget {
                     decoration: BoxDecoration(
                       color: AppColors.greyColor,
                       borderRadius: BorderRadius.circular(10),
-                      image: state.user.imageUrl.isEmpty
+                      image: state.user.imageUrl != null && state.user.imageUrl!.isEmpty
                           ? null
                           : DecorationImage(
-                              image: NetworkImage(state.user.imageUrl),
+                              image: NetworkImage(state.user.imageUrl!),
                               fit: BoxFit.cover,
                             ),
                     ),
                     alignment: Alignment.center,
-                    child: state.user.imageUrl.isEmpty
+                    child: state.user.imageUrl != null && state.user.imageUrl!.isEmpty
                         ? const MyIcon(
                             icon: AppAssets.icUser,
                             height: 30,
@@ -46,8 +46,9 @@ class ProfileInformationCard extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          state.user.name,
+                        if (state.user.name != null) ...[
+                          Text(
+                            state.user.name!,
                           style: Theme.of(context)
                               .textTheme
                               .titleMedium!
@@ -55,9 +56,10 @@ class ProfileInformationCard extends StatelessWidget {
                                   fontWeight: FontWeight.bold,
                                   color: AppColors.primaryColor),
                         ),
-                        Text(state.user.email,
+                          Text(state.user.email!,
                             overflow: TextOverflow.ellipsis,
-                            style: Theme.of(context).textTheme.bodyLarge),
+                            style: Theme.of(context).textTheme.bodyLarge)
+                        ],
                       ],
                     ),
                   )

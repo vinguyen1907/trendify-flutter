@@ -1,5 +1,5 @@
 import 'package:ecommerce_app/models/product.dart';
-import 'package:ecommerce_app/utils/firebase_constants.dart';
+import 'package:ecommerce_app/constants/firebase_constants.dart';
 
 class FavoriteRepository {
   Future<List<Product>> fetchProducts() async {

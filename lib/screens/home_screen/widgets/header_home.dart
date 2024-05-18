@@ -1,11 +1,9 @@
-import 'package:ecommerce_app/common_widgets/my_icon.dart';
-import 'package:ecommerce_app/constants/app_assets.dart';
-import 'package:ecommerce_app/constants/app_colors.dart';
-import 'package:ecommerce_app/constants/app_dimensions.dart';
-import 'package:ecommerce_app/constants/app_styles.dart';
-import 'package:ecommerce_app/screens/search_screen/custom_search_delegate.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+import '../../../common_widgets/common_widgets.dart';
+import '../../../constants/constants.dart';
+import '../../search_screen/widgets/widgets.dart';
 
 class HeaderHome extends StatelessWidget {
   const HeaderHome({super.key});

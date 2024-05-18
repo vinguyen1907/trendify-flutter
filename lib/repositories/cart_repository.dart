@@ -5,7 +5,7 @@ import 'package:ecommerce_app/models/cart.dart';
 import 'package:ecommerce_app/models/cart_item.dart';
 import 'package:ecommerce_app/models/product.dart';
 import 'package:ecommerce_app/repositories/product_repository.dart';
-import 'package:ecommerce_app/utils/firebase_constants.dart';
+import 'package:ecommerce_app/constants/constants.dart';
 
 class CartRepository {
   Future<Cart> fetchMyCart() async {

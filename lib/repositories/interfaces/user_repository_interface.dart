@@ -21,5 +21,5 @@ abstract class IUserRepository {
 
   Future<void> updateDefaultShippingAddress({required ShippingAddress newDefaultAddress});
 
-  Future<void> updateFcmToken();
+  Future<void> updateFcmToken(String userId);
 }

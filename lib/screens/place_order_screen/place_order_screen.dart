@@ -1,11 +1,5 @@
-import 'package:ecommerce_app/common_widgets/my_app_bar.dart';
-import 'package:ecommerce_app/common_widgets/screen_name_section.dart';
-import 'package:ecommerce_app/common_widgets/section_label.dart';
-import 'package:ecommerce_app/screens/place_order_screen/widgets/address_section.dart';
-import 'package:ecommerce_app/screens/place_order_screen/widgets/place_order_bill.dart';
-import 'package:ecommerce_app/screens/place_order_screen/widgets/place_order_product_items.dart';
-import 'package:ecommerce_app/screens/place_order_screen/widgets/promotion_section.dart';
-import 'package:ecommerce_app/screens/place_order_screen/widgets/place_order_summary.dart';
+import 'package:ecommerce_app/common_widgets/common_widgets.dart';
+import 'package:ecommerce_app/screens/place_order_screen/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
 class PlaceOrderScreen extends StatelessWidget {
@@ -29,7 +23,7 @@ class PlaceOrderScreen extends StatelessWidget {
                   AddressSection(),
                   SectionLabel(label: "Product Items"),
                   PlaceOrderProductItems(),
-                  // PromotionSection(),
+                  PromotionSection(),
                   SizedBox(height: 20),
                   PlaceOrderBill()
                 ],

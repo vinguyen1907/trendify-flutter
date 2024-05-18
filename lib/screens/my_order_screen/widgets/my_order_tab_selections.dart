@@ -1,4 +1,0 @@
-enum MyOrderTabSelections {
-  ongoing,
-  completed,
-}

@@ -2,10 +2,10 @@
 import 'dart:convert';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:ecommerce_app/models/cart_item.dart';
+import 'package:ecommerce_app/models/models.dart';
 import 'package:flutter/material.dart';
 
-import 'package:ecommerce_app/extensions/string_extensions.dart';
+import 'package:ecommerce_app/extensions/extensions.dart';
 
 class EWalletTransaction {
   final String id;

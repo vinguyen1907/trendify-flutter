@@ -1,7 +1,7 @@
 import 'package:ecommerce_app/models/category.dart';
 import 'package:ecommerce_app/models/product.dart';
 import 'package:ecommerce_app/models/product_detail.dart';
-import 'package:ecommerce_app/utils/firebase_constants.dart';
+import 'package:ecommerce_app/constants/constants.dart';
 
 class ProductRepository {
   Future<List<ProductDetail>> fetchProductDetails(Product product) async {

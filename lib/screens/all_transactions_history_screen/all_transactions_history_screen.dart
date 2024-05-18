@@ -2,6 +2,7 @@ import 'package:ecommerce_app/blocs/e_wallet_transactions_bloc/e_wallet_transact
 import 'package:ecommerce_app/common_widgets/my_app_bar.dart';
 import 'package:ecommerce_app/common_widgets/screen_name_section.dart';
 import 'package:ecommerce_app/models/e_wallet_transaction.dart';
+import 'package:ecommerce_app/router/arguments/e_wallet_transaction_screen_args.dart';
 import 'package:ecommerce_app/screens/e_wallet_screen/widgets/transaction_item_widget.dart';
 import 'package:ecommerce_app/screens/e_wallet_transaction_screen/e_wallet_transaction_screen.dart';
 import 'package:flutter/material.dart';
@@ -78,6 +79,7 @@ class _AllTransactionHistoryScreenState
       {required BuildContext context,
       required EWalletTransaction transaction}) {
     Navigator.pushNamed(context, TransactionDetailsScreen.routeName,
-        arguments: transaction);
+      arguments: EWalletTransactionScreenArgs(transaction: transaction),
+    );
   }
 }

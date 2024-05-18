@@ -4,10 +4,10 @@ import 'package:ecommerce_app/models/cart_item.dart';
 import 'package:ecommerce_app/models/order.dart';
 import 'package:ecommerce_app/models/order_product_detail.dart';
 import 'package:ecommerce_app/models/order_status.dart';
-import 'package:ecommerce_app/models/promotion.dart';
+import 'package:ecommerce_app/models/promotion_models/promotion.dart';
 import 'package:ecommerce_app/models/tracking_status.dart';
 import 'package:ecommerce_app/repositories/statistics_repository.dart';
-import 'package:ecommerce_app/utils/firebase_constants.dart';
+import 'package:ecommerce_app/constants/firebase_constants.dart';
 
 class OrderRepository {
   Future<List<OrderModel>> fetchMyOrders({required bool isCompleted}) async {

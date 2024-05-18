@@ -1,8 +1,8 @@
-import 'package:ecommerce_app/common_widgets/my_icon.dart';
-import 'package:ecommerce_app/constants/app_assets.dart';
-import 'package:ecommerce_app/constants/app_colors.dart';
-import 'package:ecommerce_app/models/settings_element.dart';
 import 'package:flutter/material.dart';
+
+import '../../../common_widgets/common_widgets.dart';
+import '../../../constants/constants.dart';
+import '../../../models/models.dart';
 
 class ProfileButton extends StatelessWidget {
   const ProfileButton({

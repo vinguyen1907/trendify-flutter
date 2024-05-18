@@ -1,5 +1,5 @@
 import 'package:ecommerce_app/models/product.dart';
-import 'package:ecommerce_app/models/promotion.dart';
+import 'package:ecommerce_app/models/promotion_models/promotion.dart';
 import 'package:ecommerce_app/repositories/product_repository.dart';
 import 'package:ecommerce_app/repositories/promotion_repository.dart';
 import 'package:equatable/equatable.dart';

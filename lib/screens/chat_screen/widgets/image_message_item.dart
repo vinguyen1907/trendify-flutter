@@ -8,7 +8,7 @@ import 'package:ecommerce_app/constants/app_colors.dart';
 import 'package:ecommerce_app/extensions/date_time_extension.dart';
 import 'package:ecommerce_app/models/message.dart';
 import 'package:ecommerce_app/services/chat_service.dart';
-import 'package:ecommerce_app/utils/firebase_constants.dart';
+import 'package:ecommerce_app/constants/firebase_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:image_gallery_saver/image_gallery_saver.dart';
 

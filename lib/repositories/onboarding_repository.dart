@@ -3,18 +3,18 @@ import 'package:ecommerce_app/models/onboarding_item.dart';
 
 final List<OnboardingItem> onboardingItems = [
   OnboardingItem(
-      title: "20% Discount New Arrival Product",
+      title: "Welcome to Trendify!",
       description:
-          "Publish up your selfies to make yourself more beautiful with this app",
+          "Discover Trends, Shop Your Style, Fashion at Your Fingertips",
       image: AppAssets.imgOnboarding1),
   OnboardingItem(
-      title: "Take Advantage Of The Offer Shopping",
+      title: "Step into Fashion Forward",
       description:
-          "Publish up your selfies to make yourself more beautiful with this app",
+          "Explore Endless Collections, Personalized Recommendations, Your Fashion Journey Starts Here",
       image: AppAssets.imgOnboarding2),
   OnboardingItem(
-      title: "All Types Offers Within Your Reach",
+      title: "Elevate Your Wardrobe",
       description:
-          "Publish up your selfies to make yourself more beautiful with this app",
+          "Curated Picks, Exclusive Deals, Elevate Your Style Game with Every Swipe",
       image: AppAssets.imgOnboarding3),
 ];

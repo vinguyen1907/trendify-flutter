@@ -7,7 +7,7 @@ Map<Gender, String> genderToString = {
 };
 
 Map<String, Gender> stringToGender = {
-  "Male": Gender.male,
-  "Female": Gender.female,
-  "Other": Gender.other,
+  "male": Gender.male,
+  "female": Gender.female,
+  "other": Gender.other,
 };
