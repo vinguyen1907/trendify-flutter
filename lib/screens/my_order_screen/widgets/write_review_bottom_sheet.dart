@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ecommerce_app/common_widgets/color_dot_widget.dart';
 import 'package:ecommerce_app/common_widgets/loading_manager.dart';
 import 'package:ecommerce_app/common_widgets/my_button.dart';
@@ -73,8 +74,8 @@ class _WriteReviewBottomSheetState extends State<WriteReviewBottomSheet> {
                     children: [
                       ClipRRect(
                         borderRadius: BorderRadius.circular(12),
-                        child: Image.network(
-                          widget.orderItem.productImgUrl,
+                        child: CachedNetworkImage(
+                          imageUrl: widget.orderItem.productImgUrl ?? "",
                           height: size.width * 0.21,
                           width: size.width * 0.21,
                           fit: BoxFit.cover,
@@ -85,15 +86,16 @@ class _WriteReviewBottomSheetState extends State<WriteReviewBottomSheet> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
+                            if (widget.orderItem.productName != null)
                             Text(
-                              widget.orderItem.productName,
+                                widget.orderItem.productName!,
                               maxLines: 2,
                               overflow: TextOverflow.ellipsis,
                               style: Theme.of(context).textTheme.labelLarge,
                             ),
-                            if (widget.orderItem.productBrand.isNotEmpty)
+                            if (widget.orderItem.productBrand != null && widget.orderItem.productBrand!.isNotEmpty)
                               Text(
-                                widget.orderItem.productBrand,
+                                widget.orderItem.productBrand!,
                                 style: Theme.of(context).textTheme.bodyLarge,
                               ),
                             Row(
@@ -112,12 +114,14 @@ class _WriteReviewBottomSheetState extends State<WriteReviewBottomSheet> {
                                   "Color: ",
                                   style: Theme.of(context).textTheme.bodyMedium,
                                 ),
+                                if (widget.orderItem.color != null)
                                 ColorDotWidget(
-                                    color: widget.orderItem.color.toColor())
+                                    color: widget.orderItem.color!.toColor())
                               ],
                             ),
+                            if (widget.orderItem.productPrice != null)
                             Text(
-                              widget.orderItem.productPrice.toPriceString(),
+                                widget.orderItem.productPrice!.toPriceString(),
                               style: Theme.of(context).textTheme.headlineLarge,
                             ),
                           ],

@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
@@ -26,6 +28,8 @@ Future<void> main() async {
 
   await AppDependencies.init();
 
+  HttpOverrides.global = MyHttpOverrides();
+ 
   runApp(MyApp(
     navigatorKey: navigatorKey,
   ));
@@ -36,6 +40,13 @@ Future<void> setUpNotification() async {
   FirebaseMessaging.onMessage.listen(LocalNotificationService.handleMessage);
   FirebaseMessaging messaging = FirebaseMessaging.instance;
   messaging.subscribeToTopic('all');
+}
+
+class MyHttpOverrides extends HttpOverrides {
+  @override
+  HttpClient createHttpClient(SecurityContext? context) {
+    return super.createHttpClient(context)..badCertificateCallback = (X509Certificate cert, String host, int port) => true;
+  }
 }
 
 class MyApp extends StatelessWidget {
@@ -61,6 +72,7 @@ class MyApp extends StatelessWidget {
                 showNotificationBloc:
                     BlocProvider.of<ShowNotificationBloc>(context))),
         BlocProvider(create: (_) => ProductScreenBloc()),
+        BlocProvider(create: (_) => SimilarProductsBloc()),
         BlocProvider(create: (_) => CartBloc()),
         BlocProvider(create: (_) => OrderProcessingBloc()),
         BlocProvider(create: (_) => AddressesBloc()),

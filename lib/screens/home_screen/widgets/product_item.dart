@@ -1,5 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:ecommerce_app/blocs/user_bloc/user_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shimmer/shimmer.dart';
 
 import 'package:ecommerce_app/extensions/extensions.dart';
@@ -30,7 +32,7 @@ class ProductItem extends StatelessWidget {
     imageWidth ??= imageHeight;
 
     return GestureDetector(
-      onTap: () => _navigateToDetailProductScreen(context),
+      onTap: () => _onProductItemPressed(context),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -43,13 +45,14 @@ class ProductItem extends StatelessWidget {
                 CachedNetworkImage(
                   height: imageHeight,
                   width: imageWidth,
-                  imageUrl: product.imgUrl,
+                  imageUrl: product.imageUrls.first,
+                  fit: BoxFit.fitWidth,
                   imageBuilder: (context, imageProvider) => Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15),
                       image: DecorationImage(
                         image: imageProvider,
-                        fit: BoxFit.cover,
+                        fit: BoxFit.contain,
                       ),
                     ),
                   ),
@@ -93,7 +96,7 @@ class ProductItem extends StatelessWidget {
                         ),
                       );
                     } else {
-                      return Container();
+                      return const SizedBox();
                     }
                   },
                 )
@@ -106,12 +109,14 @@ class ProductItem extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
-                  product.brand,
+                  product.name,
                   style: Theme.of(context).textTheme.labelLarge,
                   textAlign: TextAlign.center,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                 ),
                 Text(
-                  product.name,
+                  product.brand,
                   style: Theme.of(context).textTheme.bodyMedium,
                   maxLines: 1,
                   textAlign: TextAlign.center,
@@ -128,7 +133,8 @@ class ProductItem extends StatelessWidget {
     );
   }
 
-  void _navigateToDetailProductScreen(BuildContext context) {
+  void _onProductItemPressed(BuildContext context) {
+    context.read<UserBloc>().add(ProductClicked(product: product));
     Navigator.pushNamed(context, DetailProductScreen.routeName, arguments: product);
   }
 }

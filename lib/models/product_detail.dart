@@ -9,11 +9,11 @@ class ProductDetail {
     required this.stock,
   });
 
-  factory ProductDetail.fromJson(Map<String, dynamic> json) {
+  factory ProductDetail.fromMap(Map<String, dynamic> map) {
     return ProductDetail(
-      size: json['size'].toString(),
-      color: json['color'],
-      stock: json['stock'],
+      size: map['size'].toString(),
+      color: map['color'],
+      stock: map['stock'],
     );
   }
 }

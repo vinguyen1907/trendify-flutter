@@ -37,7 +37,7 @@ class RecommendedProducts extends StatelessWidget {
               ),
               ProductsGridView(
                 products: currentState.newArrivals,
-                productCount: 10,
+                productCount: currentState.newArrivals.length,
               )
             ],
           ),

@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ecommerce_app/blocs/cart_bloc/cart_bloc.dart';
 import 'package:ecommerce_app/common_widgets/color_dot_widget.dart';
 import 'package:ecommerce_app/common_widgets/my_button.dart';
@@ -46,8 +47,8 @@ class OrderItemWidget extends StatelessWidget {
           children: [
             ClipRRect(
               borderRadius: BorderRadius.circular(12),
-              child: Image.network(
-                orderItem.productImgUrl,
+              child: CachedNetworkImage(
+                imageUrl: orderItem.productImgUrl ?? "",
                 height: size.width * 0.21,
                 width: size.width * 0.21,
                 fit: BoxFit.cover,
@@ -58,15 +59,16 @@ class OrderItemWidget extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  if (orderItem.productName != null)
                   Text(
-                    orderItem.productName,
+                      orderItem.productName!,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     style: AppStyles.labelLarge,
                   ),
-                  if (orderItem.productBrand.isNotEmpty)
+                  if (orderItem.productBrand != null && orderItem.productBrand!.isNotEmpty)
                     Text(
-                      orderItem.productBrand,
+                      orderItem.productBrand!,
                       style: AppStyles.bodyLarge,
                     ),
                   Text(
@@ -83,7 +85,7 @@ class OrderItemWidget extends StatelessWidget {
                         "${AppLocalizations.of(context)!.color}: ",
                         style: AppStyles.bodyMedium,
                       ),
-                      ColorDotWidget(color: orderItem.color.toColor())
+                      if (orderItem.color != null) ColorDotWidget(color: orderItem.color!.toColor())
                     ],
                   ),
                 ],
@@ -92,8 +94,9 @@ class OrderItemWidget extends StatelessWidget {
             // const Spacer(),
             Column(
               children: [
+                if (orderItem.productPrice != null)
                 Text(
-                  orderItem.productPrice.toPriceString(),
+                    orderItem.productPrice!.toPriceString(),
                   style: AppStyles.headlineLarge,
                 ),
                 if (isComplete && orderItem.review == null)
@@ -135,8 +138,8 @@ class OrderItemWidget extends StatelessWidget {
               await ReviewRepository().addReview(
                   context: context,
                   orderId: order.id,
-                  orderItemId: orderItem.id,
-                  productId: orderItem.productId,
+                  orderItemId: orderItem.id ?? "",
+                  productId: orderItem.productId ?? "",
                   rating: rating,
                   content: content ?? "");
             },
@@ -147,10 +150,11 @@ class OrderItemWidget extends StatelessWidget {
   void _onAddToCart(BuildContext context) async {
     CartRepository()
         .addCartItem(
-            productId: orderItem.productId,
-            size: orderItem.size,
-            color: orderItem.color,
-            quantity: 1)
+      productId: orderItem.productId ?? "",
+      size: orderItem.size ?? "",
+      color: orderItem.color ?? "",
+      quantity: 1,
+    )
         .then((value) {
       context.read<CartBloc>().add(LoadCart());
       _showNotification(context);

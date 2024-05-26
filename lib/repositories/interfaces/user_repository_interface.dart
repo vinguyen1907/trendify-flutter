@@ -22,4 +22,6 @@ abstract class IUserRepository {
   Future<void> updateDefaultShippingAddress({required ShippingAddress newDefaultAddress});
 
   Future<void> updateFcmToken(String userId);
+
+  Future<void> recordUserClick(Product product);
 }

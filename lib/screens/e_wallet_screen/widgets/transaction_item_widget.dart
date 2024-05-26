@@ -32,12 +32,12 @@ class TransactionItemWidget extends StatelessWidget {
     } else if (transaction is PaymentTransaction) {
       final temp = transaction as PaymentTransaction;
       title = temp.items.length == 1
-          ? temp.items.first.product.name
+          ? temp.items.first.product?.name ?? ""
           : "Order Payment";
       subtitle = transaction.createdTime.toTransactionDateTimeFormat();
       amount = temp.totalAmount.toPriceString();
       type = "Orders";
-      imageUrl = temp.items.first.product.imgUrl;
+      imageUrl = temp.items.first.product?.imageUrls.first;
     }
 
     return Container(

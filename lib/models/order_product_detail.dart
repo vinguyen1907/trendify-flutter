@@ -4,27 +4,27 @@ import 'package:ecommerce_app/models/review.dart';
 
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 class OrderProductDetail {
-  final String id;
-  final String productId;
-  final String productName;
-  final double productPrice;
-  final String productImgUrl;
-  final String productBrand;
-  final String color;
-  final String size;
-  final int quantity;
+  final String? id;
+  final String? productId;
+  final String? productName;
+  final double? productPrice;
+  final String? productImgUrl;
+  final String? productBrand;
+  final String? color;
+  final String? size;
+  final int? quantity;
   final Review? review;
 
   OrderProductDetail({
-    required this.id,
-    required this.productId,
-    required this.productName,
-    required this.productPrice,
-    required this.productImgUrl,
-    required this.productBrand,
-    required this.color,
-    required this.size,
-    required this.quantity,
+    this.id,
+    this.productId,
+    this.productName,
+    this.productPrice,
+    this.productImgUrl,
+    this.productBrand,
+    this.color,
+    this.size,
+    this.quantity,
     this.review,
   });
 
