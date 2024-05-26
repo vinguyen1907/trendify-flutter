@@ -67,22 +67,22 @@ class OrderRepository {
       // add order items
       for (var item in items) {
         final itemDoc = ordersRef.doc(orderDoc.id).collection("items").doc();
-        final productDoc = productsRef.doc(item.product.id);
+        final productDoc = productsRef.doc(item.product?.id);
         final convertedItem = OrderProductDetail(
             id: itemDoc.id,
-            productId: item.product.id,
-            productName: item.product.name,
-            productPrice: item.product.price,
-            productImgUrl: item.product.imgUrl,
-            productBrand: item.product.brand,
-            color: item.color.toColorCode(),
+            productId: item.product?.id,
+            productName: item.product?.name,
+            productPrice: item.product?.price,
+            productImgUrl: item.product?.imageUrls.first,
+            productBrand: item.product?.brand,
+            color: item.color?.toColorCode(),
             size: item.size,
             quantity: item.quantity);
         batch.set(itemDoc, convertedItem.toMap());
         // Update number of products in stock and sold
         batch.update(productDoc, {
-          "stockCount": FieldValue.increment(-item.quantity),
-          "soldCount": FieldValue.increment(item.quantity),
+          "stockCount": FieldValue.increment(-(item.quantity ?? 0)),
+          "soldCount": FieldValue.increment(item.quantity ?? 0),
         });
       }
       print(2);
@@ -120,7 +120,7 @@ class OrderRepository {
 
       // Update product statistics
       final soldCount = items.fold(
-          0, (previousValue, element) => previousValue + element.quantity);
+          0, (previousValue, element) => previousValue + (element.quantity ?? 0));
       batch.update(productsStatisticsDocRef, {
         "soldQuantity": FieldValue.increment(soldCount),
       });

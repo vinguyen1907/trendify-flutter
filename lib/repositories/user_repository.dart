@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:ecommerce_app/models/product.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:image_picker/image_picker.dart';
@@ -102,5 +103,11 @@ class UserRepository implements IUserRepository {
     } catch (e) {
       throw Exception(e);
     }
+  }
+
+  @override
+  Future<void> recordUserClick(Product product) {
+    // TODO: implement recordUserClick
+    throw UnimplementedError();
   }
 }

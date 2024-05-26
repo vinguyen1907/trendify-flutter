@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:ecommerce_app/constants/constants.dart';
 import 'package:ecommerce_app/core/error/api_exception.dart';
+import 'package:ecommerce_app/models/product.dart';
 import 'package:ecommerce_app/models/shipping_address.dart';
 import 'package:ecommerce_app/models/user_profile.dart';
 import 'package:ecommerce_app/repositories/interfaces/user_repository_interface.dart';
@@ -56,5 +57,16 @@ class UserRepository implements IUserRepository {
   Future<void> updateUser({String? name, String? gender, int? age, String? email, XFile? image}) {
     // TODO: implement updateUser
     throw UnimplementedError();
+  }
+
+  @override
+  Future<void> recordUserClick(Product product) async {
+    try {
+      final String? token = await secureStorage.read(key: "accessToken");
+      dio.options.headers["Authorization"] = "Bearer $token";
+      await dio.post(ApiConstants.recordUserClickUrl, data: {"productId": product.id, "productCode": "B08BLP231K"});
+    } on DioException catch (e) {
+      print("Record user click failed: ${e.response?.data}");
+    }
   }
 }

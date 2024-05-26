@@ -65,10 +65,12 @@ class _TransactionDetailsScreenState extends State<TransactionDetailsScreen> {
                                   decoration: BoxDecoration(
                                     color: AppColors.darkGreyColor,
                                     borderRadius: AppDimensions.circleCorners,
-                                    image: DecorationImage(
-                                      image: NetworkImage(item.product.imgUrl),
+                                    image: item.product != null
+                                        ? DecorationImage(
+                                            image: NetworkImage(item.product!.imageUrls.first),
                                       fit: BoxFit.cover,
-                                    ),
+                                          )
+                                        : null,
                                   ),
                                 ),
                                 const SizedBox(width: 10),
@@ -76,7 +78,8 @@ class _TransactionDetailsScreenState extends State<TransactionDetailsScreen> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Text(item.product.name,
+                                    if (item.product != null)
+                                      Text(item.product!.name,
                                         style: Theme.of(context)
                                             .textTheme
                                             .labelLarge!
@@ -88,7 +91,7 @@ class _TransactionDetailsScreenState extends State<TransactionDetailsScreen> {
                                         Text("Size: ${item.size}"),
                                         const SizedBox(width: 10),
                                         const Text("Color: "),
-                                        ColorDotWidget(color: item.color)
+                                        if (item.color != null) ColorDotWidget(color: item.color!)
                                       ],
                                     ),
                                   ],

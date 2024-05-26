@@ -84,7 +84,10 @@ dependencies:
   crypto: ^3.0.3
   get_it: ^7.6.7
   logging: ^1.2.0
-  
+  web_socket_channel: ^2.4.0
+  stomp_dart_client: ^2.0.0
+  flutter_carousel_widget: ^2.2.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -120,6 +123,7 @@ flutter:
     - assets/lotties/
     - assets/data/
     - assets/logo/
+    - assets/certs/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

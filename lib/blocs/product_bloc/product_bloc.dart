@@ -1,15 +1,19 @@
+import 'package:collection/collection.dart';
 import 'package:ecommerce_app/blocs/show_notification/show_notification_bloc.dart';
 import 'package:ecommerce_app/models/product.dart';
 import 'package:ecommerce_app/models/product_detail.dart';
 import 'package:ecommerce_app/repositories/cart_repository.dart';
-import 'package:ecommerce_app/repositories/product_repository.dart';
+import 'package:ecommerce_app/repositories/interfaces/interfaces.dart';
 import 'package:equatable/equatable.dart';
-import 'package:collection/collection.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_it/get_it.dart';
 part 'product_event.dart';
 part 'product_state.dart';
 
 class ProductBloc extends Bloc<ProductEvent, ProductState> {
+  final ICartRepository cartRepository = GetIt.I.get<ICartRepository>();
+  final IProductRepository _productRepository = GetIt.I.get<IProductRepository>();
+
   ProductBloc({required this.showNotificationBloc}) : super(ProductInitial()) {
     on<LoadProductDetails>(_onLoadProductDetails);
     on<ChooseSize>(_onChooseSize);
@@ -23,14 +27,11 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
   _onLoadProductDetails(LoadProductDetails event, Emitter emit) async {
     try {
       emit(ProductLoading());
-      final List<ProductDetail> productDetails =
-          await ProductRepository().fetchProductDetails(event.product);
-      productDetails.sort(customSizeSort);
-      final Map<String, List<ProductDetail>> sizeGroups =
-          groupBy(productDetails, (ProductDetail detail) => detail.size!);
+      final List<ProductDetail> productDetails = await _productRepository.fetchProductDetails(event.product);
+      // productDetails.sort(customSizeSort);
+      final Map<String, List<ProductDetail>> sizeGroups = groupBy(productDetails, (ProductDetail detail) => detail.size!);
       final String sizeSelected = sizeGroups.keys.elementAt(0);
-      final List<ProductDetail> productDetailSelected =
-          sizeGroups[sizeSelected]!..sort(customColorSort);
+      final List<ProductDetail> productDetailSelected = sizeGroups[sizeSelected]!..sort(customColorSort);
       final String colorSelected = productDetailSelected[0].color!;
       int quantity = 1;
       emit(ProductLoaded(
@@ -41,6 +42,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
           colorSelected: colorSelected,
           quantity: quantity));
     } catch (e) {
+      print("Load product details Bloc error: $e");
       emit(ProductError(message: e.toString()));
     }
   }
@@ -49,8 +51,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
     final currentState = state as ProductLoaded;
     final Map<String, List<ProductDetail>> sizeGroups = currentState.sizeGroups;
     final String sizeSelected = event.size;
-    final List<ProductDetail> productDetailSelected = sizeGroups[sizeSelected]!
-      ..sort(customColorSort);
+    final List<ProductDetail> productDetailSelected = sizeGroups[sizeSelected]!..sort(customColorSort);
     final String colorSelected = productDetailSelected[0].color!;
     emit(ProductLoaded(
         productId: currentState.productId,
@@ -90,16 +91,13 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
   }
 
   int customColorSort(ProductDetail a, ProductDetail b) {
-    return int.parse(a.color!.substring(1, 7), radix: 16) -
-        int.parse(b.color!.substring(1, 7), radix: 16);
+    return int.parse(a.color!.substring(1, 7), radix: 16) - int.parse(b.color!.substring(1, 7), radix: 16);
   }
 
   _onIncreaseQuantity(IncreaseQuantity event, Emitter emit) {
     final currentState = state as ProductLoaded;
     int quantity = currentState.quantity;
-    final temp = currentState.sizeGroups[currentState.sizeSelected]!
-        .where((element) => element.color == currentState.colorSelected)
-        .elementAt(0);
+    final temp = currentState.sizeGroups[currentState.sizeSelected]!.where((element) => element.color == currentState.colorSelected).elementAt(0);
     if (quantity + 1 <= temp.stock) {
       quantity += 1;
     }
@@ -129,11 +127,8 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
 
   _onAddToCart(AddToCart event, Emitter<ProductState> emit) async {
     final currentState = state as ProductLoaded;
-    await CartRepository().addCartItem(
-        productId: currentState.productId,
-        size: currentState.sizeSelected,
-        color: currentState.colorSelected,
-        quantity: currentState.quantity);
+    await cartRepository.addCartItem(
+        productId: currentState.productId, size: currentState.sizeSelected, color: currentState.colorSelected, quantity: currentState.quantity);
     showNotificationBloc.add(const ShowAddToCartSuccess());
     emit(ProductLoaded(
         productId: currentState.productId,

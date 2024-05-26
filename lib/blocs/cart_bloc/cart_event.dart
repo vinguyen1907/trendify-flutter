@@ -27,3 +27,21 @@ class UpdateItem extends CartEvent {
   @override
   List<Object> get props => [cartItemId, quantity];
 }
+
+class UpdateCart extends CartEvent {
+  final Cart cart;
+
+  const UpdateCart({required this.cart});
+
+  @override
+  List<Object> get props => [cart];
+}
+
+class InitConnection extends CartEvent {
+  final Function(Cart) updateCart;
+
+  const InitConnection({required this.updateCart});
+
+  @override
+  List<Object> get props => [updateCart];
+}

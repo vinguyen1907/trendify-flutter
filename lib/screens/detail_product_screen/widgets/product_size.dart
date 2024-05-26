@@ -8,21 +8,24 @@ class ProductSize extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Padding(
-          padding: EdgeInsets.symmetric(vertical: 10),
-          child: Text(
-            "Size",
-            style: AppStyles.headlineMedium,
+    return const Padding(
+      padding: EdgeInsets.symmetric(horizontal: 25),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: EdgeInsets.symmetric(vertical: 10),
+            child: Text(
+              "Size",
+              style: AppStyles.headlineMedium,
+            ),
           ),
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [SizeBar(), ColorBar()],
-        ),
-      ],
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [SizeBar(), ColorBar()],
+          ),
+        ],
+      ),
     );
   }
 }

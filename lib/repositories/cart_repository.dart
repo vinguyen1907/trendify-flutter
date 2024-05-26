@@ -4,10 +4,11 @@ import 'package:ecommerce_app/extensions/string_extensions.dart';
 import 'package:ecommerce_app/models/cart.dart';
 import 'package:ecommerce_app/models/cart_item.dart';
 import 'package:ecommerce_app/models/product.dart';
+import 'package:ecommerce_app/repositories/interfaces/interfaces.dart';
 import 'package:ecommerce_app/repositories/product_repository.dart';
 import 'package:ecommerce_app/constants/constants.dart';
 
-class CartRepository {
+class CartRepository implements ICartRepository {
   Future<Cart> fetchMyCart() async {
     List<CartItem> result = [];
 
@@ -34,7 +35,8 @@ class CartRepository {
 
     return Cart(cartItems: result);
   }
-
+  
+  @override
   Future<void> addCartItem(
       {required String productId,
       required String size,
@@ -76,6 +78,7 @@ class CartRepository {
     }
   }
 
+  @override
   Future<void> removeCartItem({required String cartItemId}) async {
     try {
       await usersRef
@@ -88,6 +91,7 @@ class CartRepository {
     }
   }
 
+  @override
   Future<void> updateCartItem(
       {required String cartItemId, required int quantity}) async {
     try {
@@ -101,6 +105,7 @@ class CartRepository {
     }
   }
 
+  @override
   Future<void> undoAddCartItem({required ProductLoaded cartItem}) async {
     try {
       await usersRef
@@ -121,5 +126,19 @@ class CartRepository {
     } catch (e) {
       throw Exception(e);
     }
+  }
+  
+  @override
+  void dispose() {
+    // TODO: implement dispose
+  }
+
+  @override
+  // TODO: implement stream
+  Stream get stream => throw UnimplementedError();
+
+  @override
+  void connect(Function(Cart p1) updateCart) {
+    // TODO: implement connect
   }
 }

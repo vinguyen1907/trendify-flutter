@@ -29,8 +29,10 @@ class AuthRepository implements IAuthRepository {
       print("Token ---- ${token}");
       await secureStorage.write(key: "accessToken", value: token);
     } on DioException catch (e) {
+      print("Dio error: $e");
       throw ApiException.fromMap(e.response?.data);
     } catch (e) {
+      print("Error: $e");
       rethrow;
     }
   }

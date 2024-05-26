@@ -39,7 +39,7 @@ class PopularProductItem extends StatelessWidget {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(10),
                   child: CachedNetworkImage(
-                    imageUrl: product.imgUrl,
+                    imageUrl: product.imageUrls.first,
                     placeholder: (context, url) => Shimmer.fromColors(
                       baseColor: const Color(0xFFE0E0E0),
                       highlightColor: const Color(0xFFF5F5F5),

@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ecommerce_app/constants/app_styles.dart';
 import 'package:ecommerce_app/extensions/screen_extensions.dart';
 import 'package:ecommerce_app/models/cart_item.dart';
@@ -19,8 +20,8 @@ class PlaceOrderItem extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(12),
-            child: Image.network(
-              cartItem.product.imgUrl,
+            child: CachedNetworkImage(
+              imageUrl: cartItem.product?.imageUrls.first ?? "",
               height: 60,
               width: 60,
               fit: BoxFit.cover,
@@ -32,24 +33,27 @@ class PlaceOrderItem extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.max,
               children: [
-                Text(
-                  cartItem.product.name,
+                if (cartItem.product != null) ...[
+Text(
+                    cartItem.product!.name,
                   style: AppStyles.labelLarge,
                 ),
                 Text(
-                  cartItem.product.brand,
+                    cartItem.product!.brand,
                   style: AppStyles.bodyLarge,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      (cartItem.product.price * cartItem.quantity)
+                        (cartItem.product!.price * (cartItem.quantity ?? 0))
                           .toPriceString(),
                       style: AppStyles.headlineLarge,
                     ),
                   ],
                 )
+                ]
+                
               ],
             ),
           ),
