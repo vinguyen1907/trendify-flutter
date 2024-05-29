@@ -3,10 +3,10 @@ import 'package:ecommerce_app/models/models.dart';
 
 class OrderTrackingScreenArgs {
   final OrderModel order;
-  final OrderProductDetail? orderItem;
+  final List<OrderProductDetail>? orderItems;
 
   OrderTrackingScreenArgs({
     required this.order,
-    this.orderItem,
+    this.orderItems,
   });
 }

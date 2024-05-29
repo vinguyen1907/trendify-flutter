@@ -7,6 +7,8 @@ import 'widgets/widgets.dart';
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
+  static const routeName = '/home_screen';
+
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }

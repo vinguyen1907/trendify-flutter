@@ -9,6 +9,7 @@ import 'package:ecommerce_app/constants/app_assets.dart';
 import 'package:ecommerce_app/constants/app_dimensions.dart';
 import 'package:ecommerce_app/models/shipping_address.dart';
 import 'package:ecommerce_app/repositories/address_repository.dart';
+import 'package:ecommerce_app/repositories/interfaces/interfaces.dart';
 import 'package:ecommerce_app/screens/add_address_screen/add_address_confirm_button.dart';
 import 'package:ecommerce_app/utils/location_util.dart';
 import 'package:ecommerce_app/utils/utils.dart';
@@ -16,6 +17,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:flutter_map/flutter_map.dart';
+import 'package:get_it/get_it.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -97,13 +99,11 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              ScreenNameSection(
-                  label: AppLocalizations.of(context)!.addNewAddress),
+              ScreenNameSection(label: AppLocalizations.of(context)!.addNewAddress),
               Expanded(
                 child: SingleChildScrollView(
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: AppDimensions.defaultPadding),
+                    padding: const EdgeInsets.symmetric(horizontal: AppDimensions.defaultPadding),
                     child: Form(
                       key: formState,
                       child: Column(
@@ -128,8 +128,7 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
                                         urlTemplate: AppConfig.mapUrlTemplate,
                                         additionalOptions: const {
                                           'mapStyleId': AppConfig.mapBoxStyleId,
-                                          'accessToken':
-                                              AppConfig.mapBoxAccessToken,
+                                          'accessToken': AppConfig.mapBoxAccessToken,
                                         },
                                       ),
                                       MarkerLayer(
@@ -137,8 +136,7 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
                                           Marker(
                                               point: coordinates!,
                                               builder: (_) {
-                                                return const MyIcon(
-                                                    icon: AppAssets.icLocation);
+                                                return const MyIcon(icon: AppAssets.icLocation);
                                               })
                                         ],
                                       )
@@ -191,16 +189,10 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
                           Row(
                             children: [
                               Checkbox(
-                                  checkColor: Theme.of(context)
-                                      .colorScheme
-                                      .onPrimaryContainer,
-                                  activeColor: Theme.of(context)
-                                      .colorScheme
-                                      .primaryContainer,
+                                  checkColor: Theme.of(context).colorScheme.onPrimaryContainer,
+                                  activeColor: Theme.of(context).colorScheme.primaryContainer,
                                   side: BorderSide(
-                                    color: Theme.of(context)
-                                        .colorScheme
-                                        .primaryContainer,
+                                    color: Theme.of(context).colorScheme.primaryContainer,
                                   ),
                                   value: setAsDefaultAddress,
                                   onChanged: (value) {
@@ -211,10 +203,7 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
                                     }
                                   }),
                               Text("Use as default address.",
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .bodySmall!
-                                      .copyWith(
+                                  style: Theme.of(context).textTheme.bodySmall!.copyWith(
                                         color: Theme.of(context).primaryColor,
                                       ))
                             ],
@@ -254,20 +243,17 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
         zipCode: zipCodeController.text,
         countryCallingCode: callingCodeController.text,
         phoneNumber: phoneNumberController.text,
-        latitude: widget.address != null
-            ? widget.address!.latitude
-            : coordinates?.latitude,
-        longitude: widget.address != null
-            ? widget.address!.longitude
-            : coordinates?.longitude,
+        latitude: widget.address != null ? widget.address!.latitude : coordinates?.latitude,
+        longitude: widget.address != null ? widget.address!.longitude : coordinates?.longitude,
       );
+      final addressRepository = GetIt.I.get<IAddressRepository>();
       if (widget.address == null) {
-        await AddressRepository().addShippingAddress(
+        await addressRepository.addShippingAddress(
           address: newAddress,
           setAsDefault: setAsDefaultAddress,
         );
       } else {
-        await AddressRepository().updateShippingAddress(
+        await addressRepository.updateShippingAddress(
           address: newAddress,
           setAsDefault: setAsDefaultAddress,
         );
@@ -288,8 +274,7 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
     if (coordinates == null) {
       return;
     }
-    final location =
-        await LocationUtil().getLocationFromLatLng(latLng: coordinates!);
+    final location = await LocationUtil().getLocationFromLatLng(latLng: coordinates!);
     countryController.text = location.country ?? "";
     stateController.text = location.administrativeArea ?? "";
     cityController.text = location.locality ?? "";
@@ -300,10 +285,8 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
   }
 
   _getCoordinatesFromAddress() async {
-    final String fullAddress =
-        "${streetController.text},  ${cityController.text},  ${stateController.text},  ${countryController.text}";
-    final newLatLng =
-        await LocationUtil().getCoordinatesFromAddress(fullAddress);
+    final String fullAddress = "${streetController.text},  ${cityController.text},  ${stateController.text},  ${countryController.text}";
+    final newLatLng = await LocationUtil().getCoordinatesFromAddress(fullAddress);
     if (newLatLng == null && mounted) {
       Utils.showSnackBar(context: context, message: "Can't get location");
     }

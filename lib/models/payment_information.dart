@@ -31,7 +31,7 @@ class PaymentInformation {
 
   factory PaymentInformation.fromMap(Map<String, dynamic> map) {
     return PaymentInformation(
-      id: map['id'] as String,
+      id: map['id'].toString(),
       holderName: map['holderName'] as String?,
       cardNumber: map['cardNumber'] as String?,
       expiryDate: map['expiryDate'] as String?,

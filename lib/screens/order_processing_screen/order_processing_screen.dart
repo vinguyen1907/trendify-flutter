@@ -12,7 +12,6 @@ import 'package:ecommerce_app/models/order_status.dart';
 import 'package:ecommerce_app/models/order_summary.dart';
 import 'package:ecommerce_app/router/arguments/arguments.dart';
 import 'package:ecommerce_app/screens/order_tracking_screen/order_tracking_screen.dart';
-import 'package:ecommerce_app/constants/firebase_constants.dart';
 import 'package:ecommerce_app/utils/order_util.dart';
 import 'package:ecommerce_app/utils/utils.dart';
 import 'package:flutter/material.dart';
@@ -34,7 +33,7 @@ class _OrderProcessingScreenState extends State<OrderProcessingScreen> {
   @override
   void initState() {
     super.initState();
-    _addOrder();
+    _placeOrder();
   }
 
   @override
@@ -144,17 +143,21 @@ class _OrderProcessingScreenState extends State<OrderProcessingScreen> {
     );
   }
 
-  _addOrder() async {
+  _placeOrder() async {
     final placeOrderState = context.read<PlaceOrderBloc>().state;
     final userState = context.read<UserBloc>().state;
     if (userState is UserLoaded) {
       final user = userState.user;
+      if (user.id == null) {
+        Utils.showSnackBar(context: context, message: "Something went wrong. Please try again.");
+        return;
+      }
 
       final OrderModel order = OrderModel(
           id: "",
           orderNumber:
-              OrderUtil().generateOrderNumber(firebaseAuth.currentUser!.uid),
-          customerId: firebaseAuth.currentUser!.uid,
+              OrderUtil().generateOrderNumber(user.id!),
+          customerId: user.id!,
           customerName: user.name ?? "",
           customerPhoneNumber: placeOrderState.address!.phoneNumber,
           address: placeOrderState.address!,
@@ -194,6 +197,7 @@ class _OrderProcessingScreenState extends State<OrderProcessingScreen> {
 
   _navigateToOrderTrackingScreen(OrderModel order) {
     Navigator.pushNamed(context, OrderTrackingScreen.routeName,
-        arguments: OrderTrackingScreenArgs(order: order));
+        // TODO: Pass orderItems
+        arguments: OrderTrackingScreenArgs(order: order, orderItems: []));
   }
 }

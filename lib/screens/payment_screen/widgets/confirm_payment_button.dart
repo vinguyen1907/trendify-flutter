@@ -53,7 +53,13 @@ class ConfirmPaymentButton extends StatelessWidget {
                 price: totalPrice),
           );
         } else {
-          Navigator.pushNamed(context, SetPasscodeScreen.routeName);
+          Navigator.pushNamed(context, SetPasscodeScreen.routeName).then(
+            (value) => _onTruePasscode(
+              context: context,
+              paymentMethodCode: selectedMethod.code,
+              price: totalPrice,
+            ),
+          );
         }
       });
     }
@@ -80,7 +86,9 @@ class ConfirmPaymentButton extends StatelessWidget {
                 ));
       }
     } catch (e) {
-      Utils.showSnackBar(context: context, message: "Something went wrong");
+      if (context.mounted) {
+        Utils.showSnackBar(context: context, message: "Something went wrong");
+      }
     }
   }
 }

@@ -9,6 +9,7 @@ import 'package:ecommerce_app/screens/splash_screen/splash_screen.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_it/get_it.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -19,10 +20,10 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   List<Widget> screens = [
-    const HomeScreen(),
-    const CartScreen(),
-    const NotificationScreen(),
-    const ProfileScreen()
+    GetIt.I.get(instanceName: HomeScreen.routeName),
+    GetIt.I.get(instanceName: CartScreen.routeName),
+    GetIt.I.get(instanceName: NotificationScreen.routeName),
+    GetIt.I.get(instanceName: ProfileScreen.routeName),
   ];
 
   int currentIndex = 0;
@@ -66,7 +67,10 @@ class _MainScreenState extends State<MainScreen> {
         }
       },
       child: Scaffold(
-        body: screens[currentIndex],
+        body: IndexedStack(
+          index: currentIndex,
+          children: screens,
+        ),
         bottomNavigationBar: NavBar(
           onTap: onTap,
           currentIndex: currentIndex,

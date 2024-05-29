@@ -20,6 +20,7 @@ class _CartScreenState extends State<CartScreen> {
   @override
   void initState() {
     super.initState();
+    print("Init cart screen");
     context.read<CartBloc>().add(InitConnection(updateCart: (Cart cart) {
       if (mounted) {
         context.read<CartBloc>().add(UpdateCart(cart: cart));

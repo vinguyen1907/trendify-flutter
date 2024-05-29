@@ -64,7 +64,7 @@ class CartItemWidget extends StatelessWidget {
                     imageUrl: cartItem.product?.imageUrls.first ?? "",
                     height: imageHeight ?? size.width * 0.21,
                     width: imageWidth ?? size.width * 0.21,
-                    fit: BoxFit.cover,
+                    fit: BoxFit.contain,
                   ),
                 ),
                 const SizedBox(width: 10),
@@ -76,7 +76,7 @@ class CartItemWidget extends StatelessWidget {
                       if (cartItem.product != null) ...[
                         Text(
                           cartItem.product!.name,
-                          style: AppStyles.labelLarge,
+                          style: AppStyles.labelMedium,
                         ),
                         Text(
                           cartItem.product!.brand,
