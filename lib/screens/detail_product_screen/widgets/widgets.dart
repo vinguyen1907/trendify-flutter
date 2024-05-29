@@ -1,0 +1,13 @@
+export 'bottom_bar_product.dart';
+export 'color_bar.dart';
+export 'color_item.dart';
+export 'product_clipper.dart';
+export 'product_description.dart';
+export 'product_image.dart';
+export 'product_size.dart';
+export 'product_title.dart';
+export 'similar_products_list.dart';
+export 'size_bar.dart';
+export 'size_item.dart';
+export 'similar_product_card.dart';
+export 'product_characteristics_widget.dart';

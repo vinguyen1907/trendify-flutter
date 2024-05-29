@@ -134,7 +134,8 @@ class _MyOrderScreenState extends State<MyOrderScreen> {
   void _navigateToOrderTrackingScreen(
       BuildContext context, OrderModel order, OrderProductDetail orderItem) {
     Navigator.pushNamed(context, OrderTrackingScreen.routeName,
-        arguments: OrderTrackingScreenArgs(order: order, orderItem: orderItem));
+        // TODO: Replace orderItems
+        arguments: OrderTrackingScreenArgs(order: order, orderItems: []));
   }
 
   void _navigateToQrScannerScreen() {

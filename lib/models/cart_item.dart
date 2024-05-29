@@ -4,28 +4,36 @@ import 'package:flutter/material.dart';
 import 'package:ecommerce_app/models/product.dart';
 
 class CartItem {
-  final String id;
-  final Product product;
-  final int quantity;
-  final String size;
-  final Color color;
+  final String? id;
+  final Product? product;
+  final int? quantity;
+  final String? size;
+  final Color? color;
 
   CartItem({
-    required this.id,
-    required this.product,
-    required this.quantity,
-    required this.size,
-    required this.color,
+    this.id,
+    this.product,
+    this.quantity,
+    this.size,
+    this.color,
   });
 
   factory CartItem.fromMap(Map<String, dynamic> map) {
     return CartItem(
-      id: map['id'] as String,
-      product: Product.fromMap(map['product'] as Map<String, dynamic>),
-      quantity: map['quantity'] as int,
-      size: map['size'] as String,
-      color: Color(map['color'] as int),
+      id: map['id']?.toString(),
+      product: map['product'] != null ? Product.fromMap(map['product'] as Map<String, dynamic>) : null,
+      quantity: map['quantity'],
+      size: map['size'],
+      color: map['color'] != null ? _parseColor(map['color']) : null,
     );
+  }
+  static Color _parseColor(String colorString) {
+    // Remove the leading '#' character if present
+    String hexColor = colorString.replaceAll('#', '');
+    if (hexColor.length == 6) {
+      hexColor = 'FF$hexColor'; // Add alpha value if not provided
+    }
+    return Color(int.parse(hexColor, radix: 16));
   }
 
   factory CartItem.fromJson(String source) =>
@@ -50,10 +58,10 @@ class CartItem {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': id,
-      'product': product.toMap(),
+      'product': product?.toMap(),
       'quantity': quantity,
       'size': size,
-      'color': color.value,
+      'color': color?.value,
     };
   }
 

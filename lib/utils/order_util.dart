@@ -15,6 +15,7 @@ class OrderUtil {
         .split('-')
         .first; // Generate a random UUID and take the first part
 
-    return userId.substring(0, 4) + timeComponent + randomComponent;
+    int userIdLength = userId.length;
+    return userId.substring(0, userIdLength >= 4 ? 4 : userIdLength) + timeComponent + randomComponent;
   }
 }

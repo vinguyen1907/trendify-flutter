@@ -1,7 +1,9 @@
 import 'package:ecommerce_app/models/payment_information.dart';
 import 'package:ecommerce_app/constants/constants.dart';
+import 'package:ecommerce_app/repositories/interfaces/interfaces.dart';
 
-class PaymentRepository {
+class PaymentRepository implements IPaymentRepository {
+  @override
   Future<void> addPaymentCard({
     required String cardNumber,
     required String holderName,
@@ -28,6 +30,7 @@ class PaymentRepository {
     }
   }
 
+  @override
   Future<List<PaymentInformation>> fetchPaymentCards() async {
     try {
       final snapshot = await usersRef

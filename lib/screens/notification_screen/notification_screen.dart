@@ -9,6 +9,8 @@ import 'package:flutter/material.dart';
 class NotificationScreen extends StatefulWidget {
   const NotificationScreen({super.key});
 
+  static const routeName = '/notification_screen';
+
   @override
   State<NotificationScreen> createState() => _NotificationScreenState();
 }

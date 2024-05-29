@@ -7,6 +7,8 @@ import 'widgets/widgets.dart';
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
 
+  static const routeName = '/profile_screen';
+
   @override
   State<ProfileScreen> createState() => _ProfileScreenState();
 }

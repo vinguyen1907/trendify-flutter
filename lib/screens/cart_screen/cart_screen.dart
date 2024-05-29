@@ -3,6 +3,7 @@ import 'package:ecommerce_app/common_widgets/cart_button.dart';
 import 'package:ecommerce_app/common_widgets/my_app_bar.dart';
 import 'package:ecommerce_app/common_widgets/screen_name_section.dart';
 import 'package:ecommerce_app/constants/app_dimensions.dart';
+import 'package:ecommerce_app/models/models.dart';
 import 'package:ecommerce_app/screens/cart_screen/widgets/cart_list.dart';
 import 'package:ecommerce_app/screens/cart_screen/widgets/summary_section.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +20,23 @@ class _CartScreenState extends State<CartScreen> {
   @override
   void initState() {
     super.initState();
-    context.read<CartBloc>().add(LoadCart());
+    print("Init cart screen");
+    context.read<CartBloc>().add(InitConnection(updateCart: (Cart cart) {
+      if (mounted) {
+        context.read<CartBloc>().add(UpdateCart(cart: cart));
+      }
+    }));
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+  }
+
+  @override
+  void dispose() {
+    // disconnect();
+    super.dispose();
   }
 
   @override
@@ -36,12 +53,10 @@ class _CartScreenState extends State<CartScreen> {
             label: "My Cart",
           ),
           CartList(
-            padding:
-                EdgeInsets.symmetric(horizontal: AppDimensions.defaultPadding),
+            padding: EdgeInsets.symmetric(horizontal: AppDimensions.defaultPadding),
           ),
           SummarySection(
-            margin: EdgeInsets.symmetric(
-                horizontal: AppDimensions.defaultPadding, vertical: 15),
+            margin: EdgeInsets.symmetric(horizontal: AppDimensions.defaultPadding, vertical: 15),
           ),
         ],
       ),

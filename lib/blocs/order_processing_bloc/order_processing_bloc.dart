@@ -1,7 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:get_it/get_it.dart';
 
-import 'package:ecommerce_app/repositories/order_repository.dart';
+import 'package:ecommerce_app/repositories/interfaces/interfaces.dart';
 
 import '../../models/models.dart';
 
@@ -10,6 +11,8 @@ part 'order_processing_state.dart';
 
 class OrderProcessingBloc
     extends Bloc<OrderProcessingEvent, OrderProcessingState> {
+  final IOrderRepository _orderRepository = GetIt.I<IOrderRepository>(); 
+
   OrderProcessingBloc() : super(OrderProcessingInitial()) {
     on<AddOrder>(_onAddOrder);
     on<ResetOrderProcessingState>(_onResetOrderProcessingState);
@@ -18,7 +21,7 @@ class OrderProcessingBloc
   void _onAddOrder(AddOrder event, Emitter<OrderProcessingState> emit) async {
     emit(OrderProcessingAdding());
     try {
-      final String orderId = await OrderRepository().addOrder(
+      final String orderId = await _orderRepository.addOrder(
           order: event.order, items: event.items, promotion: event.promotion);
 
       // if (event.order.paymentMethod == PaymentMethods.eWallet.code) {

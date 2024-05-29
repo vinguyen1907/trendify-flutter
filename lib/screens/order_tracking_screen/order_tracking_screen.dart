@@ -20,7 +20,7 @@ class OrderTrackingScreen extends StatefulWidget {
 
 class _OrderTrackingScreenState extends State<OrderTrackingScreen> {
   late final OrderModel order;
-  late final OrderProductDetail? orderItem;
+  late final List<OrderProductDetail>? orderItems;
 
   @override
   void didChangeDependencies() {
@@ -29,7 +29,7 @@ class _OrderTrackingScreenState extends State<OrderTrackingScreen> {
       final args = ModalRoute.of(context)!.settings.arguments;
       if (args is OrderTrackingScreenArgs) {
         order = args.order;
-        orderItem = args.orderItem;
+        orderItems = args.orderItems;
       }
     }
   }
@@ -47,7 +47,9 @@ class _OrderTrackingScreenState extends State<OrderTrackingScreen> {
           children: [
             Text(order.orderNumber, style: Theme.of(context).textTheme.headlineLarge),
             Text("Washington - Geiorgia", style: Theme.of(context).textTheme.bodyMedium),
-            if (orderItem != null) OrderItemWidget(margin: const EdgeInsets.symmetric(vertical: 20), order: order, orderItem: orderItem!),
+
+            // TODO: Replace this with a ListView of order items
+            if (orderItems != null) OrderItemWidget(margin: const EdgeInsets.symmetric(vertical: 20), order: order, orderItem: orderItems!.first),
             // const SizedBox(height: 10),
             // const SectionLabel(
             //   label: "Collection Point",

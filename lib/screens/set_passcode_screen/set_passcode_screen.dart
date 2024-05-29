@@ -46,6 +46,6 @@ class _SetPasscodeScreenState extends State<SetPasscodeScreen> {
     await PasscodeUtils().savePasscode(passcode: pin);
     if (!mounted) return;
     Navigator.pop(context);
-    Navigator.pop(context);
+    // Navigator.pop(context);
   }
 }

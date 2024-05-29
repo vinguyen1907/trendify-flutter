@@ -6,21 +6,24 @@ class ProductDescription extends StatelessWidget {
   final String description;
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const Padding(
-          padding: EdgeInsets.symmetric(vertical: 10),
-          child: Text(
-            "Description",
-            style: AppStyles.headlineMedium,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 25.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Padding(
+            padding: EdgeInsets.symmetric(vertical: 10),
+            child: Text(
+              "Description",
+              style: AppStyles.headlineMedium,
+            ),
           ),
-        ),
-        Text(
-          description,
-          style: AppStyles.bodyMedium,
-        )
-      ],
+          Text(
+            description.split('\\n\\n').join("\n").split('\\n').join(""),
+            style: AppStyles.bodyMedium,
+          ),
+        ],
+      ),
     );
   }
 }

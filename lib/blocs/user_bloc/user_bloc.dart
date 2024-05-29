@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:ecommerce_app/constants/enums/gender.dart';
 import 'package:ecommerce_app/core/error/api_exception.dart';
+import 'package:ecommerce_app/models/models.dart';
 import 'package:ecommerce_app/models/user_profile.dart';
 import 'package:ecommerce_app/repositories/interfaces/user_repository_interface.dart';
 import 'package:ecommerce_app/services/call_service.dart';
@@ -18,6 +19,7 @@ class UserBloc extends Bloc<UserEvent, UserState> {
     on<LoadUser>(_onLoadUser);
     on<ReloadUser>(_onReloadUser);
     on<UpdateUser>(_onUpdateUser);
+    on<ProductClicked>(_onProductClicked);
   }
 
   _onLoadUser(event, emit) async {
@@ -70,5 +72,9 @@ class UserBloc extends Bloc<UserEvent, UserState> {
         emit(UserLoaded(user: user));
       }
     }
+  }
+
+  _onProductClicked(ProductClicked event, emit) {
+    userRepository.recordUserClick(event.product);
   }
 }

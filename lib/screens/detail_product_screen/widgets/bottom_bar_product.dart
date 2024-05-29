@@ -14,9 +14,11 @@ class BottomBarProduct extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+
     return BlocBuilder<ProductBloc, ProductState>(
       builder: (context, state) {
         return Container(
+          padding: const EdgeInsets.symmetric(horizontal: 25),
           color: Theme.of(context).colorScheme.background,
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 10),

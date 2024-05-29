@@ -1,14 +1,15 @@
+import 'package:ecommerce_app/constants/constants.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-
-const storage = FlutterSecureStorage();
+import 'package:get_it/get_it.dart';
 
 class PasscodeUtils {
+  final FlutterSecureStorage secureStorage = GetIt.I.get<FlutterSecureStorage>();
   Future<void> savePasscode({required String passcode}) async {
-    await storage.write(key: 'passcode', value: passcode);
+    await secureStorage.write(key: SharedPreferencesKeys.passcode, value: passcode);
   }
 
   Future<String?> getPasscode() async {
-    final String? passcode = await storage.read(key: "passcode");
+    final String? passcode = await secureStorage.read(key: SharedPreferencesKeys.passcode);
     return passcode;
   }
 

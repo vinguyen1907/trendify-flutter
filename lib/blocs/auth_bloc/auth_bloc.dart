@@ -76,11 +76,13 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           emit(const AuthenticationFailure(message: "User not found. Please sign up!"));
           break;
       }
-      emit(AuthenticationFailure(message: e.message ?? "Sign in failed. Try again!"));
+      // emit(AuthenticationFailure(message: e.message ?? "Sign in failed. Try again!"));
+      print("Authenticate ApiError: ${e.message}");
       Utils.showSnackBar(message: e.message ?? "Sign in failed. Try again!", context: event.context);
     } catch (e) {
       emit(AuthenticationFailure(message: e.toString()));
-      Utils.showSnackBar(message: e.toString(), context: event.context);
+      print("Authenticate error: ${e.toString()}");
+      // Utils.showSnackBar(message: "Authenticate error: ${e.toString()}", context: event.context);
     }
   }
 

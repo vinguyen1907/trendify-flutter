@@ -26,3 +26,9 @@ class UpdateUser extends UserEvent {
     required this.image,
   });
 }
+
+class ProductClicked extends UserEvent {
+  final Product product;
+
+  const ProductClicked({required this.product});
+}

@@ -17,6 +17,9 @@ class PageDependencies {
         instanceName: SignUpSuccessScreen.routeName);
     injector.registerFactory<Widget>(() => const MainScreen(),
         instanceName: MainScreen.routeName);
+    injector.registerFactory<Widget>(() => const HomeScreen(), instanceName: HomeScreen.routeName);
+    injector.registerFactory<Widget>(() => const NotificationScreen(), instanceName: NotificationScreen.routeName);
+    injector.registerFactory<Widget>(() => const ProfileScreen(), instanceName: ProfileScreen.routeName);
     injector.registerFactory<Widget>(() => const PlaceOrderScreen(),
         instanceName: PlaceOrderScreen.routeName);
     injector.registerFactory<Widget>(() => const PaymentScreen(),
@@ -45,7 +48,7 @@ class PageDependencies {
         instanceName: AllProductsScreen.routeName);
     injector.registerFactory<Widget>(() => const OrderProcessingScreen(),
         instanceName: OrderProcessingScreen.routeName);
-    injector.registerFactory<Widget>(() => const CartScreen(),
+    injector.registerLazySingleton<Widget>(() => const CartScreen(),
         instanceName: CartScreen.routeName);
     injector.registerFactory<Widget>(() => const OrderTrackingScreen(),
         instanceName: OrderTrackingScreen.routeName);
