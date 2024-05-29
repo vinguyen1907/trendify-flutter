@@ -20,12 +20,20 @@ class CartItem {
 
   factory CartItem.fromMap(Map<String, dynamic> map) {
     return CartItem(
-      id: map['id'],
-      product: Product.fromMap(map['product'] as Map<String, dynamic>),
+      id: map['id']?.toString(),
+      product: map['product'] != null ? Product.fromMap(map['product'] as Map<String, dynamic>) : null,
       quantity: map['quantity'],
       size: map['size'],
-      color: map['color'] != null ? Color(int.parse(map['color'])) : null,
+      color: map['color'] != null ? _parseColor(map['color']) : null,
     );
+  }
+  static Color _parseColor(String colorString) {
+    // Remove the leading '#' character if present
+    String hexColor = colorString.replaceAll('#', '');
+    if (hexColor.length == 6) {
+      hexColor = 'FF$hexColor'; // Add alpha value if not provided
+    }
+    return Color(int.parse(hexColor, radix: 16));
   }
 
   factory CartItem.fromJson(String source) =>

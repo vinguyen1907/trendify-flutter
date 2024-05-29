@@ -24,7 +24,7 @@ class PlaceOrderItem extends StatelessWidget {
               imageUrl: cartItem.product?.imageUrls.first ?? "",
               height: 60,
               width: 60,
-              fit: BoxFit.cover,
+              fit: BoxFit.contain,
             ),
           ),
           const SizedBox(width: 10),
