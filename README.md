@@ -24,9 +24,9 @@ This E-commerce App provides a platform for online shopping, including features 
    flutter run
    ```
 
-## `Contributors
-*` [Nguyễn Tuấn Khôi](https://github.com/iawtk2302)
+## Contributors
 * [Nguyễn Tiến Vĩ](https://github.com/vinguyen1907)
+* [Nguyễn Đình Khoa](https://github.com/dkdeptrai)
 
 ## Others
 Admin App: https://github.com/vinguyen1907/Admin-Ecommerce-App
