@@ -13,7 +13,7 @@ This E-commerce App provides a platform for online shopping, including features 
 ## Installation
 1. Clone the repo
    ```sh
-   git clone https://github.com/iawtk2302/Ecommerce-App
+   git clone https://github.com/vinguyen1907/trendify-flutter.git
    ```
 2. Get packages
    ```sh
