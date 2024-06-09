@@ -29,4 +29,4 @@ This E-commerce App provides a platform for online shopping, including features 
 * [Nguyễn Đình Khoa](https://github.com/dkdeptrai)
 
 ## Others
-Admin App: https://github.com/vinguyen1907/Admin-Ecommerce-App
+
