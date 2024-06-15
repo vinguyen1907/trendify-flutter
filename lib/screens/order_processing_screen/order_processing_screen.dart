@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ecommerce_app/blocs/order_processing_bloc/order_processing_bloc.dart';
 import 'package:ecommerce_app/blocs/place_order_bloc/place_order_bloc.dart';
 import 'package:ecommerce_app/blocs/user_bloc/user_bloc.dart';
@@ -55,47 +54,33 @@ class _OrderProcessingScreenState extends State<OrderProcessingScreen> {
                 children: [
                   const SizedBox(height: 50),
                   // Icon section
-                  if (state is OrderProcessingSuccessfully)
-                    Lottie.asset(AppAssets.lottieSuccess,
-                        height: 300, width: 300),
-                  if (state is OrderProcessingFailed)
-                    Lottie.asset(AppAssets.lottieFail, height: 300, width: 300),
-                  if (state is OrderProcessingAdding)
-                    Lottie.asset(AppAssets.lottieWaiting,
-                        height: 300, width: 300),
+                  if (state is OrderProcessingSuccessfully) Lottie.asset(AppAssets.lottieSuccess, height: 300, width: 300),
+                  if (state is OrderProcessingFailed) Lottie.asset(AppAssets.lottieFail, height: 300, width: 300),
+                  if (state is OrderProcessingAdding) Lottie.asset(AppAssets.lottieWaiting, height: 300, width: 300),
                   const SizedBox(height: 20),
 
                   // Description section
-                  if (state is OrderProcessingSuccessfully)
-                    Text("Order successfully",
-                        style: Theme.of(context).textTheme.displayMedium),
+                  if (state is OrderProcessingSuccessfully) Text("Order successfully", style: Theme.of(context).textTheme.displaySmall),
                   if (state is OrderProcessingFailed)
                     Text(
                         // "Order failed. Please try again."
                         state.message,
-                        style: Theme.of(context).textTheme.displayMedium),
-                  if (state is OrderProcessingAdding)
-                    Text("Waiting...",
-                        style: Theme.of(context).textTheme.displayMedium),
+                        style: Theme.of(context).textTheme.displaySmall),
+                  if (state is OrderProcessingAdding) Text("Waiting...", style: Theme.of(context).textTheme.displayMedium),
                   const Spacer(),
 
                   // Actions section
                   if (state is OrderProcessingSuccessfully)
                     Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: AppDimensions.defaultPadding),
+                      padding: const EdgeInsets.symmetric(horizontal: AppDimensions.defaultPadding),
                       child: Row(
                         children: [
                           Expanded(
                             child: MyOutlinedButton(
-                                onPressed: () =>
-                                    _navigateToOrderTrackingScreen(state.order),
+                                onPressed: () => _navigateToOrderTrackingScreen(state.order),
                                 child: Row(
                                   children: [
-                                    Text("View order",
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .labelMedium),
+                                    Text("View order", style: Theme.of(context).textTheme.labelMedium),
                                   ],
                                 )),
                           ),
@@ -103,16 +88,12 @@ class _OrderProcessingScreenState extends State<OrderProcessingScreen> {
                           Expanded(
                             child: MyButton(
                               onPressed: () {
-                                Navigator.popUntil(
-                                    context, (route) => route.isFirst);
+                                Navigator.popUntil(context, (route) => route.isFirst);
                               },
                               borderRadius: 12,
                               child: Text(
                                 "Home",
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .labelMedium!
-                                    .copyWith(
+                                style: Theme.of(context).textTheme.labelMedium!.copyWith(
                                       color: AppColors.whiteColor,
                                     ),
                               ),
@@ -123,14 +104,12 @@ class _OrderProcessingScreenState extends State<OrderProcessingScreen> {
                     ),
                   if (state is OrderProcessingFailed)
                     MyOutlinedButton(
-                        margin: const EdgeInsets.symmetric(
-                            horizontal: AppDimensions.defaultPadding),
+                        margin: const EdgeInsets.symmetric(horizontal: AppDimensions.defaultPadding),
                         onPressed: _onFailBackButton,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text("Back",
-                                style: Theme.of(context).textTheme.labelLarge),
+                            Text("Back", style: Theme.of(context).textTheme.labelLarge),
                           ],
                         )),
                   const SizedBox(height: 30),
@@ -146,17 +125,16 @@ class _OrderProcessingScreenState extends State<OrderProcessingScreen> {
   _placeOrder() async {
     final placeOrderState = context.read<PlaceOrderBloc>().state;
     final userState = context.read<UserBloc>().state;
-    if (userState is UserLoaded) {
+    if (userState.status == UserStatus.loaded) {
       final user = userState.user;
-      if (user.id == null) {
+      if (user!.id == null) {
         Utils.showSnackBar(context: context, message: "Something went wrong. Please try again.");
         return;
       }
 
       final OrderModel order = OrderModel(
           id: "",
-          orderNumber:
-              OrderUtil().generateOrderNumber(user.id!),
+          orderNumber: OrderUtil().generateOrderNumber(user.id!),
           customerId: user.id!,
           customerName: user.name ?? "",
           customerPhoneNumber: placeOrderState.address!.phoneNumber,
@@ -169,11 +147,9 @@ class _OrderProcessingScreenState extends State<OrderProcessingScreen> {
           ),
           isCompleted: false,
           paymentMethod: placeOrderState.paymentMethod!.code,
-          isPaid: placeOrderState.paymentMethod!.code == "cash_on_delivery"
-              ? false
-              : true,
+          isPaid: placeOrderState.paymentMethod!.code == "cash_on_delivery" ? false : true,
           currentOrderStatus: OrderStatus.pending,
-          createdAt: Timestamp.fromDate(DateTime.now()));
+          createdAt: DateTime.now());
 
       context.read<OrderProcessingBloc>().add(
             AddOrder(
@@ -185,8 +161,7 @@ class _OrderProcessingScreenState extends State<OrderProcessingScreen> {
             ),
           );
     } else {
-      Utils.showSnackBar(
-          context: context, message: "Something went wrong. Please try again.");
+      Utils.showSnackBar(context: context, message: "Something went wrong. Please try again.");
     }
   }
 

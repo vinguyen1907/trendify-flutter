@@ -17,14 +17,12 @@ class HomeLoading extends HomeState {
 class HomeLoaded extends HomeState {
   final List<Promotion> promotions;
   final List<Product> newArrivals;
+  final int page;
   final List<Product> popular;
 
-  const HomeLoaded(
-      {required this.promotions,
-      required this.newArrivals,
-      required this.popular});
+  const HomeLoaded({required this.promotions, required this.newArrivals, required this.page, required this.popular});
   @override
-  List<Object> get props => [promotions, newArrivals, popular];
+  List<Object> get props => [promotions, newArrivals, page, popular];
 }
 
 class HomeError extends HomeState {

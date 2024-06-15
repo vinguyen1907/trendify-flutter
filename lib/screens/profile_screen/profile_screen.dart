@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../constants/constants.dart';
-import '../../models/models.dart';
+import 'package:ecommerce_app/constants/constants.dart';
+import 'package:ecommerce_app/models/models.dart';
+
 import 'widgets/widgets.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -19,8 +20,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
-          padding: const EdgeInsets.symmetric(
-              horizontal: AppDimensions.defaultPadding, vertical: 20),
+          padding: const EdgeInsets.symmetric(horizontal: AppDimensions.defaultPadding, vertical: 20),
           child: Column(children: [
             const ProfileInformationCard(),
             const SizedBox(height: 20),

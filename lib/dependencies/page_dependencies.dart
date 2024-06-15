@@ -36,8 +36,7 @@ class PageDependencies {
         instanceName: SetPasscodeScreen.routeName);
     injector.registerFactory<Widget>(() => const CategoryScreen(),
         instanceName: CategoryScreen.routeName);
-    injector.registerFactory<Widget>(() => const CategoryProductScreen(),
-        instanceName: CategoryProductScreen.routeName);
+    injector.registerFactory<Widget>(() => const CategoryProductsScreen(), instanceName: CategoryProductsScreen.routeName);
     injector.registerFactory<Widget>(() => const DetailProductScreen(),
         instanceName: DetailProductScreen.routeName);
     injector.registerFactory<Widget>(() => const FilterScreen(),

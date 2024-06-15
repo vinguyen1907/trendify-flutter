@@ -40,7 +40,8 @@ class OrderProcessingBloc
       final order = event.order.copyWith(id: orderId);
       emit(OrderProcessingSuccessfully(order: order));
     } catch (e) {
-      emit(OrderProcessingFailed(message: e.toString()));
+      print("OrderProcessingBloc - addOrder error: $e");
+      emit(const OrderProcessingFailed(message: "Place order failed. Please try again."));
     }
   }
 

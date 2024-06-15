@@ -154,7 +154,7 @@ class _EWalletCardsScreenState extends State<EWalletCardsScreen> {
 
     PasscodeUtils().getPasscode().then((passcode) {
       if (passcode != null) {
-        Utils().showEnterPasscodeBottomSheet(
+        Utils.showEnterPasscodeBottomSheet(
           context: context,
           passcode: passcode,
           onTruePasscode: _onTruePasscode,
@@ -165,7 +165,7 @@ class _EWalletCardsScreenState extends State<EWalletCardsScreen> {
 
   void _onTruePasscode() {
     Navigator.pop(context);
-    Utils().showPayingDialog(context: context);
+    Utils.showPayingDialog(context: context);
 
     List<Future> tasks = [
       Future.delayed(const Duration(seconds: 2)),

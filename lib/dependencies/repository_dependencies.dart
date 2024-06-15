@@ -13,5 +13,6 @@ class RepositoryDependencies {
     injector.registerFactory<IAddressRepository>(() => AddressRepository());
     injector.registerFactory<IPaymentRepository>(() => PaymentRepository());
     injector.registerFactory<IOrderRepository>(() => OrderRepository());
+    injector.registerFactory<ICategoryRepository>(() => CategoryRepository());
   }
 }

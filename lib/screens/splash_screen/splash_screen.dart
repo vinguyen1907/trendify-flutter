@@ -22,55 +22,50 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  bool firstTime =
-      true; // It is used for marking this is the first time load user for whole app.
+  bool firstTime = true; // It is used for marking this is the first time load user for whole app.
   int currentIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: BlocListener<AuthBloc, AuthState>(
+      body: BlocListener<AuthBloc, AuthState>(
         listener: (context, state) {
-              if (state is Unauthenticated) {
-                firstTime = true;
-                Utils().isAlreadyUsedOnboarding().then((value) {
-                  if (value) {
-                    Navigator.pushNamed(
-                      context,
-                      SignInScreen.routeName,
-                      // (route) =>
-                      //     route.settings.name == SplashScreen.routeName
-                    );
-                  } else {
-                    Navigator.pushNamedAndRemoveUntil(context,
-                        OnboardingScreen.routeName, (route) => route.isFirst);
-                  }
-                });
-              } else if (state is Authenticated) {
-                context.read<UserBloc>().add(LoadUser());
-              } else if (state is AuthenticationFailure) {
-                Utils.showSnackBar(context: context, message: state.message);
+          if (state is Unauthenticated) {
+            firstTime = true;
+            Utils().isAlreadyUsedOnboarding().then((value) {
+              if (value) {
+                Navigator.pushNamed(
+                  context,
+                  SignInScreen.routeName,
+                  // (route) =>
+                  //     route.settings.name == SplashScreen.routeName
+                );
+              } else {
+                Navigator.pushNamedAndRemoveUntil(context, OnboardingScreen.routeName, (route) => route.isFirst);
               }
-            },
-            child: BlocListener<UserBloc, UserState>(
+            });
+          } else if (state is Authenticated) {
+            context.read<UserBloc>().add(LoadUser());
+          } else if (state is AuthenticationFailure) {
+            Utils.showSnackBar(context: context, message: state.message);
+          }
+        },
+        child: BlocListener<UserBloc, UserState>(
           listener: (context, state) {
-                  if (state is UserLoaded && firstTime) {
+            if (state.status == UserStatus.loaded && firstTime) {
               firstTime = false;
               context.read<HomeBloc>().add(const LoadHome());
               context.read<CartBloc>().add(LoadCart());
-              context.read<PlaceOrderBloc>().add(UpdateAddress(state.user.defaultShippingAddress));
+              context.read<PlaceOrderBloc>().add(UpdateAddress(state.user!.defaultShippingAddress));
 
               // Only the first time load user, we need to navigate to MainScreen
               Navigator.pushReplacementNamed(context, MainScreen.routeName);
               // Navigator.pushNamedAndRemoveUntil(context,
               //     MainScreen.routeName, (route) => route.isFirst);
-                  } else if (state is UserError) {
-                    Utils.showSnackBar(
-                        context: context,
-                        message: "Some error occurred. Please sign in again! --- ${state.message}");
-                    Navigator.pushNamedAndRemoveUntil(context,
-                        SignInScreen.routeName, (route) => route.isFirst);
-                  }
-                },
+            } else if (state.status == UserStatus.error) {
+              Utils.showSnackBar(context: context, message: "Some error occurred. Please sign in again! --- ${state.message}");
+              Navigator.pushNamedAndRemoveUntil(context, SignInScreen.routeName, (route) => route.isFirst);
+            }
+          },
           child: Column(
             children: [
               const SizedBox(height: 20),

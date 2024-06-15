@@ -8,18 +8,18 @@ import '../../models/models.dart';
 import '../home_screen/widgets/widgets.dart';
 import 'category_product_search.dart';
 
-class CategoryProductScreen extends StatefulWidget {
-  const CategoryProductScreen({super.key});
+class CategoryProductsScreen extends StatefulWidget {
+  const CategoryProductsScreen({super.key});
 
-  static const String routeName = '/category-product-screen';
+  static const String routeName = '/category-products-screen';
 
   @override
-  State<CategoryProductScreen> createState() => _CategoryProductScreenState();
+  State<CategoryProductsScreen> createState() => _CategoryProductsScreenState();
 }
 
-class _CategoryProductScreenState extends State<CategoryProductScreen> {
+class _CategoryProductsScreenState extends State<CategoryProductsScreen> {
   late final Category category;
- 
+
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
@@ -27,9 +27,7 @@ class _CategoryProductScreenState extends State<CategoryProductScreen> {
       final args = ModalRoute.of(context)!.settings.arguments;
       if (args is Category) {
         category = args;
-        context
-        .read<CategoryProductBloc>()
-        .add(LoadProductsInCategory(category: category));
+        context.read<CategoryProductBloc>().add(LoadProductsInCategory(category: category));
       }
     }
   }
@@ -38,10 +36,7 @@ class _CategoryProductScreenState extends State<CategoryProductScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: MyAppBar(actions: [
-          GestureDetector(
-              onTap: () => showSearch(
-                  context: context, delegate: CategoryProductSearch()),
-              child: const MyIcon(icon: AppAssets.icSearch))
+          GestureDetector(onTap: () => showSearch(context: context, delegate: CategoryProductSearch()), child: const MyIcon(icon: AppAssets.icSearch))
         ]),
         body: BlocBuilder<CategoryProductBloc, CategoryProductState>(
           builder: (context, state) {

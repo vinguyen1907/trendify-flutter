@@ -19,7 +19,7 @@ class ProductRepository implements IProductRepository {
   }
 
   @override
-  Future<List<Product>> fetchRecommendedProducts() async {
+  Future<List<Product>> fetchRecommendedProducts(int page) async {
     throw UnimplementedError();
   }
 
@@ -100,6 +100,12 @@ class ProductRepository implements IProductRepository {
   @override
   Future<List<Product>> fetchSimilarProducts(String productId) {
     // TODO: implement fetchSimilarProducts
+    throw UnimplementedError();
+  }
+  
+  @override
+  Future<List<Product>> searchProducts(String keyword) {
+    // TODO: implement searchProducts
     throw UnimplementedError();
   }
 }

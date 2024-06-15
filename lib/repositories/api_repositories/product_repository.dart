@@ -79,14 +79,15 @@ class ProductRepository implements IProductRepository {
   }
 
   @override
-  Future<List<Product>> fetchRecommendedProducts() async {
+  Future<List<Product>> fetchRecommendedProducts(int page) async {
     try {
       final String? token = await secureStorage.read(key: SharedPreferencesKeys.accessToken);
       if (token == null) {
         throw Exception("Token is null");
       }
       dio.options.headers["Authorization"] = "Bearer $token";
-      final response = await dio.get(ApiConstants.userGetRecommendedProductsUrl);
+      final url = "${ApiConstants.userGetRecommendedProductsUrl}?page=$page&size=20";
+      final response = await dio.get(url);
       final List<Product> products = response.data.map<Product>((e) => Product.fromMap(e)).toList();
       return products;
     } catch (e) {
@@ -110,6 +111,27 @@ class ProductRepository implements IProductRepository {
       throw ApiException(errorCode: e.response?.statusCode?.toString(), message: e.response?.data["message"]);
     } catch (e) {
       debugPrint("Fetch similar products error: $e");
+      throw Exception(e);
+    }
+  }
+
+  @override
+  Future<List<Product>> searchProducts(String keyword) async {
+    try {
+      final String? token = await secureStorage.read(key: "accessToken");
+      dio.options.headers["Authorization"] = "Bearer $token";
+      final String url = "${ApiConstants.searchForProducts}?keyword=$keyword&page=0&size=20";
+      final response = await dio.get(url);
+      print("Response: $response");
+      List data = response.data;
+      final List<Product> products = data.map<Product>((e) => Product.fromMap(e)).toList();
+      print("Products: $products");
+      return products;
+    } on DioException catch (e) {
+      print("Search product failed: $e");
+      throw ApiException(errorCode: e.response?.statusCode?.toString(), message: e.response?.data["message"]);
+    } catch (e) {
+      print("Search product error: $e");
       throw Exception(e);
     }
   }

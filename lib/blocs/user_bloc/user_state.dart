@@ -1,39 +1,35 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 part of 'user_bloc.dart';
 
-abstract class UserState extends Equatable {
-  const UserState();
+enum UserStatus { initial, loading, loaded, updated, updateError, error }
+
+class UserState extends Equatable {
+  final UserStatus status;
+  final UserProfile? user;
+  final String? message;
+
+  const UserState({
+    required this.status,
+    this.user,
+    this.message,
+  });
 
   @override
-  List<Object> get props => [];
-}
+  List<Object?> get props => [
+        status,
+        user,
+        message,
+      ];
 
-class UserInitial extends UserState {}
-
-class UserLoading extends UserState {}
-
-class UserLoaded extends UserState {
-  final UserProfile user;
-  const UserLoaded({required this.user});
-
-  @override
-  List<Object> get props => [user];
-
-  UserLoaded copyWith({
+  UserState copyWith({
+    UserStatus? status,
     UserProfile? user,
+    String? message,
   }) {
-    return UserLoaded(
+    return UserState(
+      status: status ?? this.status,
       user: user ?? this.user,
+      message: message ?? this.message,
     );
   }
 }
-
-class UserError extends UserState {
-  final String message;
-  const UserError({required this.message});
-
-  @override
-  List<Object> get props => [message];
-}
-
-class UserUpdated extends UserState {}

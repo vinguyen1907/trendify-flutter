@@ -36,7 +36,7 @@ class PaymentInformation {
       cardNumber: map['cardNumber'] as String?,
       expiryDate: map['expiryDate'] as String?,
       cvvCode: map['cvvCode'] as String?,
-      type: map['cardType'] ?? "cash_on_delivery",
+      type: map['type'] ?? "cash_on_delivery",
     );
   }
 

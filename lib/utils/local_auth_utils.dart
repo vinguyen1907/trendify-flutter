@@ -1,7 +1,7 @@
 import 'package:local_auth/local_auth.dart';
 
 class LocalAuthUtil {
-  Future<bool> authenticateWithBiometrics() async {
+  static Future<bool> authenticateWithBiometrics() async {
     final LocalAuthentication localAuthentication = LocalAuthentication();
     bool isBiometricSupported = await localAuthentication.isDeviceSupported();
     print("Is device supported: $isBiometricSupported");
@@ -23,7 +23,7 @@ class LocalAuthUtil {
     return isAuthenticated;
   }
 
-  Future<bool> isBiometricsAvailable() async {
+  static Future<bool> isBiometricsAvailable() async {
     final LocalAuthentication localAuthentication = LocalAuthentication();
     bool isBiometricSupported = await localAuthentication.isDeviceSupported();
     bool canCheckBiometrics = await localAuthentication.canCheckBiometrics;

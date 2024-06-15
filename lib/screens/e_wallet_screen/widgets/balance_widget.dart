@@ -14,18 +14,13 @@ class BalanceWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      margin:
-          const EdgeInsets.symmetric(horizontal: AppDimensions.defaultPadding),
+      margin: const EdgeInsets.symmetric(horizontal: AppDimensions.defaultPadding),
       padding: const EdgeInsets.all(20),
-      decoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.primaryContainer,
-          borderRadius: BorderRadius.circular(20)),
+      decoration: BoxDecoration(color: Theme.of(context).colorScheme.primaryContainer, borderRadius: BorderRadius.circular(20)),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("Your balance",
-              style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                  color: Theme.of(context).colorScheme.onPrimaryContainer)),
+          Text("Your balance", style: Theme.of(context).textTheme.titleSmall!.copyWith(color: Theme.of(context).colorScheme.onPrimaryContainer)),
           const SizedBox(height: 10),
           Wrap(
             children: [
@@ -33,7 +28,7 @@ class BalanceWidget extends StatelessWidget {
                 builder: (context, state) {
                   return Expanded(
                     child: Text(
-                      "\$${(state is UserLoaded) ? state.user.eWalletBalance : 0}",
+                      "\$${(state.status == UserStatus.loaded) ? state.user!.eWalletBalance : 0}",
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
                         fontSize: 38,
@@ -46,10 +41,8 @@ class BalanceWidget extends StatelessWidget {
               ),
               const Spacer(),
               MyButton(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 5, horizontal: 12),
-                  backgroundColor:
-                      Theme.of(context).colorScheme.secondaryContainer,
+                  padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 12),
+                  backgroundColor: Theme.of(context).colorScheme.secondaryContainer,
                   onPressed: () => _navigateToTopUpScreen(context),
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
@@ -57,19 +50,11 @@ class BalanceWidget extends StatelessWidget {
                       MyIcon(
                         icon: AppAssets.icTopUp,
                         height: 16,
-                        colorFilter: ColorFilter.mode(
-                            Theme.of(context).colorScheme.onSecondaryContainer,
-                            BlendMode.srcIn),
+                        colorFilter: ColorFilter.mode(Theme.of(context).colorScheme.onSecondaryContainer, BlendMode.srcIn),
                       ),
                       const SizedBox(width: 5),
                       Text("Top Up",
-                          style: Theme.of(context)
-                              .textTheme
-                              .titleSmall!
-                              .copyWith(
-                                  color: Theme.of(context)
-                                      .colorScheme
-                                      .onSecondaryContainer))
+                          style: Theme.of(context).textTheme.titleSmall!.copyWith(color: Theme.of(context).colorScheme.onSecondaryContainer))
                     ],
                   ))
             ],

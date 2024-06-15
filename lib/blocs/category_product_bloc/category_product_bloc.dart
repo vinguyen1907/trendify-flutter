@@ -1,14 +1,17 @@
 import 'package:ecommerce_app/models/category.dart';
 import 'package:ecommerce_app/models/product.dart';
-import 'package:ecommerce_app/repositories/product_repository.dart';
+import 'package:ecommerce_app/repositories/interfaces/interfaces.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_it/get_it.dart';
 
 part 'category_product_event.dart';
 part 'category_product_state.dart';
 
 class CategoryProductBloc
     extends Bloc<CategoryProductEvent, CategoryProductState> {
+  final ICategoryRepository categoryRepository = GetIt.I.get<ICategoryRepository>();
+  
   CategoryProductBloc() : super(CategoryProductInitial()) {
     on<LoadProductsInCategory>(_onLoadProductsInCategory);
     on<SearchProducts>(_onSearchProducts);
@@ -19,7 +22,7 @@ class CategoryProductBloc
       emit(CategoryProductLoading());
       final Category category = event.category;
       final List<Product> products =
-          await ProductRepository().fetchProductInCategory(category);
+          await categoryRepository.fetchProductsInCategory(category, page: 0, size: 10);
       originalList = List.from(products);
       emit(CategoryProductLoaded(products: products));
     } catch (e) {

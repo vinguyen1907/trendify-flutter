@@ -1,12 +1,10 @@
 import 'package:ecommerce_app/blocs/payment_methods_bloc/payment_methods_bloc.dart';
 import 'package:ecommerce_app/blocs/place_order_bloc/place_order_bloc.dart';
-import 'package:ecommerce_app/blocs/user_bloc/user_bloc.dart';
 import 'package:ecommerce_app/common_widgets/custom_loading_widget.dart';
 import 'package:ecommerce_app/common_widgets/my_app_bar.dart';
 import 'package:ecommerce_app/common_widgets/screen_name_section.dart';
 import 'package:ecommerce_app/constants/app_dimensions.dart';
 import 'package:ecommerce_app/extensions/payment_method_extension.dart';
-import 'package:ecommerce_app/extensions/screen_extensions.dart';
 import 'package:ecommerce_app/models/payment_information.dart';
 import 'package:ecommerce_app/models/payment_method_resource.dart';
 import 'package:ecommerce_app/repositories/payment_methods_repository.dart';

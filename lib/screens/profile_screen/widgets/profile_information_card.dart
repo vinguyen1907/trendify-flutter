@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ecommerce_app/blocs/user_bloc/user_bloc.dart';
 import 'package:ecommerce_app/common_widgets/my_icon.dart';
 import 'package:ecommerce_app/constants/app_assets.dart';
@@ -15,7 +16,7 @@ class ProfileInformationCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<UserBloc, UserState>(
       builder: (context, state) {
-        if (state is UserLoaded) {
+        if (state.user != null) {
           return PrimaryBackground(
               padding: const EdgeInsets.all(10),
               child: Row(
@@ -26,39 +27,37 @@ class ProfileInformationCard extends StatelessWidget {
                     decoration: BoxDecoration(
                       color: AppColors.greyColor,
                       borderRadius: BorderRadius.circular(10),
-                      image: state.user.imageUrl != null && state.user.imageUrl!.isEmpty
-                          ? null
-                          : DecorationImage(
-                              image: NetworkImage(state.user.imageUrl!),
+                      image: state.user!.imageUrl != null && state.user!.imageUrl!.isEmpty
+                          ? DecorationImage(
+                              image: NetworkImage(state.user!.imageUrl!),
                               fit: BoxFit.cover,
-                            ),
+                            )
+                          : null,
                     ),
                     alignment: Alignment.center,
-                    child: state.user.imageUrl != null && state.user.imageUrl!.isEmpty
-                        ? const MyIcon(
+                    child: state.user!.imageUrl != null && state.user!.imageUrl!.isEmpty
+                        ? CachedNetworkImage(
+                            imageUrl: state.user!.imageUrl!,
+                            fit: BoxFit.cover,
+                            height: 30,
+                            width: 30,
+                          )
+                        : const MyIcon(
                             icon: AppAssets.icUser,
                             height: 30,
-                          )
-                        : const SizedBox(),
+                          ),
                   ),
                   const SizedBox(width: 10),
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        if (state.user.name != null) ...[
+                        if (state.user!.name != null) ...[
                           Text(
-                            state.user.name!,
-                          style: Theme.of(context)
-                              .textTheme
-                              .titleMedium!
-                              .copyWith(
-                                  fontWeight: FontWeight.bold,
-                                  color: AppColors.primaryColor),
-                        ),
-                          Text(state.user.email!,
-                            overflow: TextOverflow.ellipsis,
-                            style: Theme.of(context).textTheme.bodyLarge)
+                            state.user!.name!,
+                            style: Theme.of(context).textTheme.titleMedium!.copyWith(fontWeight: FontWeight.bold, color: AppColors.primaryColor),
+                          ),
+                          Text(state.user!.email!, overflow: TextOverflow.ellipsis, style: Theme.of(context).textTheme.bodyLarge)
                         ],
                       ],
                     ),

@@ -1,25 +1,20 @@
-import 'package:ecommerce_app/blocs/addresses_bloc/addresses_bloc.dart';
-import 'package:ecommerce_app/common_widgets/fill_information_text_field.dart';
-import 'package:ecommerce_app/common_widgets/loading_manager.dart';
-import 'package:ecommerce_app/common_widgets/my_app_bar.dart';
-import 'package:ecommerce_app/common_widgets/my_icon.dart';
-import 'package:ecommerce_app/common_widgets/screen_name_section.dart';
-import 'package:ecommerce_app/config/app_config.dart';
-import 'package:ecommerce_app/constants/app_assets.dart';
-import 'package:ecommerce_app/constants/app_dimensions.dart';
-import 'package:ecommerce_app/models/shipping_address.dart';
-import 'package:ecommerce_app/repositories/address_repository.dart';
-import 'package:ecommerce_app/repositories/interfaces/interfaces.dart';
-import 'package:ecommerce_app/screens/add_address_screen/add_address_confirm_button.dart';
-import 'package:ecommerce_app/utils/location_util.dart';
-import 'package:ecommerce_app/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:get_it/get_it.dart';
 import 'package:latlong2/latlong.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+import 'package:ecommerce_app/blocs/blocs.dart';
+import 'package:ecommerce_app/common_widgets/common_widgets.dart';
+import 'package:ecommerce_app/config/app_config.dart';
+import 'package:ecommerce_app/constants/constants.dart';
+import 'package:ecommerce_app/models/models.dart';
+import 'package:ecommerce_app/repositories/interfaces/interfaces.dart';
+import 'package:ecommerce_app/screens/add_address_screen/add_address_confirm_button.dart';
+import 'package:ecommerce_app/utils/location_util.dart';
+import 'package:ecommerce_app/utils/utils.dart';
 
 class AddAddressScreen extends StatefulWidget {
   final ShippingAddress? address;

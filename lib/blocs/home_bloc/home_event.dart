@@ -8,6 +8,11 @@ class LoadHome extends HomeEvent {
   const LoadHome();
 
   @override
-  // TODO: implement props
+  List<Object?> get props => [];
+}
+
+class LoadMoreRecommendedProducts extends HomeEvent {
+  const LoadMoreRecommendedProducts();
+  @override
   List<Object?> get props => [];
 }

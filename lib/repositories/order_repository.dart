@@ -101,12 +101,12 @@ class OrderRepository {
 
       // Update orders statistics
       futures.add(StatisticsRepository()
-          .updateStatistics(orderValue: order.orderSummary.total));
+          .updateStatistics(orderValue: order.orderSummary!.total));
       print(4);
 
       // Update monthly sales
       futures.add(StatisticsRepository().updateMonthlySales(
-          time: createdTime, orderValue: order.orderSummary.total));
+          time: createdTime, orderValue: order.orderSummary!.total));
       print(5);
 
       // Update number of promotions if user used promotion in order

@@ -2,7 +2,7 @@ export './add_address_screen/add_address_screen.dart';
 export './add_payment_card_screen/add_payment_card_screen.dart';
 export './all_transactions_history_screen/all_transactions_history_screen.dart';
 export './cart_screen/cart_screen.dart';
-export './category_product_screen/category_product_screen.dart';
+export 'category_product_screen/category_products_screen.dart';
 export './category_screen/category_screen.dart';
 export './chat_screen/chat_screen.dart';
 export './choose_address_screen/choose_address_screen.dart';

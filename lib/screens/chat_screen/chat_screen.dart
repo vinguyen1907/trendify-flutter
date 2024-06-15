@@ -26,13 +26,10 @@ class ChatScreen extends StatefulWidget {
 class _ChatScreenState extends State<ChatScreen> {
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     final userBloc = context.read<UserBloc>();
-    final user = userBloc.state as UserLoaded;
-    context
-        .read<ChatBloc>()
-        .add(LoadChatRoom(imgUrl: user.user.imageUrl, name: user.user.name));
+    final user = userBloc.state;
+    context.read<ChatBloc>().add(LoadChatRoom(imgUrl: user.user!.imageUrl, name: user.user!.name));
   }
 
   @override
@@ -87,27 +84,21 @@ class _ChatScreenState extends State<ChatScreen> {
             return const CustomLoadingWidget();
           } else if (state is ChatLoaded) {
             return Padding(
-              padding: const EdgeInsets.symmetric(
-                  horizontal: AppDimensions.defaultPadding),
+              padding: const EdgeInsets.symmetric(horizontal: AppDimensions.defaultPadding),
               child: Column(
                 children: [
                   Expanded(
                     child: StreamBuilder<QuerySnapshot>(
                         stream: ChatService().getMessages(),
                         builder: (context, snapshot) {
-                          if (snapshot.connectionState ==
-                              ConnectionState.waiting) {
+                          if (snapshot.connectionState == ConnectionState.waiting) {
                             return const CustomLoadingWidget();
                           } else if (snapshot.hasError) {
                             return Center(
                               child: Text(snapshot.error.toString()),
                             );
-                          } else if (snapshot.hasData &&
-                              snapshot.data!.size > 0) {
-                            List<Message> messages = snapshot.data!.docs
-                                .map((e) => Message.fromMap(
-                                    e.data() as Map<String, dynamic>))
-                                .toList();
+                          } else if (snapshot.hasData && snapshot.data!.size > 0) {
+                            List<Message> messages = snapshot.data!.docs.map((e) => Message.fromMap(e.data() as Map<String, dynamic>)).toList();
                             return ListView.builder(
                               reverse: true,
                               itemCount: messages.length,
