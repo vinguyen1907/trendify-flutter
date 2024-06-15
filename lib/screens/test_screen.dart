@@ -17,8 +17,8 @@ class TestScreen extends StatelessWidget {
           children: [
             BlocBuilder<UserBloc, UserState>(
               builder: (context, state) {
-                if (state is UserLoaded) {
-                  return Text(state.user.toJson());
+                if (state.status == UserStatus.loaded) {
+                  return Text(state.user!.toJson());
                 }
                 return const Text("Error");
               },

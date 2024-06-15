@@ -9,11 +9,7 @@ class ReviewRepository {
   Future<List<Review>> fetchReviews(String productId) async {
     try {
       List<Review> reviews = [];
-      await productsRef
-          .doc(productId)
-          .collection('reviews')
-          .get()
-          .then((value) {
+      await productsRef.doc(productId).collection('reviews').get().then((value) {
         reviews.addAll(value.docs.map((e) => Review.fromMap(e.data())));
       });
       return reviews;
@@ -31,30 +27,24 @@ class ReviewRepository {
       required String content}) async {
     try {
       final userState = context.read<UserBloc>().state;
-      if (userState is UserLoaded) {
+      if (userState.status == UserStatus.loaded && userState.user != null) {
         final doc = productsRef.doc(productId).collection('reviews').doc();
         final review = Review(
             id: doc.id,
             userId: firebaseAuth.currentUser!.uid,
-            nameUser: userState.user.name,
-            avaUrl: userState.user.imageUrl,
+            nameUser: userState.user!.name,
+            avaUrl: userState.user!.imageUrl,
             rate: rating,
             content: content,
             createdAt: DateTime.now());
         await doc.set(review.toMap());
 
         // update review in order doc
-        await ordersRef
-            .doc(orderId)
-            .collection("items")
-            .doc(orderItemId)
-            .update({'review': review.toMap()});
+        await ordersRef.doc(orderId).collection("items").doc(orderItemId).update({'review': review.toMap()});
 
         // update average rating and review count in product doc
         final product = await ProductRepository().fetchProductById(productId);
-        final newAverageRating =
-            (product.averageRating * product.reviewCount + rating) /
-                (product.reviewCount + 1);
+        final newAverageRating = (product.averageRating * product.reviewCount + rating) / (product.reviewCount + 1);
         await productsRef.doc(productId).update({
           'averageRating': newAverageRating,
           'reviewCount': product.reviewCount + 1,

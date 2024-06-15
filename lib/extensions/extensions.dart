@@ -10,3 +10,4 @@ export 'promotion_type_extensions.dart';
 export 'screen_extensions.dart';
 export 'string_extensions.dart';
 export 'timestamp_extensions.dart';
+export 'gender_extension.dart';

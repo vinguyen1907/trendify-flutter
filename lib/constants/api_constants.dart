@@ -13,12 +13,26 @@ class ApiConstants {
   // User apis
   static const String recordUserClickUrl = "$baseUrl/history/click";
   static const String userGetRecommendedProductsUrl = "$usersUrl/user/recommend";
+  static const String updateUserAvatarUrl = "$usersUrl/user/avatar";
+  static const String updateUserUrl = "$usersUrl/user";
 
   // Product apis
   static const String fetchProductSpecs = "$productsUrl/{productId}/specs";
   static const String fetchSimilarProducts = "$productsUrl/{productCode}/related";
+  static const String searchForProducts = "$productsUrl/search";
 
   // Payment apis
   static const String paymentBaseUrl = "$baseUrl/payment";
   static const String paymentInfosUrl = "$paymentBaseUrl/infos";
+
+  // Order apis
+  static const String fetchOrderDetailsUrl = "$orderUrl/{orderId}/items";
+  static const String fetchMyOrders = "$orderUrl/user";
+  static const String fetchCompletedOrders = "$orderUrl/user/completed";
+  static const String fetchOngoingOrders = "$orderUrl/user/ongoing";
+
+  // Category apis
+  static const String fetchCategoriesUrl = "$baseUrl/categories";
+  static const String fetchProductsInCategoryUrl = "$baseUrl/categories/{categoryId}/products";
+  static const String searchCategoriesUrl = "$baseUrl/categories/search";
 }

@@ -45,8 +45,8 @@ class OrderProductDetail {
 
   factory OrderProductDetail.fromMap(Map<String, dynamic> map) {
     return OrderProductDetail(
-      id: map['id'] as String,
-      productId: map['productId'] as String,
+      id: map['id'].toString(),
+      productId: map['productId'].toString(),
       productName: map['productName'] as String,
       productPrice: map['productPrice'] as double,
       productImgUrl: map['productImgUrl'] as String,

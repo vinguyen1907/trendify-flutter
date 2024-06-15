@@ -1,20 +1,14 @@
-import 'package:ecommerce_app/common_widgets/custom_loading_widget.dart';
-import 'package:ecommerce_app/common_widgets/my_app_bar.dart';
-import 'package:ecommerce_app/common_widgets/my_icon.dart';
-import 'package:ecommerce_app/common_widgets/screen_name_section.dart';
-import 'package:ecommerce_app/constants/app_assets.dart';
-import 'package:ecommerce_app/constants/app_dimensions.dart';
-import 'package:ecommerce_app/models/order.dart';
-import 'package:ecommerce_app/models/order_product_detail.dart';
-import 'package:ecommerce_app/repositories/order_repository.dart';
-import 'package:ecommerce_app/router/arguments/arguments.dart';
-import 'package:ecommerce_app/screens/my_order_screen/widgets/my_order_tab_selection_button.dart';
-import 'package:ecommerce_app/screens/my_order_screen/widgets/my_order_tab_selections.dart';
-import 'package:ecommerce_app/screens/my_order_screen/widgets/order_item_widget.dart';
-import 'package:ecommerce_app/screens/order_tracking_screen/order_tracking_screen.dart';
-import 'package:ecommerce_app/screens/qr_scanner_screen/qr_scanner_screen.dart';
+import 'package:ecommerce_app/screens/my_order_screen/widgets/widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+import 'package:ecommerce_app/blocs/blocs.dart';
+import 'package:ecommerce_app/common_widgets/common_widgets.dart';
+import 'package:ecommerce_app/constants/constants.dart';
+import 'package:ecommerce_app/models/models.dart';
+import 'package:ecommerce_app/router/arguments/arguments.dart';
+import 'package:ecommerce_app/screens/screens.dart';
 
 class MyOrderScreen extends StatefulWidget {
   const MyOrderScreen({super.key});
@@ -26,113 +20,90 @@ class MyOrderScreen extends StatefulWidget {
 }
 
 class _MyOrderScreenState extends State<MyOrderScreen> {
-  MyOrderTabSelections _selection = MyOrderTabSelections.ongoing;
+  @override
+  void initState() {
+    super.initState();
+    context.read<MyOrdersBloc>().add(FetchMyOrders());
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: MyAppBar(
-          actions: [
-            IconButton(
-                onPressed: _navigateToQrScannerScreen,
-                icon: MyIcon(
-                  icon: AppAssets.icScanQr,
-                  colorFilter: ColorFilter.mode(
-                      Theme.of(context).colorScheme.primary, BlendMode.srcIn),
-                ))
-          ],
-        ),
-        body: Column(
-          children: [
-            Wrap(
-              alignment: WrapAlignment.spaceBetween,
-              children: [
-                ScreenNameSection(
-                    label: AppLocalizations.of(context)!.myOrders),
-                const Spacer(),
-                const SizedBox(width: 10),
-                MyOrderTabSelectionButton(
-                    label: AppLocalizations.of(context)!.ongoing,
-                    isSelected: _selection == MyOrderTabSelections.ongoing,
-                    onPressed: () {
-                      setState(() {
-                        _selection = MyOrderTabSelections.ongoing;
-                      });
-                    }),
-                const SizedBox(width: 10),
-                MyOrderTabSelectionButton(
-                    label: AppLocalizations.of(context)!.completed,
-                    isSelected: _selection == MyOrderTabSelections.completed,
-                    onPressed: () {
-                      setState(() {
-                        _selection = MyOrderTabSelections.completed;
-                      });
-                    }),
-                const SizedBox(width: AppDimensions.defaultPadding),
-              ],
+      appBar: MyAppBar(
+        actions: [
+          IconButton(
+            onPressed: _navigateToQrScannerScreen,
+            icon: MyIcon(
+              icon: AppAssets.icScanQr,
+              colorFilter: ColorFilter.mode(Theme.of(context).colorScheme.primary, BlendMode.srcIn),
             ),
-            Expanded(
-              child: FutureBuilder<List<OrderModel>>(
-                  future: OrderRepository().fetchMyOrders(
-                    isCompleted: _selection == MyOrderTabSelections.completed,
-                  ),
-                  builder: (context, snapshot) {
-                    if (snapshot.hasError) {
-                      return const Center(
-                        child: Text("Something went wrong"),
-                      );
-                    } else if (snapshot.connectionState ==
-                        ConnectionState.waiting) {
-                      return const CustomLoadingWidget();
-                    } else {
-                      final List<OrderModel> orders = snapshot.data!;
-                      return ListView.builder(
-                          shrinkWrap: true,
-                          itemCount: orders.length,
-                          itemBuilder: (_, index) {
-                            final order = orders[index];
-                            return StreamBuilder(
-                                stream: OrderRepository()
-                                    .streamOrderItem(orderId: order.id),
-                                builder: (_, snapshot) {
-                                  if (snapshot.hasError) {
-                                    return Center(
-                                      child: Text(snapshot.error.toString()),
-                                    );
-                                  } else if (snapshot.hasData) {
-                                    final List<OrderProductDetail> orderItems =
-                                        snapshot.data!;
-                                    return ListView.builder(
-                                        shrinkWrap: true,
-                                        physics:
-                                            const NeverScrollableScrollPhysics(),
-                                        itemCount: orderItems.length,
-                                        itemBuilder: (_, index) {
-                                          return OrderItemWidget(
-                                              order: order,
-                                              orderItem: orderItems[index],
-                                              isComplete: _selection ==
-                                                  MyOrderTabSelections
-                                                      .completed,
-                                              onTap: () =>
-                                                  _navigateToOrderTrackingScreen(
-                                                      context,
-                                                      order,
-                                                      orderItems[index]));
-                                        });
-                                  }
-                                  return const SizedBox();
-                                });
-                          });
-                    }
-                  }),
-            )
-          ],
-        ));
+          )
+        ],
+      ),
+      body: Column(
+        children: [
+          Expanded(
+            child: BlocBuilder<MyOrdersBloc, MyOrdersState>(
+              builder: (context, state) {
+                final stateEnum = state.stateEnum;
+                return Column(
+                  children: [
+                    Wrap(
+                      alignment: WrapAlignment.spaceBetween,
+                      children: [
+                        ScreenNameSection(label: AppLocalizations.of(context)!.myOrders),
+                        const SizedBox(width: 10),
+                        MyOrderTabSelectionButton(
+                            label: AppLocalizations.of(context)!.ongoing,
+                            isSelected: state.selection == MyOrderTabSelections.ongoing,
+                            onPressed: () {
+                              context.read<MyOrdersBloc>().add(const ChangeMyOrderTabSelection(MyOrderTabSelections.ongoing));
+                            }),
+                        const SizedBox(width: 10),
+                        MyOrderTabSelectionButton(
+                            label: AppLocalizations.of(context)!.completed,
+                            isSelected: state.selection == MyOrderTabSelections.completed,
+                            onPressed: () {
+                              context.read<MyOrdersBloc>().add(const ChangeMyOrderTabSelection(MyOrderTabSelections.completed));
+                            }),
+                        const SizedBox(width: AppDimensions.defaultPadding),
+                      ],
+                    ),
+                    if (stateEnum == MyOrderStateEnum.loading) const CustomLoadingWidget(),
+                    if (stateEnum == MyOrderStateEnum.error) const Center(child: Text("Something went wrong.")),
+                    if (stateEnum == MyOrderStateEnum.loaded)
+                      Expanded(
+                        child: ListView.builder(
+                            shrinkWrap: true,
+                            itemCount: state.selection == MyOrderTabSelections.ongoing ? state.ongoingOrders!.length : state.completedOrders!.length,
+                            itemBuilder: (_, index) {
+                              final orders = state.selection == MyOrderTabSelections.ongoing ? state.ongoingOrders : state.completedOrders;
+                              final order = orders![index];
+                              final List<OrderProductDetail> orderItems = order.items ?? [];
+                              return ListView.builder(
+                                  shrinkWrap: true,
+                                  physics: const NeverScrollableScrollPhysics(),
+                                  itemCount: orderItems.length,
+                                  itemBuilder: (_, index) {
+                                    return OrderItemWidget(
+                                        order: order,
+                                        orderItem: orderItems[0],
+                                        isComplete: state.selection == MyOrderTabSelections.completed,
+                                        onTap: () => _navigateToOrderTrackingScreen(context, order, orderItems[index]));
+                                  });
+                            }),
+                      ),
+                  ],
+                );
+              },
+            ),
+          )
+        ],
+      ),
+    );
   }
 
-  void _navigateToOrderTrackingScreen(
-      BuildContext context, OrderModel order, OrderProductDetail orderItem) {
+  void _navigateToOrderTrackingScreen(BuildContext context, OrderModel order, OrderProductDetail orderItem) {
     Navigator.pushNamed(context, OrderTrackingScreen.routeName,
         // TODO: Replace orderItems
         arguments: OrderTrackingScreenArgs(order: order, orderItems: []));

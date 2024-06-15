@@ -49,7 +49,7 @@ class Product extends Equatable {
 
   factory Product.fromMap(Map<String, dynamic> json) {
     return Product(
-      id: json['id'],
+      id: json['id'].toString(),
       code: json['code'],
       categoryId: json['categoryId'] ?? "",
       name: json['name'] ?? "",

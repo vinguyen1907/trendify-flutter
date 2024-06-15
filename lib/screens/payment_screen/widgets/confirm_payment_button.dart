@@ -44,7 +44,7 @@ class ConfirmPaymentButton extends StatelessWidget {
     if (selectedMethod != null) {
       PasscodeUtils().getPasscode().then((passcode) {
         if (passcode != null) {
-          Utils().showEnterPasscodeBottomSheet(
+          Utils.showEnterPasscodeBottomSheet(
             context: context,
             passcode: passcode,
             onTruePasscode: () => _onTruePasscode(
@@ -76,7 +76,7 @@ class ConfirmPaymentButton extends StatelessWidget {
         await ZaloPayService()
             .createZaloPayPayment(context: context, price: price);
       } else {
-        Utils().showPayingDialog(context: context);
+        Utils.showPayingDialog(context: context);
 
         Future.delayed(const Duration(seconds: 2))
             .then((value) => Navigator.pushNamedAndRemoveUntil(

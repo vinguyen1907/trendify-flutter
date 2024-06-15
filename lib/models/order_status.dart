@@ -24,6 +24,19 @@ final Map<OrderStatus, String> orderStatusToString = {
   OrderStatus.failedDelivery: "failed_delivery",
 };
 
+final Map<OrderStatus, String> orderStatusToLabel = {
+  OrderStatus.pending: "Pending",
+  OrderStatus.processing: "Processing",
+  OrderStatus.shipped: "Shipped",
+  OrderStatus.delivered: "Delivered",
+  OrderStatus.cancelled: "Cancelled",
+  OrderStatus.returned: "Returned",
+  OrderStatus.refunded: "Refunded",
+  OrderStatus.onHold: "On Hold",
+  OrderStatus.outForDelivery: "Out for Delivery",
+  OrderStatus.failedDelivery: "Failed Delivery",
+};
+
 final Map<String, OrderStatus> stringToOrderStatus = {
   "pending": OrderStatus.pending,
   "processing": OrderStatus.processing,

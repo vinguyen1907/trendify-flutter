@@ -35,6 +35,9 @@ class _HomeScreenState extends State<HomeScreen> {
         _isScrolled = false;
       });
     }
+    if (_scrollController.offset >= _scrollController.position.maxScrollExtent && !_scrollController.position.outOfRange) {
+      context.read<HomeBloc>().add(const LoadMoreRecommendedProducts());
+    }
   }
 
   @override
@@ -65,7 +68,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: const Column(
                     children: [
                       HeaderHome(),
-                      // PromotionsHome(),
+                      PromotionsHome(),
                       RecommendedProducts(),
                       // PopularHome()
                     ],

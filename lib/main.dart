@@ -75,6 +75,8 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (_) => SimilarProductsBloc()),
         BlocProvider(create: (_) => CartBloc()),
         BlocProvider(create: (_) => OrderProcessingBloc()),
+        BlocProvider(create: (_) => OrderTrackingBloc()),
+        BlocProvider(create: (_) => MyOrdersBloc()),
         BlocProvider(create: (_) => AddressesBloc()),
         BlocProvider(create: (_) => ReviewScreenBloc()),
         BlocProvider(create: (_) => ChatBloc()),

@@ -1,22 +1,17 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:ecommerce_app/blocs/cart_bloc/cart_bloc.dart';
-import 'package:ecommerce_app/common_widgets/color_dot_widget.dart';
-import 'package:ecommerce_app/common_widgets/my_button.dart';
-import 'package:ecommerce_app/constants/app_colors.dart';
-import 'package:ecommerce_app/constants/app_dimensions.dart';
-import 'package:ecommerce_app/constants/app_styles.dart';
-import 'package:ecommerce_app/extensions/screen_extensions.dart';
-import 'package:ecommerce_app/extensions/string_extensions.dart';
-import 'package:ecommerce_app/models/order.dart';
-import 'package:ecommerce_app/models/order_product_detail.dart';
-import 'package:ecommerce_app/repositories/cart_repository.dart';
-import 'package:ecommerce_app/repositories/review_repository.dart';
-import 'package:ecommerce_app/common_widgets/primary_background.dart';
-import 'package:ecommerce_app/screens/my_order_screen/widgets/write_review_bottom_sheet.dart';
-import 'package:ecommerce_app/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+import 'package:ecommerce_app/blocs/blocs.dart';
+import 'package:ecommerce_app/common_widgets/common_widgets.dart';
+import 'package:ecommerce_app/constants/constants.dart';
+import 'package:ecommerce_app/extensions/extensions.dart';
+import 'package:ecommerce_app/models/models.dart';
+import 'package:ecommerce_app/repositories/cart_repository.dart';
+import 'package:ecommerce_app/repositories/review_repository.dart';
+import 'package:ecommerce_app/screens/my_order_screen/widgets/widgets.dart';
+import 'package:ecommerce_app/utils/utils.dart';
 
 class OrderItemWidget extends StatelessWidget {
   final OrderModel order;
@@ -29,8 +24,7 @@ class OrderItemWidget extends StatelessWidget {
     super.key,
     required this.order,
     required this.orderItem,
-    this.margin = const EdgeInsets.symmetric(
-        horizontal: AppDimensions.defaultPadding, vertical: 10),
+    this.margin = const EdgeInsets.symmetric(horizontal: AppDimensions.defaultPadding, vertical: 10),
     this.onTap,
     this.isComplete = false,
   });
@@ -51,7 +45,7 @@ class OrderItemWidget extends StatelessWidget {
                 imageUrl: orderItem.productImgUrl ?? "",
                 height: size.width * 0.21,
                 width: size.width * 0.21,
-                fit: BoxFit.cover,
+                fit: BoxFit.contain,
               ),
             ),
             const SizedBox(width: 10),
@@ -60,12 +54,12 @@ class OrderItemWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   if (orderItem.productName != null)
-                  Text(
+                    Text(
                       orderItem.productName!,
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                    style: AppStyles.labelLarge,
-                  ),
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      style: AppStyles.labelMedium,
+                    ),
                   if (orderItem.productBrand != null && orderItem.productBrand!.isNotEmpty)
                     Text(
                       orderItem.productBrand!,
@@ -94,15 +88,18 @@ class OrderItemWidget extends StatelessWidget {
             // const Spacer(),
             Column(
               children: [
-                if (orderItem.productPrice != null)
                 Text(
-                    orderItem.productPrice!.toPriceString(),
-                  style: AppStyles.headlineLarge,
+                  order.currentOrderStatus.toOrderStatusLabel(),
+                  style: Theme.of(context).textTheme.labelMedium,
                 ),
+                if (orderItem.productPrice != null)
+                  Text(
+                    orderItem.productPrice!.toPriceString(),
+                    style: AppStyles.headlineLarge,
+                  ),
                 if (isComplete && orderItem.review == null)
                   MyButton(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 12, vertical: 5),
+                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 5),
                       onPressed: () => _onWriteReview(context),
                       child: Text(AppLocalizations.of(context)!.review,
                           style: AppStyles.bodyMedium.copyWith(
@@ -110,8 +107,7 @@ class OrderItemWidget extends StatelessWidget {
                           ))),
                 if (isComplete && orderItem.review != null)
                   MyButton(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 12, vertical: 5),
+                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 5),
                       onPressed: () => _onAddToCart(context),
                       child: Text(AppLocalizations.of(context)!.buyAgain,
                           style: AppStyles.bodyMedium.copyWith(

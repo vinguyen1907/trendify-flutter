@@ -1,29 +1,38 @@
+import 'dart:convert';
+
 import 'package:equatable/equatable.dart';
 
 class Category extends Equatable {
   final String id;
   final String name;
   final String imgUrl;
+  final int productsCount;
 
   const Category({
     required this.id,
     required this.name,
     required this.imgUrl,
+    required this.productsCount,
   });
 
-  factory Category.fromJson(Map<String, dynamic> json) {
+  factory Category.fromMap(Map<String, dynamic> map) {
     return Category(
-      id: json['id'],
-      name: json['name'],
-      imgUrl: json['imgUrl'],
+      id: map['id'].toString(),
+      name: map['name'],
+      imgUrl: map['imageUrl'],
+      productsCount: map['productsCount'] ?? 0,
     );
   }
 
+  factory Category.fromJson(String json) {
+    return Category.fromMap(jsonDecode(json));
+  }
+
   @override
-  // TODO: implement props
   List<Object?> get props => [
         id,
         name,
         imgUrl,
+        productsCount
       ];
 }

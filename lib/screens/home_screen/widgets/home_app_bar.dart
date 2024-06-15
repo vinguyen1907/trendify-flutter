@@ -15,8 +15,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
     return SafeArea(
       child: Container(
         height: height,
-        padding: const EdgeInsets.symmetric(
-            horizontal: AppDimensions.defaultPadding),
+        padding: const EdgeInsets.symmetric(horizontal: AppDimensions.defaultPadding),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -35,16 +34,15 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
             !isScrolled
                 ? BlocBuilder<UserBloc, UserState>(
                     builder: (context, state) {
-                      if (state is UserLoading) {
+                      if (state.status == UserStatus.loading) {
                         return const CircleAvatar(
                           backgroundColor: AppColors.greyColor,
                           radius: 22,
                         );
-                      } else if (state is UserLoaded) {
-                        return (state.user.imageUrl != null && state.user.imageUrl!.isNotEmpty)
+                      } else if (state.status == UserStatus.loaded && state.user != null) {
+                        return (state.user!.imageUrl != null && state.user!.imageUrl!.isNotEmpty)
                             ? CircleAvatar(
-                                backgroundImage:
-                                    NetworkImage(state.user.imageUrl!),
+                                backgroundImage: NetworkImage(state.user!.imageUrl!),
                                 radius: 22,
                               )
                             : const CircleAvatar(
@@ -62,8 +60,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
                   )
                 : IconButton(
                     onPressed: () {
-                      showSearch(
-                          context: context, delegate: CustomSearchDelegate());
+                      showSearch(context: context, delegate: CustomSearchDelegate());
                     },
                     icon: const Icon(
                       Icons.search,

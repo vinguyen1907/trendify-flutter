@@ -19,3 +19,5 @@ export 'show_notification/show_notification_bloc.dart';
 export 'theme_bloc/theme_bloc.dart';
 export 'user_bloc/user_bloc.dart';
 export 'similar_products_bloc/similar_products_bloc.dart';
+export 'order_tracking_bloc/order_tracking_bloc.dart';
+export 'my_orders_bloc/my_orders_bloc.dart';

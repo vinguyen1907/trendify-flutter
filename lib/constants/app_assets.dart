@@ -56,8 +56,7 @@ class AppAssets {
   static const String icLocation = "$iconPath/ic_location.svg";
 
   // Images
-  static const String imgSplashBackground =
-      "$imagePath/img_splash_background.png";
+  static const String imgSplashBackground = "$imagePath/img_splash_background.png";
   static const String imgOnboarding1 = "$imagePath/img_onboarding_1.jpg";
   static const String imgOnboarding2 = "$imagePath/img_onboarding_2.jpg";
   static const String imgOnboarding3 = "$imagePath/img_onboarding_3.jpg";
@@ -76,13 +75,14 @@ class AppAssets {
   static const String imgBangladeshFlag = "$imagePath/img_bangladesh_flag.png";
   static const String imgGermanFlag = "$imagePath/img_german_flag.png";
   static const String imgPortugalFlag = "$imagePath/img_portugal_flag.png";
+  static const String imgMale = "$imagePath/img_male.png";
+  static const String imgFemale = "$imagePath/img_female.png";
 
   // Lottie
   static const String lottieSuccess = "$lottiePath/lottie_success.json";
   static const String lottieFail = "$lottiePath/lottie_fail.json";
   static const String lottieWaiting = "$lottiePath/lottie_waiting.json";
-  static const String lottieTransactionProcess =
-      "$lottiePath/lottie_transaction_process.json";
+  static const String lottieTransactionProcess = "$lottiePath/lottie_transaction_process.json";
   static const String lottieAudio = "$lottiePath/lottie_audio.json";
   static const String lottieAudio1 = "$lottiePath/lottie_audio1.json";
   static const String lottiePlaneLoading = "$lottiePath/lottie_plane_loading.json";

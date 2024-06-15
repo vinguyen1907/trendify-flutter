@@ -1,9 +1,12 @@
-import 'package:ecommerce_app/models/product.dart';
-import 'package:ecommerce_app/repositories/product_repository.dart';
+import 'package:ecommerce_app/constants/constants.dart';
 import 'package:ecommerce_app/screens/search_screen/search_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class CustomSearchDelegate extends SearchDelegate {
+  final sharedPreferences = GetIt.I.get<SharedPreferences>();
+
   @override
   List<Widget>? buildActions(BuildContext context) {
     return [
@@ -37,6 +40,13 @@ class CustomSearchDelegate extends SearchDelegate {
       SearchScreen.routeName,
       arguments: query,
     );
+    List<String>? currentHistories = sharedPreferences.getStringList(SharedPreferencesKeys.searchHistories);
+    currentHistories ??= [];
+    if (currentHistories.contains(query)) {
+      currentHistories.remove(query);
+    }
+    currentHistories.insert(0, query);
+    sharedPreferences.setStringList(SharedPreferencesKeys.searchHistories, currentHistories);
     super.showResults(context);
   }
 
@@ -68,11 +78,10 @@ class CustomSearchDelegate extends SearchDelegate {
   }
 
   Future<List<String>> _suggestion() async {
-    final List<Product> products = await ProductRepository().fetchAllProducts();
-    final List<String> temp = products.map((e) => e.name).toList();
-    final List<String> listSuggestion = temp
-        .where((element) => element.toLowerCase().contains(query.toLowerCase()))
-        .toList();
+    final List<String> listSuggestion = sharedPreferences.getStringList(SharedPreferencesKeys.searchHistories) ?? [];
+    // final List<Product> products = await ProductRepository().fetchAllProducts();
+    // final List<String> temp = products.map((e) => e.name).toList();
+    // final List<String> listSuggestion = temp.where((element) => element.toLowerCase().contains(query.toLowerCase())).toList();
     return listSuggestion;
   }
 }

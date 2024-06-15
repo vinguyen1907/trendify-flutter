@@ -10,9 +10,8 @@
   "newArrivals": "New Arrivals",
   "viewAll": "View All",
   "profile": "Profile",
-  "review": "review",
+  "review": "Review",
   "addToCart": "Add to cart",
-
   "personalDetails": "Personal Details",
   "myOrders": "My Orders",
   "myFavorites": "My Favorites",
@@ -23,13 +22,11 @@
   "faqs": "FAQs",
   "privacyPolicy": "Privacy Policy",
   "support": "Support",
-  
   "name": "Name",
   "gender": "Gender",
   "age": "Age",
   "email": "Email",
   "save": "Save",
-
   "ongoing": "Ongoing",
   "completed": "Completed",
   "size": "Size",
@@ -37,13 +34,11 @@
   "quantity": "Quantity",
   "history": "History",
   "buyAgain": "Buy Again",
-
   "language": "Language",
   "notification": "Notification",
   "darkMode": "Dark Mode",
   "helpCenter": "Help Center",
   "logOut": "Log out",
-
   "edit": "Edit",
   "street": "Street",
   "city": "City",
@@ -53,7 +48,6 @@
   "countryCallingCode": "Country Calling Code",
   "country": "Country",
   "addNewAddress": "Add New Address",
-
   "myEWallet": "My E-Wallet",
   "yourBalance": "Your Balance",
   "topUp": "Top Up",
@@ -62,6 +56,5 @@
   "enterTopUpAmount": "Enter the amount of top up",
   "continueButton": "Continue",
   "addNewCard": "Add New Card",
-
   "selectLanguage": "Select Language"
 }

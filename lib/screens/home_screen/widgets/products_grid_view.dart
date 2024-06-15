@@ -5,14 +5,17 @@ import 'package:flutter/material.dart';
 import 'widgets.dart';
 
 class ProductsGridView extends StatelessWidget {
-  const ProductsGridView({super.key, required this.products, required this.productCount});
+  const ProductsGridView({super.key, required this.products, required this.productCount, this.scrollController});
   final List<Product> products;
   final int productCount;
+  final ScrollController? scrollController;
+
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: AppDimensions.defaultPadding),
       child: GridView.builder(
+        controller: scrollController,
         gridDelegate:
             const SliverGridDelegateWithFixedCrossAxisCount(childAspectRatio: 1 / 1.6, crossAxisSpacing: 10, mainAxisSpacing: 10, crossAxisCount: 2),
         itemCount: productCount,

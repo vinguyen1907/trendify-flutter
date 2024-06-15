@@ -2,16 +2,19 @@ import 'package:ecommerce_app/constants/enums/sort_type.dart';
 import 'package:ecommerce_app/models/category.dart';
 import 'package:ecommerce_app/models/filter_item.dart';
 import 'package:ecommerce_app/models/product.dart';
-import 'package:ecommerce_app/repositories/category_repository.dart';
-import 'package:ecommerce_app/repositories/product_repository.dart';
+import 'package:ecommerce_app/repositories/interfaces/interfaces.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_it/get_it.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
 
 part 'search_filter_event.dart';
 part 'search_filter_state.dart';
 
 class SearchFilterBloc extends Bloc<SearchFilterEvent, SearchFilterState> {
+  final IProductRepository _productRepository = GetIt.I.get<IProductRepository>();
+  final ICategoryRepository _categoryRepository = GetIt.I.get<ICategoryRepository>();
+
   SearchFilterBloc() : super(SearchFilterInitial()) {
     on<LoadResultProducts>(_onLoadResultProducts);
     on<ChooseCategory>(_onChooseCategory);
@@ -25,17 +28,16 @@ class SearchFilterBloc extends Bloc<SearchFilterEvent, SearchFilterState> {
       LoadResultProducts event, Emitter<SearchFilterState> emit) async {
     try {
       emit(SearchFilterLoading());
-      final List<Product> products =
-          await ProductRepository().fetchAllProducts();
-      final List<Product> resultProducts = products
-          .where((element) =>
-              element.name.toLowerCase().contains(event.query.toLowerCase()))
-          .toList();
+      final List<Product> resultProducts = await _productRepository.searchProducts(event.query);
+      // final List<Product> resultProducts = products
+      //     .where((element) =>
+      //         element.name.toLowerCase().contains(event.query.toLowerCase()))
+      //     .toList();
       originalList.addAll(resultProducts);
       FilterItem filterItem;
       if (resultProducts.isNotEmpty) {
         final List<Category> categories =
-            await CategoryRepository().fetchCategories()
+            await _categoryRepository.fetchCategories()
               ..removeWhere((element) => element.name == "New Arrivals");
         final priceValues = SfRangeValues(
             0,
