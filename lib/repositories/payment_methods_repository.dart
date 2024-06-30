@@ -7,7 +7,7 @@ enum PaymentMethods {
   // paypal,
   visa,
   // googlePay,
-  // zaloPay,
+  zaloPay,
   cashOnDelivery,
 }
 
@@ -42,12 +42,12 @@ final Map<PaymentMethods, PaymentMethodResource> paymentMethodsResource = {
   //   imageAsset: AppAssets.imgGooglePay,
   //   code: "google_pay",
   // ),
-  // PaymentMethods.zaloPay: PaymentMethodResource(
-  //   id: "5",
-  //   name: "ZaloPay",
-  //   imageAsset: AppAssets.imgZaloPay,
-  //   code: "zalo_pay",
-  // ),
+  PaymentMethods.zaloPay: PaymentMethodResource(
+    id: "5",
+    name: "ZaloPay",
+    imageAsset: AppAssets.imgZaloPay,
+    code: "zalo_pay",
+  ),
   PaymentMethods.cashOnDelivery: PaymentMethodResource(
     id: "6",
     name: "Cash on delivery",

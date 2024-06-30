@@ -28,9 +28,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
   void initState() {
     super.initState();
     context.read<PaymentMethodsBloc>().add(LoadPaymentMethods());
-    context
-        .read<PlaceOrderBloc>()
-        .add(const UpdatePaymentInformation(paymentMethod: null)); //
+    context.read<PlaceOrderBloc>().add(const UpdatePaymentInformation(paymentMethod: null)); //
   }
 
   @override
@@ -48,18 +46,18 @@ class _PaymentScreenState extends State<PaymentScreen> {
               } else if (state is PaymentMethodsError) {
                 return const Text("Something went wrong");
               } else if (state is PaymentMethodsLoaded) {
-                final List<PaymentInformation> paymentCards = state.paymentCards;
+                final List<PaymentInformation> ownPaymentInfo = state.paymentCards;
                 return Expanded(
                   child: ListView.builder(
                     padding: const EdgeInsets.symmetric(horizontal: AppDimensions.defaultPadding),
                     itemCount: PaymentMethods.values.length,
                     itemBuilder: (_, index) {
                       final paymentMethod = PaymentMethods.values[index];
-                  
+
                       PaymentInformation? thisPaymentInformation;
-                      final tempLst = paymentCards.where((element) => element.type == paymentMethod.code);
+                      final tempLst = ownPaymentInfo.where((element) => element.type == paymentMethod.code);
                       thisPaymentInformation = tempLst.isNotEmpty ? tempLst.first : null;
-                  
+
                       switch (paymentMethod) {
                         // case PaymentMethods.eWallet:
                         //   return BlocBuilder<UserBloc, UserState>(
@@ -89,32 +87,32 @@ class _PaymentScreenState extends State<PaymentScreen> {
                         case PaymentMethods.mastercard:
                         // case PaymentMethods.paypal:
                         case PaymentMethods.visa:
-                        // case PaymentMethods.googlePay:
-                        //   return BlocBuilder<PlaceOrderBloc, PlaceOrderState>(
-                        //     builder: (context, state) {
-                        //       return PaymentItemCard(
-                        //         isSelected: state.paymentMethod?.code == paymentMethod.code,
-                        //         paymentMethod: paymentMethodsResource[paymentMethod]!,
-                        //         paymentCard: thisPaymentInformation,
-                        //         onTap: thisPaymentInformation == null
-                        //             ? null
-                        //             : () => _onSelectPayment(
-                        //                 paymentMethod: paymentMethodsResource[paymentMethod]!, paymentInformation: thisPaymentInformation),
-                        //       );
-                        //     },
-                        //   );
-                        // case PaymentMethods.zaloPay:
-                        //   return BlocBuilder<PlaceOrderBloc, PlaceOrderState>(
-                        //     builder: (context, state) {
-                        //       return PaymentItemCard(
-                        //         isSelected: state.paymentMethod?.code == paymentMethod.code,
-                        //         paymentMethod: paymentMethodsResource[paymentMethod]!,
-                        //         paymentCard: PaymentInformation(id: "zalo_pay", type: "zalo_pay"),
-                        //         onTap: () => _onSelectPayment(
-                        //             paymentMethod: paymentMethodsResource[paymentMethod]!, paymentInformation: thisPaymentInformation),
-                        //       );
-                        //     },
-                        //   );
+                          // case PaymentMethods.googlePay:
+                          return BlocBuilder<PlaceOrderBloc, PlaceOrderState>(
+                            builder: (context, state) {
+                              return PaymentItemCard(
+                                isSelected: state.paymentMethod?.code == paymentMethod.code,
+                                paymentMethod: paymentMethodsResource[paymentMethod]!,
+                                paymentCard: thisPaymentInformation,
+                                onTap: thisPaymentInformation == null
+                                    ? null
+                                    : () => _onSelectPayment(
+                                        paymentMethod: paymentMethodsResource[paymentMethod]!, paymentInformation: thisPaymentInformation),
+                              );
+                            },
+                          );
+                        case PaymentMethods.zaloPay:
+                          return BlocBuilder<PlaceOrderBloc, PlaceOrderState>(
+                            builder: (context, state) {
+                              return PaymentItemCard(
+                                isSelected: state.paymentMethod?.code == paymentMethod.code,
+                                paymentMethod: paymentMethodsResource[paymentMethod]!,
+                                paymentCard: PaymentInformation(id: "zalo_pay", type: "zalo_pay"),
+                                onTap: () => _onSelectPayment(
+                                    paymentMethod: paymentMethodsResource[paymentMethod]!, paymentInformation: thisPaymentInformation),
+                              );
+                            },
+                          );
                         case PaymentMethods.cashOnDelivery:
                           return BlocBuilder<PlaceOrderBloc, PlaceOrderState>(
                             builder: (context, state) {
@@ -145,22 +143,16 @@ class _PaymentScreenState extends State<PaymentScreen> {
     );
   }
 
-  void _onSelectPayment(
-      {required PaymentMethodResource paymentMethod,
-      PaymentInformation? paymentInformation}) {
+  void _onSelectPayment({required PaymentMethodResource paymentMethod, PaymentInformation? paymentInformation}) {
     if (paymentInformation != null) {
-      _onUpdatePaymentInformation(
-          paymentMethod: paymentMethod, paymentInformation: paymentInformation);
+      _onUpdatePaymentInformation(paymentMethod: paymentMethod, paymentInformation: paymentInformation);
     } else {
       _onUpdatePaymentInformation(paymentMethod: paymentMethod);
     }
   }
 
-  void _onUpdatePaymentInformation(
-      {required PaymentMethodResource paymentMethod,
-      PaymentInformation? paymentInformation}) {
-    context.read<PlaceOrderBloc>().add(UpdatePaymentInformation(
-        paymentInformation: paymentInformation, paymentMethod: paymentMethod));
+  void _onUpdatePaymentInformation({required PaymentMethodResource paymentMethod, PaymentInformation? paymentInformation}) {
+    context.read<PlaceOrderBloc>().add(UpdatePaymentInformation(paymentInformation: paymentInformation, paymentMethod: paymentMethod));
   }
 
   void _navigateToTopUpScreen() {

@@ -28,16 +28,18 @@ class PrimaryBackground extends StatelessWidget {
       height: height,
       margin: margin,
       padding: padding,
-      decoration: BoxDecoration(
-          color: backgroundColor,
-          borderRadius: BorderRadius.circular(borderRadius),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.1),
-              blurRadius: 24,
-              offset: const Offset(0, 11),
-            )
-          ]),
+      decoration: BoxDecoration(color: backgroundColor, borderRadius: BorderRadius.circular(borderRadius), boxShadow: const [
+        BoxShadow(
+          color: Color.fromARGB(31, 141, 140, 140),
+          blurRadius: 8.0,
+          offset: Offset(0, 4),
+        ),
+        // BoxShadow(
+        //   color: Colors.black.withOpacity(0.1),
+        //   blurRadius: 24,
+        //   offset: const Offset(0, 11),
+        // )
+      ]),
       child: child,
     );
   }

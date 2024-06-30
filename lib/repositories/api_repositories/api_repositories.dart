@@ -6,3 +6,4 @@ export 'address_repository.dart';
 export 'payment_repository.dart';
 export 'order_repository.dart';
 export 'category_repository.dart';
+export 'review_repository.dart';

@@ -1,11 +1,13 @@
 import 'package:ecommerce_app/blocs/user_bloc/user_bloc.dart';
 import 'package:ecommerce_app/models/review.dart';
+import 'package:ecommerce_app/repositories/interfaces/interfaces.dart';
 import 'package:ecommerce_app/repositories/product_repository.dart';
 import 'package:ecommerce_app/constants/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class ReviewRepository {
+class ReviewRepository implements IReviewRepository {
+  @override
   Future<List<Review>> fetchReviews(String productId) async {
     try {
       List<Review> reviews = [];
@@ -18,6 +20,7 @@ class ReviewRepository {
     }
   }
 
+  @override
   Future<void> addReview(
       {required BuildContext context,
       required String orderId,
@@ -53,5 +56,11 @@ class ReviewRepository {
     } catch (e) {
       throw Exception(e);
     }
+  }
+
+  @override
+  Future<Review?> fetchReviewByOrderItemId(String orderItemId) {
+    // TODO: implement fetchReviewByOrderItemId
+    throw UnimplementedError();
   }
 }

@@ -46,6 +46,9 @@ class _MyOrderScreenState extends State<MyOrderScreen> {
             child: BlocBuilder<MyOrdersBloc, MyOrdersState>(
               builder: (context, state) {
                 final stateEnum = state.stateEnum;
+                final itemCount = state.selection == MyOrderTabSelections.ongoing ? state.ongoingOrders?.length : state.completedOrders?.length;
+                final orders = state.selection == MyOrderTabSelections.ongoing ? state.ongoingOrders : state.completedOrders;
+                print("Completed orders: ${state.completedOrders}");
                 return Column(
                   children: [
                     Wrap(
@@ -71,13 +74,12 @@ class _MyOrderScreenState extends State<MyOrderScreen> {
                     ),
                     if (stateEnum == MyOrderStateEnum.loading) const CustomLoadingWidget(),
                     if (stateEnum == MyOrderStateEnum.error) const Center(child: Text("Something went wrong.")),
-                    if (stateEnum == MyOrderStateEnum.loaded)
+                    if (stateEnum == MyOrderStateEnum.loaded) ...[
                       Expanded(
                         child: ListView.builder(
                             shrinkWrap: true,
-                            itemCount: state.selection == MyOrderTabSelections.ongoing ? state.ongoingOrders!.length : state.completedOrders!.length,
+                            itemCount: itemCount,
                             itemBuilder: (_, index) {
-                              final orders = state.selection == MyOrderTabSelections.ongoing ? state.ongoingOrders : state.completedOrders;
                               final order = orders![index];
                               final List<OrderProductDetail> orderItems = order.items ?? [];
                               return ListView.builder(
@@ -92,7 +94,8 @@ class _MyOrderScreenState extends State<MyOrderScreen> {
                                         onTap: () => _navigateToOrderTrackingScreen(context, order, orderItems[index]));
                                   });
                             }),
-                      ),
+                      )
+                    ],
                   ],
                 );
               },

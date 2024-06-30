@@ -29,7 +29,7 @@ Future<void> main() async {
   await AppDependencies.init();
 
   HttpOverrides.global = MyHttpOverrides();
- 
+
   runApp(MyApp(
     navigatorKey: navigatorKey,
   ));
@@ -67,10 +67,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (_) => SearchFilterBloc()),
         BlocProvider(create: (_) => CategoryBloc()),
         BlocProvider(create: (_) => CategoryProductBloc()),
-        BlocProvider(
-            create: (context) => ProductBloc(
-                showNotificationBloc:
-                    BlocProvider.of<ShowNotificationBloc>(context))),
+        BlocProvider(create: (context) => ProductBloc(showNotificationBloc: BlocProvider.of<ShowNotificationBloc>(context))),
         BlocProvider(create: (_) => ProductScreenBloc()),
         BlocProvider(create: (_) => SimilarProductsBloc()),
         BlocProvider(create: (_) => CartBloc()),

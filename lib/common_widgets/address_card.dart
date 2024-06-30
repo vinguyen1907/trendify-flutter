@@ -21,21 +21,19 @@ class AddressCard extends StatelessWidget {
     return PrimaryBackground(
         width: width,
         height: height,
-        margin: const EdgeInsets.symmetric(
-            horizontal: AppDimensions.defaultPadding),
+        margin: const EdgeInsets.symmetric(horizontal: AppDimensions.defaultPadding),
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
         borderRadius: 20,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            AddressLine(label: "Recipient name", content: address.recipientName),
             AddressLine(label: "Street", content: address.street),
             AddressLine(label: "City", content: address.city),
             AddressLine(label: "State/province/area", content: address.state),
             AddressLine(label: "Phone number", content: address.phoneNumber),
             AddressLine(label: "Zip code", content: address.zipCode),
-            AddressLine(
-                label: "Country calling code",
-                content: address.countryCallingCode),
+            AddressLine(label: "Country calling code", content: address.countryCallingCode),
             AddressLine(label: "Country", content: address.country),
           ],
         ));

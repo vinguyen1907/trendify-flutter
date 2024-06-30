@@ -197,7 +197,7 @@ class _PersonalDetailsScreenState extends State<PersonalDetailsScreen> {
           colorFilter: ColorFilter.mode(AppColors.whiteColor, BlendMode.srcIn),
         ),
         description: "You have successfully updated your profile.",
-        buttonText: "Back",
+        buttonText: "OK",
         onButtonPressed: () {
           Navigator.pop(context);
         });
@@ -206,6 +206,7 @@ class _PersonalDetailsScreenState extends State<PersonalDetailsScreen> {
   _initValues() {
     final userState = context.read<UserBloc>().state;
     if (userState.user != null) {
+      print("User: ${userState.user!.toJson()}");
       _nameController.text = userState.user!.name ?? "";
       _ageController.text = userState.user!.age?.toString() ?? "0";
       _emailController.text = userState.user!.email ?? "";

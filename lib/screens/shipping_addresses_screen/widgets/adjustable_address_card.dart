@@ -20,8 +20,7 @@ class AdjustableAddressCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding:
-          const EdgeInsets.symmetric(horizontal: AppDimensions.defaultPadding),
+      padding: const EdgeInsets.symmetric(horizontal: AppDimensions.defaultPadding),
       child: Slidable(
         endActionPane: ActionPane(
           motion: const ScrollMotion(),
@@ -49,34 +48,18 @@ class AdjustableAddressCard extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      AddressLine(
-                          label: AppLocalizations.of(context)!.street,
-                          content: address.street),
-                      AddressLine(
-                          label: AppLocalizations.of(context)!.city,
-                          content: address.city),
-                      AddressLine(
-                          label: AppLocalizations.of(context)!.state,
-                          content: address.state),
-                      AddressLine(
-                          label: AppLocalizations.of(context)!.phoneNumber,
-                          content: address.phoneNumber),
-                      AddressLine(
-                          label: AppLocalizations.of(context)!.zipCode,
-                          content: address.zipCode),
-                      AddressLine(
-                          label:
-                              AppLocalizations.of(context)!.countryCallingCode,
-                          content: address.countryCallingCode),
-                      AddressLine(
-                          label: AppLocalizations.of(context)!.country,
-                          content: address.country),
+                      AddressLine(label: AppLocalizations.of(context)!.recipientsName, content: address.recipientName),
+                      AddressLine(label: AppLocalizations.of(context)!.street, content: address.street),
+                      AddressLine(label: AppLocalizations.of(context)!.city, content: address.city),
+                      AddressLine(label: AppLocalizations.of(context)!.state, content: address.state),
+                      AddressLine(label: AppLocalizations.of(context)!.phoneNumber, content: address.phoneNumber),
+                      AddressLine(label: AppLocalizations.of(context)!.zipCode, content: address.zipCode),
+                      AddressLine(label: AppLocalizations.of(context)!.countryCallingCode, content: address.countryCallingCode),
+                      AddressLine(label: AppLocalizations.of(context)!.country, content: address.country),
                     ],
                   ),
                 ),
-                TextButton(
-                    onPressed: () => _navigateToEditAddressScreen(context),
-                    child: Text(AppLocalizations.of(context)!.edit)),
+                TextButton(onPressed: () => _navigateToEditAddressScreen(context), child: Text(AppLocalizations.of(context)!.edit)),
               ],
             )),
       ),
@@ -84,8 +67,7 @@ class AdjustableAddressCard extends StatelessWidget {
   }
 
   void _navigateToEditAddressScreen(BuildContext context) {
-    Navigator.pushNamed(context, AddAddressScreen.routeName,
-        arguments: address);
+    Navigator.pushNamed(context, AddAddressScreen.routeName, arguments: address);
   }
 
   void _onDeleteAddress(BuildContext context) {

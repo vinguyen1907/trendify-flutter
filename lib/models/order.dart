@@ -54,7 +54,7 @@ class OrderModel {
       'isPaid': isPaid,
       'currentOrderStatus': currentOrderStatus.toOrderStatusString(),
       'items': items?.map((e) => e.toMap()).toList(),
-      'createdAt': createdAt,
+      'createdAt': createdAt.toString(),
     };
   }
 

@@ -12,7 +12,6 @@
   "profile": "Hồ sơ cá nhân",
   "review": "đánh giá",
   "addToCart": "Thêm vào giỏ hàng",
-
   "personalDetails": "Thông tin cá nhân",
   "myOrders": "Đơn hàng",
   "myFavorites": "Sản phẩm yêu thích",
@@ -23,13 +22,11 @@
   "faqs": "Câu hỏi thường gặp",
   "privacyPolicy": "Chính sách bảo mật",
   "support": "Hỗ trợ",
-  
   "name": "Họ và tên",
   "gender": "Giới tính",
   "age": "Tuổi",
   "email": "Email",
   "save": "Lưu",
-
   "ongoing": "Đang giao",
   "completed": "Hoàn thành",
   "size": "Kích thước",
@@ -37,14 +34,13 @@
   "quantity": "Số lượng",
   "history": "Lịch sử",
   "buyAgain": "Mua lại",
-
   "language": "Ngôn ngữ",
   "notification": "Thông báo",
   "darkMode": "Chế độ tối",
   "helpCenter": "Trung tâm hỗ trợ",
   "logOut": "Đăng xuất",
-
   "edit": "Sửa",
+  "recipientsName": "Tên người nhận",
   "street": "Đường",
   "city": "Thành phố",
   "state": "Tỉnh",
@@ -53,7 +49,7 @@
   "countryCallingCode": "Mã điện thoại",
   "country": "Quốc gia",
   "addNewAddress": "Thêm địa chỉ mới",
-
+  "updateAddress": "Cập nhập địa chỉ",
   "myEWallet": "Ví điện tử",
   "yourBalance": "Số dư",
   "topUp": "Nạp tiền",
@@ -62,6 +58,5 @@
   "enterTopUpAmount": "Nhập số tiền muốn nạp",
   "continueButton": "Tiếp tục",
   "addNewCard": "Add New Card",
-
   "selectLanguage": "Chọn ngôn ngữ"
 }

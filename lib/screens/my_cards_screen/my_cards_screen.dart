@@ -44,32 +44,26 @@ class _MyCardsScreenState extends State<MyCardsScreen> {
                 } else if (state is PaymentMethodsError) {
                   return const Text("Something went wrong");
                 } else if (state is PaymentMethodsLoaded) {
-                  final List<PaymentInformation> paymentCards =
-                      state.paymentCards;
+                  final List<PaymentInformation> paymentCards = state.paymentCards;
                   return ListView.builder(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: AppDimensions.defaultPadding),
+                      padding: const EdgeInsets.symmetric(horizontal: AppDimensions.defaultPadding),
                       shrinkWrap: true,
-                      itemCount: PaymentMethods.values.length -
-                          1, // no need to show cash on delivery method
+                      itemCount: PaymentMethods.values.length - 1, // no need to show cash on delivery method
                       itemBuilder: (_, index) {
                         PaymentInformation? thisPaymentInformation;
                         final thisPaymentMethod = PaymentMethods.values[index];
-                        final tempLst = paymentCards.where((element) =>
-                            element.type == thisPaymentMethod.code);
-                        thisPaymentInformation =
-                            tempLst.isNotEmpty ? tempLst.first : null;
+                        final tempLst = paymentCards.where((element) => element.type == thisPaymentMethod.code);
+                        thisPaymentInformation = tempLst.isNotEmpty ? tempLst.first : null;
 
-                        // if (thisPaymentMethod == PaymentMethods.zaloPay) {
-                        //   return const SizedBox();
-                        // }
+                        if (thisPaymentMethod == PaymentMethods.zaloPay) {
+                          return const SizedBox();
+                        }
 
                         return BlocBuilder<PlaceOrderBloc, PlaceOrderState>(
                           builder: (context, state) {
                             return PaymentItemCard(
                                 isSelected: false,
-                                paymentMethod:
-                                    paymentMethodsResource[thisPaymentMethod]!,
+                                paymentMethod: paymentMethodsResource[thisPaymentMethod]!,
                                 paymentCard: thisPaymentInformation,
                                 onTap: () {});
                           },

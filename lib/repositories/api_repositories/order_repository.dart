@@ -74,11 +74,15 @@ class OrderRepository implements IOrderRepository {
   @override
   Future<List<OrderModel>> fetchMyOrders({required bool isCompleted}) async {
     try {
+      print("[OrderRepository] Start Fetching orders: isCompleted: $isCompleted");
+
       final String? token = await secureStorage.read(key: "accessToken");
       dio.options.headers["Authorization"] = "Bearer $token";
       final String url = isCompleted ? ApiConstants.fetchCompletedOrders : ApiConstants.fetchOngoingOrders;
 
       final response = await dio.get(url);
+      print("Response: $response");
+
       List<dynamic> data = response.data;
       final List<OrderModel> orders = data.map<OrderModel>((e) => OrderModel.fromMap(e)).toList();
       return orders;

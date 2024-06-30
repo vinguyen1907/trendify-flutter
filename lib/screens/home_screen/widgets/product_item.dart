@@ -43,8 +43,8 @@ class ProductItem extends StatelessWidget {
               alignment: Alignment.topRight,
               children: [
                 CachedNetworkImage(
-                  height: imageHeight,
-                  width: imageWidth,
+                  height: imageHeight!,
+                  width: imageWidth! - 50,
                   imageUrl: product.imageUrls.first,
                   fit: BoxFit.fitWidth,
                   imageBuilder: (context, imageProvider) => Container(
@@ -110,9 +110,9 @@ class ProductItem extends StatelessWidget {
               children: [
                 Text(
                   product.name,
-                  style: Theme.of(context).textTheme.labelLarge,
+                  style: Theme.of(context).textTheme.labelMedium,
                   textAlign: TextAlign.center,
-                  maxLines: 1,
+                  maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                 ),
                 Text(
