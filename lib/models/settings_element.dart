@@ -43,14 +43,14 @@ final List<SettingsElement> settingsElements = [
       Navigator.pushNamed(context, MyOrderScreen.routeName);
     },
   ),
-  SettingsElement(
-    title: "My Favorites",
-    getTitle: (context) => AppLocalizations.of(context)!.myFavorites,
-    assetPath: AppAssets.icHeartBold,
-    onTap: (context) {
-      Navigator.pushNamed(context, FavoriteScreen.routeName);
-    },
-  ),
+  // SettingsElement(
+  //   title: "My Favorites",
+  //   getTitle: (context) => AppLocalizations.of(context)!.myFavorites,
+  //   assetPath: AppAssets.icHeartBold,
+  //   onTap: (context) {
+  //     Navigator.pushNamed(context, FavoriteScreen.routeName);
+  //   },
+  // ),
   SettingsElement(
     title: "Shipping Address",
     getTitle: (context) => AppLocalizations.of(context)!.shippingAddress,
@@ -67,14 +67,14 @@ final List<SettingsElement> settingsElements = [
       Navigator.pushNamed(context, MyCardsScreen.routeName);
     },
   ),
-  SettingsElement(
-    title: "E-Wallet",
-    getTitle: (context) => AppLocalizations.of(context)!.eWallet,
-    assetPath: AppAssets.icWallet,
-    onTap: (context) {
-      Navigator.pushNamed(context, EWalletScreen.routeName);
-    },
-  ),
+  // SettingsElement(
+  //   title: "E-Wallet",
+  //   getTitle: (context) => AppLocalizations.of(context)!.eWallet,
+  //   assetPath: AppAssets.icWallet,
+  //   onTap: (context) {
+  //     Navigator.pushNamed(context, EWalletScreen.routeName);
+  //   },
+  // ),
   SettingsElement(
     title: "Settings",
     getTitle: (context) => AppLocalizations.of(context)!.settings,
@@ -98,16 +98,15 @@ final List<SettingsElement> contactSettingsElements = [
       getTitle: (context) => AppLocalizations.of(context)!.privacyPolicy,
       assetPath: AppAssets.icShieldTick,
       onTap: (context) {
-        Utils().launchUrl(
-            "https://www.termsfeed.com/live/fd3cdd13-7687-478e-8783-d06f5454ee5d");
+        Utils().launchUrl("https://www.termsfeed.com/live/fd3cdd13-7687-478e-8783-d06f5454ee5d");
       }),
-  SettingsElement(
-      title: "Support",
-      getTitle: (context) => AppLocalizations.of(context)!.support,
-      assetPath: AppAssets.icHeadphone,
-      onTap: (context) {
-        Navigator.pushNamed(context, ChatScreen.routeName);
-      }),
+  // SettingsElement(
+  //     title: "Support",
+  //     getTitle: (context) => AppLocalizations.of(context)!.support,
+  //     assetPath: AppAssets.icHeadphone,
+  //     onTap: (context) {
+  //       Navigator.pushNamed(context, ChatScreen.routeName);
+  //     }),
   // SettingsElement(
   //     title: "Logout", assetPath: AppAssets.icLogout, onTap: (context) {}),
 ];

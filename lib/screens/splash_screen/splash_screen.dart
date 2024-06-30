@@ -30,6 +30,7 @@ class _SplashScreenState extends State<SplashScreen> {
       body: BlocListener<AuthBloc, AuthState>(
         listener: (context, state) {
           if (state is Unauthenticated) {
+            print("Unauthenticated");
             firstTime = true;
             Utils().isAlreadyUsedOnboarding().then((value) {
               if (value) {

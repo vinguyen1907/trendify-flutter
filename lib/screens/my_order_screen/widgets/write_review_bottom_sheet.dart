@@ -45,19 +45,13 @@ class _WriteReviewBottomSheetState extends State<WriteReviewBottomSheet> {
       isLoading: isLoading,
       child: KeyboardVisibilityBuilder(
         builder: (context, isKeyboardVisible) {
-          final double bottomSheetBottomPadding =
-              isKeyboardVisible ? size.height * 0.3 : 0;
+          final double bottomSheetBottomPadding = isKeyboardVisible ? size.height * 0.3 : 0;
 
           return Container(
               // height: size.height * 0.7,
               decoration: const BoxDecoration(
-                  color: AppColors.whiteColor,
-                  borderRadius: BorderRadius.horizontal(
-                      left: Radius.circular(20), right: Radius.circular(20))),
-              padding: EdgeInsets.only(
-                  left: AppDimensions.defaultPadding,
-                  right: AppDimensions.defaultPadding,
-                  bottom: bottomSheetBottomPadding),
+                  color: AppColors.whiteColor, borderRadius: BorderRadius.horizontal(left: Radius.circular(20), right: Radius.circular(20))),
+              padding: EdgeInsets.only(left: AppDimensions.defaultPadding, right: AppDimensions.defaultPadding, bottom: bottomSheetBottomPadding),
               child: SingleChildScrollView(
                 child: Column(children: [
                   const SizedBox(height: 10),
@@ -87,12 +81,12 @@ class _WriteReviewBottomSheetState extends State<WriteReviewBottomSheet> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             if (widget.orderItem.productName != null)
-                            Text(
+                              Text(
                                 widget.orderItem.productName!,
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
-                              style: Theme.of(context).textTheme.labelLarge,
-                            ),
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
+                                style: Theme.of(context).textTheme.labelLarge,
+                              ),
                             if (widget.orderItem.productBrand != null && widget.orderItem.productBrand!.isNotEmpty)
                               Text(
                                 widget.orderItem.productBrand!,
@@ -114,16 +108,14 @@ class _WriteReviewBottomSheetState extends State<WriteReviewBottomSheet> {
                                   "Color: ",
                                   style: Theme.of(context).textTheme.bodyMedium,
                                 ),
-                                if (widget.orderItem.color != null)
-                                ColorDotWidget(
-                                    color: widget.orderItem.color!.toColor())
+                                if (widget.orderItem.color != null) ColorDotWidget(color: widget.orderItem.color!.toColor())
                               ],
                             ),
                             if (widget.orderItem.productPrice != null)
-                            Text(
+                              Text(
                                 widget.orderItem.productPrice!.toPriceString(),
-                              style: Theme.of(context).textTheme.headlineLarge,
-                            ),
+                                style: Theme.of(context).textTheme.headlineLarge,
+                              ),
                           ],
                         ),
                       ),
@@ -132,11 +124,9 @@ class _WriteReviewBottomSheetState extends State<WriteReviewBottomSheet> {
                   const SizedBox(height: 10),
                   const Divider(color: AppColors.greyColor),
                   const SizedBox(height: 10),
-                  Text("How is your order?",
-                      style: Theme.of(context).textTheme.titleMedium),
+                  Text("How is your order?", style: Theme.of(context).textTheme.titleMedium),
                   const SizedBox(height: 10),
-                  Text("Please give your rating & also your review...",
-                      style: Theme.of(context).textTheme.bodyMedium),
+                  Text("Please give your rating & also your review...", style: Theme.of(context).textTheme.bodyMedium),
                   const SizedBox(height: 10),
                   RatingBar(
                     itemCount: 5,
@@ -146,7 +136,10 @@ class _WriteReviewBottomSheetState extends State<WriteReviewBottomSheet> {
                     itemSize: 30,
                     itemPadding: const EdgeInsets.symmetric(horizontal: 10),
                     ratingWidget: RatingWidget(
-                      full: const MyIcon(icon: AppAssets.icStarBold),
+                      full: MyIcon(
+                        icon: AppAssets.icStarBold,
+                        colorFilter: ColorFilter.mode(Colors.yellow[700]!, BlendMode.srcIn),
+                      ),
                       half: const MyIcon(icon: AppAssets.icStarBold),
                       empty: const MyIcon(icon: AppAssets.icStar),
                     ),
@@ -155,27 +148,23 @@ class _WriteReviewBottomSheetState extends State<WriteReviewBottomSheet> {
                   const SizedBox(height: 20),
                   TextFormField(
                     controller: contentController,
+                    autofocus: true,
                     decoration: InputDecoration(
                       contentPadding: const EdgeInsets.all(12),
                       hintText: "Write your review here...",
                       hintStyle: Theme.of(context).textTheme.bodyLarge,
-                      suffixIcon: IconButton(
-                          onPressed: () {},
-                          icon: const MyIcon(icon: AppAssets.icGallery)),
+                      suffixIcon: IconButton(onPressed: () {}, icon: const MyIcon(icon: AppAssets.icGallery)),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(16),
-                        borderSide:
-                            const BorderSide(color: AppColors.primaryColor),
+                        borderSide: const BorderSide(color: AppColors.primaryColor),
                       ),
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(16),
-                        borderSide:
-                            const BorderSide(color: AppColors.primaryColor),
+                        borderSide: const BorderSide(color: AppColors.primaryColor),
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(16),
-                        borderSide:
-                            const BorderSide(color: AppColors.primaryColor),
+                        borderSide: const BorderSide(color: AppColors.primaryColor),
                       ),
                     ),
                   ),
@@ -189,8 +178,7 @@ class _WriteReviewBottomSheetState extends State<WriteReviewBottomSheet> {
                               Navigator.pop(context);
                             },
                             backgroundColor: AppColors.greyColor,
-                            child: Text("Cancel",
-                                style: Theme.of(context).textTheme.labelLarge)),
+                            child: Text("Cancel", style: Theme.of(context).textTheme.labelLarge)),
                       ),
                       const SizedBox(width: 10),
                       Expanded(
@@ -198,11 +186,7 @@ class _WriteReviewBottomSheetState extends State<WriteReviewBottomSheet> {
                             onPressed: () async {
                               await _onAddReview();
                             },
-                            child: Text("Submit",
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .labelLarge!
-                                    .copyWith(color: AppColors.whiteColor))),
+                            child: Text("Submit", style: Theme.of(context).textTheme.labelLarge!.copyWith(color: AppColors.whiteColor))),
                       )
                     ],
                   ),

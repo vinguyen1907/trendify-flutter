@@ -54,6 +54,7 @@ class AppAssets {
   static const String icHeartOutline = "$iconPath/ic_heart_outline.svg";
   static const String icBag = "$iconPath/ic_bag.svg";
   static const String icLocation = "$iconPath/ic_location.svg";
+  static const String icChecks = "$iconPath/ic_checks.svg";
 
   // Images
   static const String imgSplashBackground = "$imagePath/img_splash_background.png";
@@ -77,6 +78,7 @@ class AppAssets {
   static const String imgPortugalFlag = "$imagePath/img_portugal_flag.png";
   static const String imgMale = "$imagePath/img_male.png";
   static const String imgFemale = "$imagePath/img_female.png";
+  static const String imgCartEmpty = "$imagePath/img_cart_empty.png";
 
   // Lottie
   static const String lottieSuccess = "$lottiePath/lottie_success.json";

@@ -35,4 +35,9 @@ class ApiConstants {
   static const String fetchCategoriesUrl = "$baseUrl/categories";
   static const String fetchProductsInCategoryUrl = "$baseUrl/categories/{categoryId}/products";
   static const String searchCategoriesUrl = "$baseUrl/categories/search";
+
+  // Review apis
+  static const String fetchReviewsUrl = "$baseUrl/reviews/product/{productId}";
+  static const String addReviewUrl = "$baseUrl/reviews";
+  static const String fetchReviewByOrderItem = "$baseUrl/reviews/order-item/{orderItemId}";
 }

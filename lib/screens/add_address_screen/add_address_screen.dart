@@ -17,12 +17,7 @@ import 'package:ecommerce_app/utils/location_util.dart';
 import 'package:ecommerce_app/utils/utils.dart';
 
 class AddAddressScreen extends StatefulWidget {
-  final ShippingAddress? address;
-
-  const AddAddressScreen({
-    super.key,
-    this.address,
-  });
+  const AddAddressScreen({super.key});
 
   static const String routeName = "/add-address-screen";
 
@@ -31,6 +26,7 @@ class AddAddressScreen extends StatefulWidget {
 }
 
 class _AddAddressScreenState extends State<AddAddressScreen> {
+  ShippingAddress? address;
   bool isLoading = false;
   final TextEditingController fullNameController = TextEditingController();
   final TextEditingController countryController = TextEditingController();
@@ -48,18 +44,6 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
   @override
   void initState() {
     super.initState();
-    if (widget.address != null) {
-      fullNameController.text = widget.address!.recipientName;
-      countryController.text = widget.address!.country;
-      stateController.text = widget.address!.state;
-      cityController.text = widget.address!.city;
-      streetController.text = widget.address!.street;
-      zipCodeController.text = widget.address!.zipCode;
-      callingCodeController.text = widget.address!.countryCallingCode;
-      phoneNumberController.text = widget.address!.phoneNumber;
-    } else {
-      _getPosition();
-    }
 
     KeyboardVisibilityController().onChange.listen((event) {
       if (event) {
@@ -70,6 +54,31 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
         _getCoordinatesFromAddress();
       }
     });
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    if (mounted) {
+      final args = ModalRoute.of(context)!.settings.arguments;
+      if (args is ShippingAddress) {
+        address = args;
+        print("Address: ${address!.toJson()}");
+        if (address != null) {
+          fullNameController.text = address!.recipientName;
+          countryController.text = address!.country;
+          stateController.text = address!.state;
+          cityController.text = address!.city;
+          streetController.text = address!.street;
+          zipCodeController.text = address!.zipCode;
+          callingCodeController.text = address!.countryCallingCode;
+          phoneNumberController.text = address!.phoneNumber;
+        }
+      }
+      if (address == null) {
+        _getPosition();
+      }
+    }
   }
 
   @override
@@ -94,7 +103,7 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              ScreenNameSection(label: AppLocalizations.of(context)!.addNewAddress),
+              ScreenNameSection(label: address == null ? AppLocalizations.of(context)!.addNewAddress : AppLocalizations.of(context)!.updateAddress),
               Expanded(
                 child: SingleChildScrollView(
                   child: Padding(
@@ -228,8 +237,9 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
     if (formState.currentState!.validate()) {
       _changeLoadingState(true);
 
+      print("Current address ${address?.toJson()}");
       final ShippingAddress newAddress = ShippingAddress(
-        id: widget.address != null ? widget.address!.id : "",
+        id: address != null ? address!.id : "",
         recipientName: fullNameController.text,
         street: streetController.text,
         city: cityController.text,
@@ -238,11 +248,11 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
         zipCode: zipCodeController.text,
         countryCallingCode: callingCodeController.text,
         phoneNumber: phoneNumberController.text,
-        latitude: widget.address != null ? widget.address!.latitude : coordinates?.latitude,
-        longitude: widget.address != null ? widget.address!.longitude : coordinates?.longitude,
+        latitude: address != null ? address!.latitude : coordinates?.latitude,
+        longitude: address != null ? address!.longitude : coordinates?.longitude,
       );
       final addressRepository = GetIt.I.get<IAddressRepository>();
-      if (widget.address == null) {
+      if (address == null) {
         await addressRepository.addShippingAddress(
           address: newAddress,
           setAsDefault: setAsDefaultAddress,

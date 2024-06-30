@@ -30,6 +30,7 @@ class ShippingAddress {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'id': id,
       'recipientName': recipientName,
       'street': street,
       'city': city,
@@ -45,7 +46,7 @@ class ShippingAddress {
 
   factory ShippingAddress.fromMap(Map<String, dynamic> map) {
     return ShippingAddress(
-      id: "",
+      id: map['id']?.toString() ?? "",
       recipientName: map['recipientName'] as String,
       street: map['street'] as String,
       city: map['city'] as String,
@@ -61,8 +62,7 @@ class ShippingAddress {
 
   String toJson() => json.encode(toMap());
 
-  factory ShippingAddress.fromJson(String source) =>
-      ShippingAddress.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory ShippingAddress.fromJson(String source) => ShippingAddress.fromMap(json.decode(source) as Map<String, dynamic>);
 
   ShippingAddress copyWith({
     String? id,

@@ -68,7 +68,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: const Column(
                     children: [
                       HeaderHome(),
-                      PromotionsHome(),
+                      // PromotionsHome(),
                       RecommendedProducts(),
                       // PopularHome()
                     ],

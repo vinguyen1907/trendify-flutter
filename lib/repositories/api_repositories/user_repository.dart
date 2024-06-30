@@ -52,6 +52,7 @@ class UserRepository implements IUserRepository {
       dio.options.headers["Authorization"] = "Bearer $accessToken";
 
       final fcmToken = await FirebaseMessaging.instance.getToken();
+      print("New FCM token: $fcmToken");
       await dio.patch("${ApiConstants.usersUrl}/user", data: {"fcmToken": fcmToken});
     } catch (e) {
       throw Exception(e);

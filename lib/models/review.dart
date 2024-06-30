@@ -20,13 +20,13 @@ class Review {
 
   factory Review.fromMap(Map<String, dynamic> json) {
     return Review(
-      id: json['id'],
-      userId: json['userId'],
+      id: json['id']?.toString(),
+      userId: json['userId']?.toString(),
       nameUser: json['nameUser'],
       avaUrl: json['avaUrl'],
       rate: json['rate'].toInt(),
       content: json['content'],
-      createdAt: json['createdAt'].toDate(),
+      createdAt: DateTime.parse(json['createdAt']),
     );
   }
 
@@ -44,6 +44,5 @@ class Review {
 
   String toJson() => json.encode(toMap());
 
-  factory Review.fromJson(String source) =>
-      Review.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory Review.fromJson(String source) => Review.fromMap(json.decode(source) as Map<String, dynamic>);
 }

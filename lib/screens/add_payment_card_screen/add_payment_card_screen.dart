@@ -6,7 +6,7 @@ import 'package:ecommerce_app/common_widgets/my_button.dart';
 import 'package:ecommerce_app/common_widgets/screen_name_section.dart';
 import 'package:ecommerce_app/constants/app_colors.dart';
 import 'package:ecommerce_app/constants/app_styles.dart';
-import 'package:ecommerce_app/repositories/payment_repository.dart';
+import 'package:ecommerce_app/repositories/interfaces/interfaces.dart';
 import 'package:ecommerce_app/screens/add_payment_card_screen/widgets/scan_button.dart';
 import 'package:ecommerce_app/screens/set_passcode_screen/set_passcode_screen.dart';
 import 'package:ecommerce_app/utils/passcode_utils.dart';
@@ -14,6 +14,7 @@ import 'package:ecommerce_app/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_credit_card/flutter_credit_card.dart';
+import 'package:get_it/get_it.dart';
 
 class AddPaymentCardScreen extends StatefulWidget {
   const AddPaymentCardScreen({super.key});
@@ -41,8 +42,7 @@ class _AddPaymentCardScreenState extends State<AddPaymentCardScreen> {
       child: Scaffold(
         appBar: const MyAppBar(),
         body: SingleChildScrollView(
-          child:
-              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             const ScreenNameSection(label: "Add Payment Card"),
             CreditCardWidget(
               cardNumber: cardNumber,
@@ -50,8 +50,7 @@ class _AddPaymentCardScreenState extends State<AddPaymentCardScreen> {
               cardHolderName: cardHolderName,
               isHolderNameVisible: true,
               cvvCode: cvvCode,
-              showBackView:
-                  isCvvFocused, //true when you want to show cvv(back) view
+              showBackView: isCvvFocused, //true when you want to show cvv(back) view
               onCreditCardWidgetChange: (cardBrand) {
                 if (cardBrand.brandName != null) {
                   cardType = cardBrand.brandName!.name;
@@ -123,10 +122,7 @@ class _AddPaymentCardScreenState extends State<AddPaymentCardScreen> {
                     borderRadius: 12,
                     child: Text(
                       "Add card",
-                      style: Theme.of(context)
-                          .textTheme
-                          .labelLarge!
-                          .copyWith(color: AppColors.whiteColor),
+                      style: Theme.of(context).textTheme.labelLarge!.copyWith(color: AppColors.whiteColor),
                     )),
               ],
             )
@@ -142,7 +138,8 @@ class _AddPaymentCardScreenState extends State<AddPaymentCardScreen> {
         isLoading = true;
       });
       try {
-        await PaymentRepository().addPaymentCard(
+        final IPaymentRepository paymentRepository = GetIt.I.get();
+        await paymentRepository.addPaymentCard(
           cardNumber: cardNumber,
           holderName: cardHolderName,
           expiryDate: expiryDate,
@@ -151,10 +148,7 @@ class _AddPaymentCardScreenState extends State<AddPaymentCardScreen> {
         );
         if (!mounted) return;
         context.read<PaymentMethodsBloc>().add(LoadPaymentMethods());
-        Utils.showSnackBarSuccess(
-            context: context,
-            message: "Your card is already add to your wallet.",
-            title: "Add card successfully");
+        Utils.showSnackBarSuccess(context: context, message: "Your card is already add to your wallet.", title: "Add card successfully");
         Navigator.pop(context);
 
         final bool hasPasscode = await PasscodeUtils().hasPasscode();
@@ -163,8 +157,7 @@ class _AddPaymentCardScreenState extends State<AddPaymentCardScreen> {
           Navigator.pushNamed(context, SetPasscodeScreen.routeName);
         }
       } catch (e) {
-        Utils.showSnackBar(
-            context: context, message: "Failed to add card. Try again.");
+        Utils.showSnackBar(context: context, message: "Failed to add card. Try again.");
       }
 
       setState(() {

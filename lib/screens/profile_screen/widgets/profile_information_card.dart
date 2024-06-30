@@ -24,23 +24,23 @@ class ProfileInformationCard extends StatelessWidget {
                   Container(
                     height: 60,
                     width: 60,
-                    decoration: BoxDecoration(
-                      color: AppColors.greyColor,
-                      borderRadius: BorderRadius.circular(10),
-                      image: state.user!.imageUrl != null && state.user!.imageUrl!.isEmpty
-                          ? DecorationImage(
-                              image: NetworkImage(state.user!.imageUrl!),
-                              fit: BoxFit.cover,
-                            )
-                          : null,
-                    ),
+                    // decoration: BoxDecoration(
+                    //   color: AppColors.greyColor,
+                    //   borderRadius: BorderRadius.circular(10),
+                    //   image: state.user!.imageUrl != null && state.user!.imageUrl!.isEmpty
+                    //       ? DecorationImage(
+                    //           image: NetworkImage(state.user!.imageUrl!),
+                    //           fit: BoxFit.cover,
+                    //         )
+                    //       : null,
+                    // ),
                     alignment: Alignment.center,
-                    child: state.user!.imageUrl != null && state.user!.imageUrl!.isEmpty
+                    child: state.user!.imageUrl != null && state.user!.imageUrl!.isNotEmpty
                         ? CachedNetworkImage(
                             imageUrl: state.user!.imageUrl!,
                             fit: BoxFit.cover,
-                            height: 30,
-                            width: 30,
+                            height: 80,
+                            width: 80,
                           )
                         : const MyIcon(
                             icon: AppAssets.icUser,

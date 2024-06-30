@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:ecommerce_app/models/models.dart';
 import 'package:ecommerce_app/models/order.dart';
 import 'package:ecommerce_app/repositories/interfaces/interfaces.dart';
 import 'package:equatable/equatable.dart';
@@ -33,13 +34,17 @@ class MyOrdersBloc extends Bloc<MyOrdersEvent, MyOrdersState> {
 
   _onChangeMyOrderTabSelection(ChangeMyOrderTabSelection event, Emitter<MyOrdersState> emit) async {
     emit(state.copyWith(selection: event.selection));
-    if (state.completedOrders != null) {
-      return;
-    }
+    // if (state.completedOrders != null) {
+    //   return;
+    // }
     emit(state.copyWith(stateEnum: MyOrderStateEnum.loading));
     try {
-      final completedOrders = await _orderRepository.fetchMyOrders(isCompleted: true);
-      emit(state.copyWith(stateEnum: MyOrderStateEnum.loaded, completedOrders: completedOrders));
+      final orders = await _orderRepository.fetchMyOrders(isCompleted: event.selection == MyOrderTabSelections.completed);
+      if (event.selection == MyOrderTabSelections.ongoing) {
+        emit(state.copyWith(stateEnum: MyOrderStateEnum.loaded, ongoingOrders: orders));
+      } else {
+        emit(state.copyWith(stateEnum: MyOrderStateEnum.loaded, completedOrders: orders));
+      }
     } catch (e) {
       print("MyOrdersBloc - _onChangeMyOrderTabSelection -- Error: ${e.toString()}");
       emit(state.copyWith(stateEnum: MyOrderStateEnum.error, message: "Error: ${e.toString()}"));

@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:ecommerce_app/constants/constants.dart';
 import 'package:ecommerce_app/extensions/extensions.dart';
 import 'package:ecommerce_app/models/models.dart';
+import 'package:ecommerce_app/repositories/payment_methods_repository.dart';
 import 'package:ecommerce_app/screens/screens.dart';
 import 'package:ecommerce_app/common_widgets/common_widgets.dart';
 import 'package:flutter/material.dart';
@@ -35,17 +36,14 @@ class PaymentItemCard extends StatelessWidget {
         opacity: isEnabled ? 1 : 0.5,
         child: PrimaryBackground(
             padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-            backgroundColor: isSelected
-                ? Theme.of(context).colorScheme.tertiaryContainer
-                : Theme.of(context).colorScheme.secondaryContainer,
+            backgroundColor: isSelected ? Theme.of(context).colorScheme.tertiaryContainer : Theme.of(context).colorScheme.secondaryContainer,
             child: Row(
               children: [
                 Container(
                   height: 40,
                   width: 40,
                   decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage(paymentMethod.imageAsset)),
+                    image: DecorationImage(image: AssetImage(paymentMethod.imageAsset)),
                     color: AppColors.greyColor,
                     borderRadius: BorderRadius.circular(50),
                   ),
@@ -57,50 +55,34 @@ class PaymentItemCard extends StatelessWidget {
                     Text(
                       paymentMethod.name,
                       style: AppStyles.labelMedium.copyWith(
-                          color: isSelected
-                              ? Theme.of(context)
-                                  .colorScheme
-                                  .onTertiaryContainer
-                              : Theme.of(context)
-                                  .colorScheme
-                                  .onSecondaryContainer),
+                          color: isSelected ? Theme.of(context).colorScheme.onTertiaryContainer : Theme.of(context).colorScheme.onSecondaryContainer),
                     ),
                     if (paymentCard != null && paymentCard!.cardNumber != null)
                       Text(
                         paymentCard!.cardNumber?.maskCardNumber() ?? "",
                         style: AppStyles.bodyLarge.copyWith(
-                            color: isSelected
-                                ? Theme.of(context)
-                                    .colorScheme
-                                    .onTertiaryContainer
-                                : Theme.of(context)
-                                    .colorScheme
-                                    .onSecondaryContainer),
+                            color:
+                                isSelected ? Theme.of(context).colorScheme.onTertiaryContainer : Theme.of(context).colorScheme.onSecondaryContainer),
                       ),
                     if (subTitle != null)
                       Text(
                         subTitle!,
                         style: AppStyles.bodyLarge.copyWith(
-                            color: isSelected
-                                ? Theme.of(context)
-                                    .colorScheme
-                                    .onTertiaryContainer
-                                : Theme.of(context)
-                                    .colorScheme
-                                    .onSecondaryContainer),
+                            color:
+                                isSelected ? Theme.of(context).colorScheme.onTertiaryContainer : Theme.of(context).colorScheme.onSecondaryContainer),
                       ),
                   ],
                 ),
                 const Spacer(),
-                // if (paymentCard == null &&
-                //     paymentMethod.code != PaymentMethods.eWallet.code &&
-                //     paymentMethod.code != PaymentMethods.cashOnDelivery.code)
-                //   TextButton(
-                //       onPressed: () => _navigateToAddPaymentCardScreen(context),
-                //       child: Text(
-                //         "Add",
-                //         style: Theme.of(context).textTheme.labelMedium,
-                //       )),
+                if (paymentCard == null &&
+                    // paymentMethod.code != PaymentMethods.eWallet.code &&
+                    paymentMethod.code != PaymentMethods.cashOnDelivery.code)
+                  TextButton(
+                      onPressed: () => _navigateToAddPaymentCardScreen(context),
+                      child: Text(
+                        "Add",
+                        style: Theme.of(context).textTheme.labelMedium,
+                      )),
                 if (action != null) action!,
               ],
             )),

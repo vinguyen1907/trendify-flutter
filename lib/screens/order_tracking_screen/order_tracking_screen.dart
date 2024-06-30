@@ -29,6 +29,7 @@ class _OrderTrackingScreenState extends State<OrderTrackingScreen> {
     if (mounted) {
       final args = ModalRoute.of(context)!.settings.arguments;
       if (args is OrderTrackingScreenArgs) {
+        print("Order: ${args.order.toJson()}");
         order = args.order;
         context.read<OrderTrackingBloc>().add(LoadOrderTracking(orderId: order.id));
       }
@@ -50,7 +51,7 @@ class _OrderTrackingScreenState extends State<OrderTrackingScreen> {
               if (order.address != null)
                 Text("${order.address!.street}, ${order.address!.city}, ${order.address!.state}, ${order.address!.country}",
                     style: Theme.of(context).textTheme.bodyMedium),
-          
+
               const SectionLabel(label: "Order Summary", margin: EdgeInsets.only(top: 16, bottom: 8)),
               if (order.orderSummary != null)
                 Column(
@@ -143,7 +144,7 @@ class _OrderTrackingScreenState extends State<OrderTrackingScreen> {
               //     } else if (snapshot.connectionState == ConnectionState.waiting) {
               //       return const CustomLoadingWidget();
               //     }
-          
+
               //     final List<TrackingStatus> statuses = snapshot.data!;
               //     return ListView.builder(
               //       shrinkWrap: true,

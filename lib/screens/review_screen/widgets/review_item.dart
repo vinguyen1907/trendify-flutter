@@ -39,16 +39,18 @@ class _ReviewItemState extends State<ReviewItem> {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8),
       child: Container(
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(15),
-            color: AppColors.whiteColor,
-            boxShadow: [
-              BoxShadow(
-                  color: AppColors.primaryColor.withOpacity(0.2),
-                  blurRadius: 7,
-                  spreadRadius: 1,
-                  offset: const Offset(0, 6))
-            ]),
+        decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), color: AppColors.whiteColor, boxShadow: const [
+          BoxShadow(
+            color: Color.fromARGB(31, 141, 140, 140),
+            blurRadius: 8.0,
+            offset: Offset(0, 4),
+          ),
+          // BoxShadow(
+          //     color: AppColors.primaryColor.withOpacity(0.2),
+          //     blurRadius: 7,
+          //     spreadRadius: 1,
+          //     offset: const Offset(0, 6))
+        ]),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -80,8 +82,7 @@ class _ReviewItemState extends State<ReviewItem> {
                       ),
                     ),
                   ), // Loading placeholder
-                  errorWidget: (context, url, error) =>
-                      const Center(child: Icon(Icons.error)),
+                  errorWidget: (context, url, error) => const Center(child: Icon(Icons.error)),
                 ),
               ),
             ),
@@ -128,26 +129,14 @@ class _ReviewItemState extends State<ReviewItem> {
                               text: TextSpan(children: [
                               TextSpan(
                                   text: content.sublist(0, maxLength).join(' '),
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .bodyLarge!
-                                      .copyWith(
-                                          fontSize: 15,
-                                          color: AppColors.primaryColor)),
-                              TextSpan(
-                                  text: '...See more',
-                                  style: Theme.of(context).textTheme.bodyLarge)
+                                  style: Theme.of(context).textTheme.bodyLarge!.copyWith(fontSize: 15, color: AppColors.primaryColor)),
+                              TextSpan(text: '...See more', style: Theme.of(context).textTheme.bodyLarge)
                             ]))
                           : RichText(
                               text: TextSpan(children: [
                               TextSpan(
                                   text: content.join(' '),
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .bodyLarge!
-                                      .copyWith(
-                                          fontSize: 15,
-                                          color: AppColors.primaryColor)),
+                                  style: Theme.of(context).textTheme.bodyLarge!.copyWith(fontSize: 15, color: AppColors.primaryColor)),
                             ]))),
                 ],
               ),

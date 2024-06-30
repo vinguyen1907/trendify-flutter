@@ -58,8 +58,19 @@ class AddressRepository implements IAddressRepository {
   }
 
   @override
-  Future<void> updateShippingAddress({required ShippingAddress address, bool? setAsDefault}) {
-    // TODO: implement updateShippingAddress
-    throw UnimplementedError();
+  Future<void> updateShippingAddress({required ShippingAddress address, bool? setAsDefault}) async {
+    try {
+      final String? token = await secureStorage.read(key: SharedPreferencesKeys.accessToken);
+      if (token == null) {
+        throw Exception("Token is null");
+      }
+      dio.options.headers["Authorization"] = "Bearer $token";
+
+      await dio.put(ApiConstants.shippingAddressUrl, data: address.toJson());
+      print("SUCCESS [AddressRepository] updateShippingAddress");
+    } catch (e) {
+      print("ERROR [AddressRepository] updateShippingAddress: $e");
+      throw Exception(e);
+    }
   }
 }

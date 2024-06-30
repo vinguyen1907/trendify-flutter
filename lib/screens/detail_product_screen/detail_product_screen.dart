@@ -4,11 +4,12 @@ import 'package:ecommerce_app/blocs/product_bloc/product_bloc.dart';
 import 'package:ecommerce_app/blocs/show_notification/show_notification_bloc.dart';
 import 'package:ecommerce_app/blocs/similar_products_bloc/similar_products_bloc.dart';
 import 'package:ecommerce_app/blocs/similar_products_bloc/similar_products_event.dart';
+import 'package:ecommerce_app/common_widgets/common_widgets.dart';
 import 'package:ecommerce_app/common_widgets/custom_loading_widget.dart';
 import 'package:ecommerce_app/common_widgets/my_app_bar.dart';
-import 'package:ecommerce_app/extensions/extensions.dart';
 import 'package:ecommerce_app/models/product.dart';
 import 'package:ecommerce_app/screens/detail_product_screen/widgets/widgets.dart';
+import 'package:ecommerce_app/screens/screens.dart';
 import 'package:ecommerce_app/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -68,11 +69,11 @@ class _DetailProductScreenState extends State<DetailProductScreen> {
       appBar: MyAppBar(
         actions: [
           // TODO: Recover it
-          // CartButton(
-          //   onTap: () {
-          //     Navigator.pushNamed(context, CartScreen.routeName);
-          //   },
-          // )
+          CartButton(
+            onTap: () {
+              Navigator.pushNamed(context, CartScreen.routeName);
+            },
+          )
         ],
       ),
       // body: Padding(
@@ -162,20 +163,19 @@ class _DetailProductScreenState extends State<DetailProductScreen> {
                           ProductTile(
                             product: product,
                           ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 25),
-                            child: Text(
-                              product.price.toPriceString(),
-                              style: Theme.of(context).textTheme.headlineLarge?.copyWith(color: const Color(0xFF2B75F8)),
-                            ),
-                          ),
+                          // Padding(
+                          //   padding: const EdgeInsets.symmetric(horizontal: 25),
+                          //   child: Text(
+                          //     product.price.toPriceString(),
+                          //     style: Theme.of(context).textTheme.headlineLarge?.copyWith(color: const Color(0xFF2B75F8)),
+                          //   ),
+                          // ),
                           const ProductSize(),
                           ProductDescription(
                             description: product.description,
                           ),
                           ProductCharacteristicsWidget(product: product),
                           const SizedBox(height: 30),
-                          
                           const SimilarProductsList(),
                           SizedBox(
                             height: size.height * 0.07 + 40,
